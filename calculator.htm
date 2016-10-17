@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calculator</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/calculatorcontroller.js"></script>
+    <style lang="css/text">
+        #myCalculatorDisplay {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #bed5cd;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .cal-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 0;
+            //background: #f16a59;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cal-wrapper:after {
+                content: '';
+                width: 500px;
+                height: 900px;
+                position: absolute;
+                //background: #9C27B0;
+                z-index: 9;
+                bottom: -50%;
+                right: -100px;
+                //transform:rotate(45deg);
+            }
+
+            .cal-wrapper .cal {
+                max-width: 350px;
+                overflow: hidden;
+                position: relative;
+                z-index: 10;
+                padding: 30px 0;
+                //box-shadow:inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+                margin: 0 auto;
+                //background-image: -moz-linear-gradient( -30deg, rgb(239,80,80) 0%, #9C27B0 100%);
+                //background-image: -webkit-linear-gradient( -30deg, rgb(239,80,80) 0%, #9C27B0 100%);
+                //background-image: -ms-linear-gradient( -30deg, rgb(239,80,80) 0%, #9C27B0 100%);
+            }
+
+                .cal-wrapper .cal .cal-process {
+                    padding: 5px 15px;
+                    color: #fff;
+                    text-align: right;
+                    font-size: 30px;
+                }
+
+                .cal-wrapper .cal .cal-answer {
+                    font-size: 40px;
+                    color: #fff;
+                    text-align: right;
+                    padding: 5px 15px;
+                }
+
+                .cal-wrapper .cal .numbers .single {
+                    display: block;
+                    text-align: center;
+                    padding: 10px;
+                    font-size: 24px;
+                    color: #fff;
+                }
+
+                .cal-wrapper .cal .numbers .btn {
+                    background: transparent;
+                    outline: 0;
+                    border-radius: 0;
+                }
+
+                    .cal-wrapper .cal .numbers .btn span {
+                        width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        display: block;
+                        margin: 0 auto;
+                        border-radius: 50%;
+                        transition: all 0.4s ease-in-out;
+                    }
+
+                    .cal-wrapper .cal .numbers .btn:hover span {
+                        //background: rgba(255,255,255,0.2);
+                    }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div ng-app="CalculatorApp">
+            <div class="row" ng-controller="CalculatorController">
+
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="cal-wrapper">
+                        <div class="cal">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <div>{{ CalculatorDisplay }}</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-xs-4">
+                                    <button class="btn btn-info btn-block " ng-model="clear" ng-click="inputNumbers('Clear')">C</button>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-xs-4">
+                                    <button class="btn btn-info btn-block" ng-model="clear" ng-click="inputNumbers('Toggle')">+/-</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3 col-lg-offset-1 col-md-offset-1 col-xs-offset-1">
+                                    <button class="btn btn-info btn-block" value="/" ng-model="divide" ng-click="inputNumbers('/')">/</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" value="1" ng-model="Button1" ng-click="inputNumbers(1)">1</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" value="2" ng-model="2" ng-click="inputNumbers(2)">2</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="3" ng-model="3" ng-click="inputNumbers(3)">3</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-info btn-block" type="button" value="X" ng-model="multiple" ng-click="inputNumbers('*')">*</button>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="4" ng-model="4" ng-click="inputNumbers(4)">4</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="5" ng-model="5" ng-click="inputNumbers(5)">5</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="6" ng-model="6" ng-click="inputNumbers(6)">6</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-info btn-block" type="button" value="-" ng-model="minus" ng-click="inputNumbers('-')">-</button>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="7" ng-model="7" ng-click="inputNumbers(7)">7</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="8" ng-model="8" ng-click="inputNumbers(8)">8</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="9" ng-model="9" ng-click="inputNumbers(9)">9</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-info btn-block" type="button" value="+" ng-model="plus" ng-click="inputNumbers('+')">+</button>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-xs-6">
+                                    <button class="btn btn-primary btn-block" type="button" value="0" ng-model="0" ng-click="inputNumbers(0)">0</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-primary btn-block" type="button" value="." ng-model="period" ng-click="inputNumbers('.')">.</button>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-xs-3">
+                                    <button class="btn btn-info btn-block" type="button" value="=" ng-model="equals" ng-click="inputNumbers('=')">=</button>
+                                </div>
+
+                            </div>
+
+
+                        </div> <!--cal-->
+                    </div> <!--cal wrapper-->
+                </div> <!--Row-->
+            </div> <!--Controller-->
+        </div> <!--App-->
+    </div> <!--Container-->
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

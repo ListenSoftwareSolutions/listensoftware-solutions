@@ -1,0 +1,657 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Listen Software Solutions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/override.css" rel="stylesheet" />
+     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/lssfamilytreecontroller.js"></script>
+
+    <script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight+100 + 'px';
+  }
+</script>
+
+    <style>
+        #custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+.fixed-panel {
+    height:700px;
+    overflow-y:scroll;
+  //min-height: 10;
+  //max-height: 10;
+}
+li { cursor: pointer; cursor: hand; }
+
+.iframe-class {
+    border: 1px solid blue;
+}
+    </style>
+</head>
+<body>
+
+
+
+    <img src="images/listen-software-solutions.png" border="0" />
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-responsive-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a href="lssDirectory.htm" class="navbar-brand">Listen Software Solutions</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="lssDirectory.htm">Home</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=ASP.NET">ASP.NET</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=VB">VB.NET</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=SQL">SQL</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=ROBOT">ROBOT</a></li>
+                </ul>
+
+                <div class="col-sm-3 col-md-3 pull-right">
+                    <form class="navbar-form" role="search" action="http://www.listensoftware.com/cmWebsite.aspx" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="txtSearch">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+   
+     <div class="container">
+         <div ng-app="lssFamilyTreeApp" ng-controller="lssFamilyTreeController">
+             <div class="row">
+                 <div class="col-lg-6 col-md-6 col-xs-6">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><H3>Family Tree</H3></div>
+                            <div class="panel-body fixed-panel">
+
+                                
+                                <div id="custom-search-input ">
+                                    <div class="input-group col-md-12">
+                                        <input id="article_search" type="text" class="form-control input-lg" placeholder="Search" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-info btn-lg" type="button">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=420')"> Aenichi Kawakami</a>
+                                        <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=384 ')"> Aiko Tanigaki</a>
+                                        <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=458 ')"> Akiko Ohashi</a>
+                                        <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=224 ')"> Akira Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2598 ')"> Akizou Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=54 ')"> Akizou Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=393 ')"> Aoi Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=273 ')"> Arata Hibe</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=430 ')"> Asa Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=84 ')"> Asakitchi Ekemoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=145 ')"> Asakitchi Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=267 ')"> Ayako Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=477 ')"> Ayako Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=131 ')"> Bansuke Sakuma</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=207 ')"> Chidori  Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=440 ')"> Chie Masuda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=439 ')"> Chise // </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=242 ')"> Chiyoko Araki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=427 ')"> Chiyoko Miyagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2981 ')"> Chizuru Miyagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=63 ')"> Daisaku Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=38 ')"> Daughter Nishimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=210 ')"> Ekumatsu Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=523 ')"> El Funaoka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2619 ')"> Elizabeth  Turner</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2615 ')"> Elton Nye Bunn</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=385 ')"> Enami Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=531 ')"> Enzou Ono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=252 ')"> Fumiye Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=345 ')"> Fumiyo Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=367 ')"> Fusakitchi Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=214 ')"> Futsuma Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=144 ')"> Gonzou Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=153 ')"> Goro Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=337 ')"> Gunzo Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=493 ')"> Hanano Hanaoka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2680 ')"> Haruko Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1943 ')"> Haruko Mochizuke or Takahashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=503 ')"> Haruko Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2875 ')"> Harumi Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=442 ')"> Haruno </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1939 ')"> Haruno Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=379 ')"> Haruo Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=432 ')"> Haruto Mochizuke</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=417 ')"> Hatsuko Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=421 ')"> Hatsuko Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=511 ')"> Hatsutaro Tonai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=29 ')"> Hatuno MIYAMOTO</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2618 ')"> Henry Jarvis</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=325 ')"> Hideko Kugano or Shimomura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=44 ')"> Hideo Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2608 ')"> Hiroki Sueda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=114 ')"> Hiroo Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=508 ')"> Hiroshi Jimmie Hori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3146 ')"> Hiroshi Kuramoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=140 ')"> Hiroshi Mitsunga</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=261 ')"> Hiroshi Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=359 ')"> Hisa Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=126 ')"> Hisako Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3127 ')"> Hisayo Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=79 ')"> Hisayoshi Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=89 ')"> Hiyakutaro Watanuki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=528 ')"> Ichi //</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=335 ')"> Ichitaro Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2383 ')"> Ihei Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=147 ')"> Isamu Fujimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=76 ')"> Isamu Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2400 ')"> Isokichi Nishino</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=487 ')"> Itsujiro Shimizu</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=266 ')"> Iwamatsu Yamamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=250 ')"> Iwao Araki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2669 ')"> Iwao Niita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=558 ')"> James Nishino</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=534 ')"> Jinpachi Ono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=314 ')"> Junji Yanagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2684 ')"> Junko Sasaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=62 ')"> Kaichi Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3010 ')"> Kaichi Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=475 ')"> Kakusuke Inouye</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2599 ')"> Kakusuke Inouye (ABT 1884)</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=188 ')"> Kametaro Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=90 ')"> Kaoru Mizuguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=306 ')"> Kaoru Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2381 ')"> Kasue Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=51 ')"> Katsujiro Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=398 ')"> Katsumi Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=171 ')"> Kauoru Yamagata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=290 ')"> Kayano Matsuda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=283 ')"> Kazuhiko Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=227 ')"> Kazuo Kodama</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=191 ')"> Kazuo Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=285 ')"> Kazuo Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=295 ')"> Kazuo Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1809 ')"> Kazuto Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=167 ')"> Kenichi Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=41 ')"> Kenkitchi Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=206 ')"> Kenzou Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=212 ')"> Kenzou Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=40 ')"> Kichiemon Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=478 ')"> Kiemi //</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1946 ')"> Kikue Masano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1947 ')"> Kikue Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=434 ')"> Kikuno Kawate</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2394 ')"> Kikutarou Taniguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=467 ')"> Kikuyo Nakashima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2675 ')"> Kimie Akutagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=447 ')"> Kimie Nakagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=111 ')"> Kimiyo Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=423 ')"> Kineyo // </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=509 ')"> Kinshiro Ogawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=370 ')"> Kioyko Nishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=402 ')"> Kisaku Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=87 ')"> Kisaku Yagi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=223 ')"> Kishiro Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=218 ')"> Kite Wakamiya</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2604 ')"> Kiyoji Matsuura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=521 ')"> Kiyoko Kawasaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=446 ')"> Kiyoko Mukai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2677 ')"> Kiyoshi Fujita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=85 ')"> Kiyoto Miyata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=453 ')"> Kofuku Yamazaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=50 ')"> Koichi Kimura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=92 ')"> Koichi Sumimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=113 ')"> Koichi Yamamura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=263 ')"> Koichiro Doi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=246 ')"> Koji Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=403 ')"> Kono Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=231 ')"> Koroku Shimomura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=377 ')"> Kotaro Kohama</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=413 ')"> Kubei Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=499 ')"> Kumataro Doi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=73 ')"> Kunichi Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=278 ')"> Kunso Togashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2984 ')"> Kunsou Hiromoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2302 ')"> Kutaro Kumano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=58 ')"> Kuzogami Hibe</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=286 ')"> Magotaro Teshima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=289 ')"> Makino Tokubei</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=226 ')"> Makoto Kubota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=183 ')"> Mamoru Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2617 ')"> Mary Bull</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=328 ')"> Masae Yokota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=282 ')"> Masagi Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=280 ')"> Masagi Nishimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2594 ')"> Masahaki Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=309 ')"> Masahiko Sumimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=308 ')"> Masakitchi Sumimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2676 ')"> Masako Fujita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=128 ')"> Masami  Sakuma</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3009 ')"> Masami Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=406 ')"> Masao Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=249 ')"> Masao Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=287 ')"> Masao Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=154 ')"> Masao Tarue 2</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=281 ')"> Masaru Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=243 ')"> Masaru Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=75 ')"> Masato Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3144 ')"> Masayuki Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=272 ')"> Masue Tamura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=254 ')"> Masuji Nisogi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=130 ')"> Masuyo Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=217 ')"> Matakitchi Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=512 ')"> Matsu Mitsukawa or Hama</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=336 ')"> Matsuyo Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=394 ')"> Michiko Nishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=356 ')"> Midori Miyata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=348 ')"> Mine Takeoka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2593 ')"> Misaki Hota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=327 ')"> Misao Araki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=211 ')"> Misao Mizuguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=376 ')"> Misue Nakandono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=435 ')"> Mitchiko Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=386 ')"> Mitsue Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=369 ')"> Mitsue Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=422 ')"> Mitsuko Sumimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=104 ')"> Mitsuyo Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=238 ')"> Miyagi Mikami</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=465 ')"> Miyako Oue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=96 ')"> Mizuo Nishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=142 ')"> Mohae Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=93 ')"> Mokitchi Tsuruoka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=375 ')"> Momoyo Kuramoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=344 ')"> Momyo Miwa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1933 ')"> Mr  Kano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=165 ')"> Mr  Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2673 ')"> Mr Akutagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1935 ')"> Mr Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=42 ')"> Mr Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2703 ')"> Mr Date ABT 1896</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=405 ')"> Mr Doi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1934 ')"> Mr Enami</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=518 ')"> Mr Enami</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=148 ')"> Mr Fujimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2986 ')"> Mr Funakoshi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1932 ')"> Mr Hamada</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2692 ')"> Mr Hasegawa ABT 1898</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=64 ')"> Mr Hiroki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2982 ')"> Mr Hiromoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3136 ')"> Mr Hukuhara</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=303 ')"> Mr Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2600 ')"> Mr Inouye</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=150 ')"> Mr Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=532 ')"> Mr Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=67 ')"> Mr Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=371 ')"> Mr Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=494 ')"> Mr Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=524 ')"> Mr Izumi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=105 ')"> Mr Jugaemon</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2603 ')"> Mr Jugaemon (ABT 1797)</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=513 ')"> Mr Katakura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3191 ')"> Mr Kido ABT 1893</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=39 ')"> Mr Kodama</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2689 ')"> Mr Kodama ABT 1869</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2690 ')"> Mr Kohama ABT 1880</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2229 ')"> Mr Koochi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2300 ')"> Mr Kumano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1944 ')"> Mr Masano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3134 ')"> Mr Matsui</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2693 ')"> Mr Matsumura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=408 ')"> Mr Minami</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2373 ')"> Mr Miwa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=49 ')"> Mr Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2372 ')"> Mr Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=515 ')"> Mr Mukai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3153 ')"> MR Nagao ABT 1899</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2375 ')"> Mr Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=233 ')"> Mr Nakandono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=159 ')"> Mr Nakashima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1936 ')"> Mr Naoki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2384 ')"> Mr Nii</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=240 ')"> Mr Nishimura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=517 ')"> Mr Nishimura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2398 ')"> Mr Nishino</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2697 ')"> Mr Nishitani ABT 1871</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2695 ')"> Mr Nisogi ABT 1866</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2403 ')"> Mr Ogawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2701 ')"> Mr Ogawa </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2671 ')"> Mr Ogura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=333 ')"> Mr Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=156 ')"> Mr Oishi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=332 ')"> Mr Oonishi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=320 ')"> Mr Oue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=363 ')"> Mr Saburo</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2682 ')"> Mr Sasaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2391 ')"> Mr Shintani</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=331 ')"> Mr Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=43 ')"> Mr Sono 2</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2606 ')"> Mr Sueda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=480 ')"> Mr Suenaga</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2595 ')"> Mr Sunahara</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=52 ')"> Mr Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2699 ')"> Mr Tarue or Matsui</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2123 ')"> Mr Terado</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3168 ')"> Mr Teshima ABT 1819</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=155 ')"> Mr Togashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1940 ')"> Mr Tokugawa ABT 1894</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=269 ')"> Mr Tonai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3154 ')"> Mr Tsubata ABT 1887</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=225 ')"> Mr Uetake</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=479 ')"> Mr Ushiogi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=234 ')"> Mr Wakamiya</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2036 ')"> Mr Wakuno</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=264 ')"> Mr Yamamoto </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2691 ')"> Mr Yamamoto ABT 1913</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2387 ')"> Mr Yamanaka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=504 ')"> Mr Yamazaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=293 ')"> Mr Yanagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=444 ')"> Mr Yazu</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=56 ')"> Mr Yokota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=496 ')"> Mrs  Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=80 ')"> Mrs Akino Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2674 ')"> Mrs Akutagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2688 ')"> Mrs Amoda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=342 ')"> Mrs Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=519 ')"> Mrs Enami</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=530 ')"> Mrs Enzou Ono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=149 ')"> Mrs Fujimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2987 ')"> Mrs Funakoshi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=374 ')"> Mrs Hiroki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2983 ')"> Mrs Hiromoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3137 ')"> Mrs Hukuhara</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=304 ')"> Mrs Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2601 ')"> Mrs Inouye</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=151 ')"> Mrs Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=527 ')"> Mrs Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=525 ')"> Mrs Izumi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=476 ')"> Mrs Kakusuke Inouye</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=514 ')"> Mrs Katakura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=488 ')"> Mrs Kichiemon Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3192 ')"> Mrs Kido</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=257 ')"> Mrs Kineyo</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=228 ')"> Mrs Kodama</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2230 ')"> Mrs Koochi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2395 ')"> Mrs Kotoyo Taniguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2301 ')"> Mrs Kumano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=533 ')"> Mrs Magotaro</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=108 ')"> Mrs Masa Wakamiya</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=501 ')"> Mrs Masako Doi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1945 ')"> Mrs Masano</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2035 ')"> Mrs Matsui</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=166 ')"> Mrs Miguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=409 ')"> Mrs Minami</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=448 ')"> Mrs Mitsuyo Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2374 ')"> Mrs Miwa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2685 ')"> Mrs Miyagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=324 ')"> Mrs Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2371 ')"> Mrs Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1942 ')"> Mrs Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=516 ')"> Mrs Mukai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2376 ')"> Mrs Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=100 ')"> Mrs Natsu Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2385 ')"> Mrs Nii</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=239 ')"> Mrs Nishimura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2399 ')"> Mrs Nishino</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=326 ')"> Mrs Nobutaro Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2404 ')"> Mrs Ogawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2672 ')"> Mrs Ogura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=334 ')"> Mrs Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2686 ')"> Mrs Ohashi ABT 1852</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=157 ')"> Mrs Oishi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=321 ')"> Mrs Oue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2678 ')"> Mrs Sadako Fujita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2683 ')"> Mrs Sasaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2687 ')"> Mrs Shimizu</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=197 ')"> Mrs Shin Kawagi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2392 ')"> Mrs Shintani</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=244 ')"> Mrs Shizuko Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=445 ')"> Mrs Shunbae Teshima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2607 ')"> Mrs Sueda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=481 ')"> Mrs Suenaga</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2596 ')"> Mrs Sunahara</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=262 ')"> Mrs Takae Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=297 ')"> Mrs Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=362 ')"> Mrs Tatsuji Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2124 ')"> Mrs Terado</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=277 ')"> Mrs Togashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=46 ')"> Mrs Tomi Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=189 ')"> Mrs Towa Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=237 ')"> Mrs Tsunekichi Hukunaga</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=485 ')"> Mrs Ushiogi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2037 ')"> Mrs Wakuno</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2388 ')"> Mrs Yamanaka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2377 ')"> Mrs Yamasaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=505 ')"> Mrs Yamazaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=313 ')"> Mrs Yanagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=443 ')"> Mrs Yazu</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=469 ')"> Mume Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=407 ')"> Nami Horita or Hota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=158 ')"> Naruichi Oishi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=484 ')"> Natsuno Itamoto or Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2592 ')"> Niichi Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2605 ')"> Nishite Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2602 ')"> Noboru Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=184 ')"> Nobu Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=198 ')"> Nobuhatchi Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=141 ')"> Nobutaro Ishida (ABT 1883)</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=471 ')"> Oishi Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=498 ')"> Oonishi //</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=462 ')"> Otoichi Ogura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=256 ')"> Reichi Sumimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=449 ')"> Rie Sumimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=61 ')"> Rika Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3011 ')"> Rika Nishimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=510 ')"> Rino Tonai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=526 ')"> Ritsue Jugaemon</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=230 ')"> Riyu Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=438 ')"> Riyu Ikeda 2</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=410 ')"> Ruth  Kazue /Date/</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=232 ')"> Ryuki Kimura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=395 ')"> Sachiko Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=373 ')"> Sachio Kawagi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=492 ')"> Sadaharu Akagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=457 ')"> Sadako Funakoshi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2397 ')"> Sadami Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=490 ')"> Sadharu Akagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=388 ')"> Saku Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=175 ')"> Sakuzou Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=535 ')"> Sami Teshima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=299 ')"> Sami Yamanobe</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=404 ')"> Sanemon Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=88 ')"> Satarou Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2597 ')"> Satoru Sunahara</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2125 ')"> Satoru Terado</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=208 ')"> Satoshi Kawagi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=176 ')"> Sayono Nakafura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2389 ')"> Seiken Yamanaka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3126 ')"> Seikitchi Matsui</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2382 ')"> Seizaburou Yamamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=220 ')"> Sekiyo Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=491 ')"> Sen Iwata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=392 ')"> Shige Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=276 ')"> Shigeharu Hibe</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=259 ')"> Shigeko Araki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=502 ')"> Shigeko Fujioka</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=343 ')"> Shigeo Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=483 ')"> Shigeo Mizuguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=322 ')"> Shigeru Oue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=389 ')"> Shika Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=161 ')"> Shika Oue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3128 ')"> Shinichi Tarue or Matsui</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=55 ')"> Shinkitchi Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=57 ')"> Shiro Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=99 ')"> Shiro Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=37 ')"> Shirokichi Jeo Or TONAI </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=352 ')"> Shiyosaburo Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=338 ')"> Shizuko Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=378 ')"> Shizuko Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=181 ')"> Shizuko Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=347 ')"> Shizuko Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=127 ')"> Shosaku SAKUMA </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=340 ')"> Shuichi Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=260 ')"> Shuichi Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=95 ')"> Shunbae Teshima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=112 ')"> Sonemon Sasai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=381 ')"> Sueko Yokota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=45 ')"> Suematasu Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2402 ')"> Suenaga //</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=316 ')"> Sueno Morikawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=346 ')"> Sumi Nishitoni</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=390 ')"> Sumiyo Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=315 ')"> Susumu Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2396 ')"> Syunichi Taniguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=358 ')"> Tadao Funakoshi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2988 ')"> Tadao Funakoshi (abt 1910)</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=129 ')"> Tadashi  Sakuma</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3143 ')"> Tadashi Miyagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=139 ')"> Taira Kiyomori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=248 ')"> Takashi Hasegawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2231 ')"> Takeo Koochi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=296 ')"> Takeo Mizuguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=164 ')"> Takeo Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=204 ')"> Takeo Sono</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=94 ')"> Takeo Toshimitsu</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2390 ')"> Takeshi Itamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=59 ')"> Takuma Mizuguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2979 ')"> Takumi Kuramoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=319 ')"> Takumi Nakamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=292 ')"> Tama Hiroki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=78 ')"> Tamotsu Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2111 ')"> Taneyo Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=351 ')"> Tasu Baba</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=74 ')"> Tatsuji Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=441 ')"> Tazuko //</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=418 ')"> Teru Yanagawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2380 ')"> Teruko Kuramoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=312 ')"> Teruo Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=106 ')"> Tetsuo Wakamiya</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=168 ')"> Toda Kiyoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=357 ')"> Tokiko Kobayashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=180 ')"> Tokizou Katsuta</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=60 ')"> Tokukichi  Mizuguchi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=482 ')"> Tokumi // </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=86 ')"> Tonosuke Kawagi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=305 ')"> Torakitchi Ikeda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1937 ')"> Toshiharu Tokugawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=53 ')"> Toshihide Nishimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=486 ')"> Toshiko Kuramoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2386 ')"> Toshio Nii</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=241 ')"> Toshio Ohashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=190 ')"> Toshio Oishi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=187 ')"> Touru Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=65 ')"> Towa </a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=219 ')"> Toyokitchi Nakama</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=279 ')"> Toyoko Tsubata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=196 ')"> Toyotaro Kawagi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3122 ')"> Toyozou Hibe</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=436 ')"> Tsuga Nishimori</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=77 ')"> Tsugo Togashi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2378 ')"> Tsukime Mochisuke</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=247 ')"> Tsune Idekda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=294 ')"> Tsune Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=382 ')"> Tsune Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=463 ')"> Tsune Teshima</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=235 ')"> Tsunekichi Hukunaga</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=222 ')"> Tsuneko Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=489 ')"> Tsuneko Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=81 ')"> Tsunezou Otamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=450 ')"> Tsunyeo Mary Ogawa</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2393 ')"> Tsuru Shinitani</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=330 ')"> Tsuru Shintani</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2670 ')"> Tsuru Shintani ABT 1877</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=302 ')"> Tsutou Mochizuke</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=459 ')"> Turuyo Osumi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=522 ')"> Umekichi Kawasaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=91 ')"> Umekitchi Matsuda</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=101 ')"> Wasuke Arita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=424 ')"> Yaiko Wakamiya</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=251 ')"> Yao Teranishi</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=3138 ')"> Yasuo Nagai</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=162 ')"> Yasuo Tanigaki</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=368 ')"> Yoneko Yanagida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2110 ')"> Yonitsuchi Niita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2112 ')"> Yonizou Niita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=268 ')"> Yoshiaki Iwamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=194 ')"> Yoshiaki Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2379 ')"> Yoshie Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2681 ')"> Yoshie Miyamoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=383 ')"> Yoshie Yokota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2303 ')"> Yoshihiko Matsuura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=497 ')"> Yoshiko //</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2679 ')"> Yoshiko Fujita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=323 ')"> Yoshiko Ishida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=110 ')"> Yoshino Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=288 ')"> Yoshio Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2038 ')"> Yoshio Wakuno</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=258 ')"> Yoshio Yamamura</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=1938 ')"> Yoshito Uchida</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=163 ')"> Yoshiyo Miyata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=48 ')"> Yukichi Yokota</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=177 ')"> Yukio Morishita</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=399 ')"> Yurie Miyamoto or Miyata</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=364 ')"> Yuriko Kuramoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=2401 ')"> Yurio Tarue</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=174 ')"> Yuzuru Naito</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=470 ')"> Zeichi Nishimoto</a>
+                                <li class=list-group-item><a ng-click="loadView('familytree.htm?memberid=47 ')"> Zenitchi Tarue</a>            
+                                    </ul>
+                                </div> <!--custom search-->
+                            </div> <!--panel-body-->
+                        </div><!--panel-->
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <h3>Viewer</h3>
+                    <iframe id="viewer" ng-src="{{family_page}}" width="420px" height="800px" class="iframe-class" scrolling="yes" ></iframe>
+                </div>
+            </div><!--row-->
+        </div>  <!--app-->
+    </div><!--container-->
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/lssmicrotheories.js"></script>
+    
+
+</body>
+</html>

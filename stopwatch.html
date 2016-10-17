@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Clock</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/clockController.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div ng-app="ClockApp">
+            <div ng-controller="ClockController">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Current Time</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{clock | date:'MMMM dd yyyy EEEE'}}</p>
+                        <p>{{clock | date:'hh:mm:ss a'}}</p>
+
+                        <h3>Stop Watch</h3>
+                        <p>{{stopWatchDisplay}}</p>
+                        <button id="Start" ng-click="startTimer()">Start</button>
+<button id="Stop" ng-click="stopTimer()">Stop</button>
+<button id="Reset" ng-click="resetTimer()">Reset</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

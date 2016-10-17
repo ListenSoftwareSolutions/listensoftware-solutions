@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Listen Software Solutions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-responsive.css" rel="stylesheet" />
+    <style>
+        #custom-search-input {
+            padding: 3px;
+            border: solid 1px #E4E4E4;
+            border-radius: 6px;
+            background-color: #fff;
+        }
+
+            #custom-search-input input {
+                border: 0;
+                box-shadow: none;
+            }
+
+            #custom-search-input button {
+                margin: 2px 0 0 0;
+                background: none;
+                box-shadow: none;
+                border: 0;
+                color: #666666;
+                padding: 0 8px 0 10px;
+                border-left: solid 1px #ccc;
+            }
+
+                #custom-search-input button:hover {
+                    border: 0;
+                    box-shadow: none;
+                    border-left: solid 1px #ccc;
+                }
+
+            #custom-search-input .glyphicon-search {
+                font-size: 23px;
+            }
+    </style>
+</head>
+<body>
+    <img src="images/listen-software-solutions.png" border="0" />
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-responsive-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+               <a href="lssDirectory.htm" class="navbar-brand">Listen Software Solutions</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="lssDirectory.htm">Home</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=ASP.NET">ASP.NET</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=VB">VB.NET</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=SQL">SQL</a></li>
+                    <li><a href="cmwebsite.aspx?txtSearch=ROBOT">ROBOT</a></li>
+                </ul>
+
+                <div class="col-sm-3 col-md-3 pull-right">
+                    <form class="navbar-form" role="search" action="http://www.listensoftware.com/cmWebsite.aspx" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="txtSearch" >
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>        
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+      <center>
+        <iframe type="text/html" width="336" height="550" frameborder="0" allowfullscreen="" style="max-width:100%" src="https://read.amazon.com/kp/card?asin=B01KCVL8DE&asin=B01KCVL8DE&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_E05RxbQDFHEM0" ></iframe>
+      </center>
+
+      <div class="row">
+            <div class="cols-lg-12 text-center"><H2>&Category</H2>
+                <p>&Definition</p>
+            </div>
+            
+        </div>
+        <div id="custom-search-input">
+            <div class="input-group col-md-12">
+                <input id="article_search" type="text" class="form-control input-lg" placeholder="Search" />
+                <span class="input-group-btn">
+                    <button class="btn btn-info btn-lg" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h3>Articles</h3>
+
+                    &Articles
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h3>Links</h3>
+                        &Links
+                </div>
+            </div>
+    </div>
+
+    <div class="visible-xs hidden-sm hidden-md hidden-lg">xs</div>
+    <div class="hidden-xs visible-sm hidden-md hidden-lg">sm</div>
+    <div class="hidden-xs hidden-sm visible-md hidden-lg">md</div>
+    <div class="hidden-xs hidden-sm hidden-md visible-lg">lg</div>
+
+        <script src="Scripts/jquery-2.2.3.js"></script>
+        <script src="Scripts/bootstrap.js"></script>
+        <script src="/Scripts/lssmicrotheories.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+﻿<!DOCTYPE HTML>
+<!--
+    Future Imperfect by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Listen Software Solutions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+    <asp:ScriptReference Path="~/Scripts/jquery-2.2.3.js" />
+    <asp:ScriptReference Path="~/Scripts/bootstrap.js" />
+
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/clockController.js"></script>
+    <script src="Scripts/lssLinks2.js"></script>
+
+    <style>
+        img.expand { width: 10em; }
+        .panel-right {
+  border: 0.05em solid lightgray;
+  border-radius: 0.25em 0.25em;
+  margin-top: -0.2em;
+  padding: 0.3em;
+  font-size: 0.9em;
+  float: right;
+}
+
+  .panel-title a,
+  .panel-title a:active,
+  .panel-title a:visited {
+    text-decoration: none;
+  }
+    </style>
+</head>
+    <body>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <h3><a href="#">Listen Software Solutions</a></h3>
+                <nav class="links">
+                    <ul>
+                        <li><a href="cmwebsite.aspx?txtSearch=ASP.NET">ASP.NET</a></li>
+                        <li><a href="cmwebsite.aspx?txtSearch=VB.NET">VB.NET</a></li>
+                        <li><a href="cmwebsite.aspx?txtSearch=SQL">SQL</a></li>
+                        <li><a href="cmwebsite.aspx?txtSearch=ROBOTS">ROBOTS</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="main">
+                    <ul>
+                        <li class="search">
+                            <a class="fa-search" href="#search">Search</a>
+                            <form id="search" method="get" action="cmWebsite.aspx">
+                                <input type="text" name="txtSearch" placeholder="Search" />
+                            </form>
+                        </li>
+                        <li class="menu">
+                            <a class="fa-bars" href="#menu">Menu</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Menu -->
+            <section id="menu">
+
+                <!-- Search -->
+                <section>
+                    <form class="search" method="get" action="cmwebsite.aspx">
+                        <input type="text" name="txtSearch" placeholder="Search" />
+                    </form>
+                </section>
+
+                <!-- Links -->
+                <section>
+                    <ul class="links">
+                        <li>
+                            <a href="cmWebsite.aspx?txtSearch=ASP.NET">
+                                <h3>ASP.NET</h3>
+                                <p>Learn how to use asp.net to connect to a database and display data in a grid.</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cmWebsite.aspx?txtSearch=VB.NET">
+                                <h3>VB.NET</h3>
+                                <p>Windows Forms, APi, and control functionality</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cmWebsite.aspx?txtSearch=SQL">
+                                <h3>SQL</h3>
+                                <p>Microsoft Sql TSQL syntax: stored procedures, functions, cursors, temporary tables, partitioning, and pivots</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cmWebsite.aspx?txtSearch=SSRS">
+                                <h3>SSRS</h3>
+                                <p>Learn how to create reports in SSRS: Tables, Matrix, and List reports</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cmWebsite.aspx?txtSearch=ROBOTS">
+                                <h3>ROBOTS</h3>
+                                <p>Future Trends in Robotic development, links to robotic companies, and book on machines that learn</p>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </section>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- Post -->
+                        <article class="post">
+                            <header>
+                                <div class="title">
+                                    <img  class="img-responsive img-rounded" width="30%" src="images/Listen-Software-Solutions.png" alt="" />
+
+                                    <h2><a href="#">Internet of Things</a></h2>
+                                       <div class="container">
+                                            <div ng-app="LinksApp" ng-controller="LinksController">
+                                       
+                                            <p>{{clock | date:'MMMM dd yyyy EEEE'}}</p>
+                                            <p>{{clock | date:'hh:mm:ss a'}}</p>
+                                            </div>
+                                        </div>
+                                       
+                               
+                                </div>
+                            </header>
+
+                            <h3>Mission Statement:</h3>
+                            <p>
+                                Listen Software Solutions will bring machine-to-machine communication to your company.  We start by describing the problem your company’s management wants (or must) solve in order to survive and grow in a smart direction.  We work to discover the "key data indicators" important to your business and apply smart automation to reduce the amount of data collected manually.  Telecommunication will use smart, tablet mobile devices with 4G or Wifi-capabilities.  Tablets cost under $200.  The mobile applications running on the tablets will be written in B4J, B4A, B4I, MVC, HTML5, and Javascript React.  Data will be captured and transacted using web services running on an internet server IIS machine and stored in a Microsoft SQL Server Database.  Manipulating the data collected will uncover the best direction of growth and survival for your company, and Listen Software Solutions will be there every step of the way to assist in the process.
+                            </p>
+                            <div class="panel panel-default fixed-panel">
+                                <div class="panel-Heading"><h3 class="panel-title">Start by collecting Two Variables using 4G</h3></div>
+                                <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><b>Temperature</b> and <b>Identification</b></li>
+                                        <li class="list-group-item"><b>Vehicle Type</b> and <b>Location</b></li>
+                                        <li class="list-group-item"><b>Identification</b> and <b>GPS Location</b></li>
+                                        <li class="list-group-item"><b>Identification</b> and <b>Weight</b></li>
+                                        <li class="list-group-item"><b>Noise</b> and <b>Vibration</b></li>
+                                        <li class="list-group-item"><b>Viscosity</b> and <b>Pressure</b></li>
+                                        <li class="list-group-item"><b>Geo Fencing</b> and <b>Identification</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>Describe the problem, management wants to solve and build a story. Business people are not technical. Don't worry about how the story will be created. Note, the story tells, what your business wants to build. Let us, figure out the "how" the data collection system will be built.  As managers, you know the two variables to collect which matter too your organization!</p>
+                  
+
+                            <p><b>Value Added:</b>: Listen Software Solutions will gather the IOT (expand acronym) data into a hosted database. You don't need to worry about the pain of gathering the data, setting up the database or the code to talk with the devices. We do the heavy lifting. Once the data is in the database server, it can be replicated to your server, or JSON files can be sent to you. We will provide the means via replication or other methodologies, for you to store your own data. You provide the definition of the product to be built. One of the biggest reasons for failure is building the wrong product--a product that you do not want. We build the product you want to gather the data. We figure out the technical how-to. You tell us what you want for your business. We work to define your objectives and the key indicators that will tell you if you’re reaching your goal and confirm your beliefs about your organization.</p>
+
+                            <p><b>Cost Structure:</b>: Our billable hourly rate is $50 an hour, Time and Material. Once production starts, transaction block counts can be purchased for as low as a $10 for 1,000 data transactions. We also provide a portable unit to display Key Indicators and Performance reports with a small access fee.</p>
+                  
+                            <p><b>Why do we love our work:</b> Here is our story. We love to solve hard problems. For over a decade, we have been successful at solving problems that others are only now starting to address. Agriculture is proof that the Internet of Things is the future, and we believe that no successful company will be without it. It is exciting to add value to a company through automated data collection, where it was previously only gathered manually. Our unique, exciting technology allows customers to see their own information visually. We like to make our customers smarter by providing dashboards and visual systems that serve to help them understand their own data. It is a great feeling knowing how the new information gathering effort is increasing profits and reducing company waste
+                            </p>
+
+
+
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="mailto:dnishimoto@listensoftware.com">Email a request.</a></li>
+                                    <li><a href="guestbook.html">What People Are Saying.</a></li>
+                                </ul>
+                            </footer>
+
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h1 class="panel-title">
+                                          <span class="glyphicon glyphicon-music">
+                                           </span>
+                                    &nbsp;Devices
+                                  <a href="lssSamsung.htm" 
+                                     class="panel-right glyphicon glyphicon-random">
+                                     &nbsp;Read More
+                                  </a>
+                                </h1>
+                              </div>
+                              <div class="panel-body">
+                                    <article>
+                                    The Samsung tablet running an android operating system is the preferred choice for gathering data from remote locations.  The tablet is wifi, 4G, and bluetooth capable.       
+                                    <br>
+                                    <br>
+                                    This Galaxy 8 tablet is great.  I use the Samsung Galaxy to run, business apps for collecting data using an java application written in Basic for Android, B4A.  The tablet is very reliable for collecting and transmitting data.
+                                    </article>
+                              </div>
+                            </div>
+                        </article>
+
+
+                        <article class="post">
+                            <header>
+                                <div class="title">
+                                    <h2><a href="#">ASP.NET &amp; AngularJS &amp; html 5</a></h2>
+                                    <p>Javascript has become the code language powering the internet. Leverage the power of static data.</p>
+                                </div>
+                                <div class="meta">
+                                    <time class="published" datetime="2015-11-01">May 9, 2016</time>
+                                    <a href="#" class="author"><span class="name">David Nishimoto</span><img class="img-responsive" src="images/avatar.jpg" alt="" /></a>
+                                </div>
+                            </header>
+                            <img class="img-responsive img-rounded" width="100%" src="images/aspnet3.png" alt="" />
+                            <p>This code snippet shows how to consume a Microsoft webservice using xmlhttp and angularjs</p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="http://www.listensoftware.com/lsscontent.aspx?process=LoadView&SiteId=3&txtContentId=4979#DisplayOutput" class="button big">Continue Reading</a></li>
+                                </ul>
+                            </footer>
+                        </article>
+
+                        <article class="post">
+                            <header>
+                                <div class="title">
+                                    <h2><a href="#">Articles</a></h2>
+
+                                </div>
+                                <div class="meta">
+                                    <time class="published" datetime="2015-11-01">Jun 21, 2016</time>
+                                    <a href="#" class="author"><span class="name">David Nishimoto</span><img class="img-responsive" src="images/52.jpg" alt="" /></a>
+                                </div>
+                            </header>
+                            <img class="img-responsive" src="images/351.jpg" width="100%" lt="" />
+
+                            <h3>Top Articles</h3>
+                            <ul class='list-group'>
+                            
+                                <li><a class="list-group-item" href="http://www.listensoftware.com/lsscontent.aspx?process=LoadView&SiteId=3&txtContentId=4979#DisplayOutput">How to consume an Webservice asmx using xmlhttp and angularJS"</a></li>
+                                <li><a class='list-group-item' href='http://www.listensoftware.com/lsscontent.aspx?process=LoadView&SiteId=4&txtContentId=4966#DisplayOutput'>Why have oil prices remained up while other commodities have decreased in price</a></li>
+                                <li><a class='list-group-item' href='http://www.listensoftware.com/lsscontent.aspx?process=LoadView&SiteId=4&txtContentId=4965#DisplayOutput'>Why is national debt increasing</a></li>
+                                <li><a class='list-group-item' href='4951.htm'>Why are Shale Oil exports preventing the Collapse of the Dollar</a></li>
+                                <li>
+                                <a class="list-group-item" href="4978.htm">
+                                This code snippet shows how to create a list and viewer that loads a json string stored on the server by id. The mainpage.htm will insert into an iFrame a viewpage.html?memberid=1 angularjs page that loads its data from an json file on the webserver.</a>
+                                </li>
+                                <li>
+                                    <a class='list-group-item' href='http://www.listensoftware.com/lsscontent.aspx?process=LoadView&SiteId=3&txtContentId=4978#DisplayOutput'>How to create a HTML driven Master/Detail View Page that loads an external page into the view using angularjs Javascript</a>
+                                </li>
+
+                                <li><a class='list-group-item' href='950.htm'>DB2 - ODBC Query Timeout Property: SQL0666 Estimated Query Processing Time  ( Oracle )</a></li>
+                                <li><a class='list-group-item' href='532.htm'>How to Capture MFC VC++ Mouse Events Samples</a></li>
+                                <li><a class='list-group-item' href='531.htm'>How to Add a MFC Tree View Control</a></li>
+                                <li><a class='list-group-item' href='541.htm'>How to make X files from 3DS Files</a></li>
+                                <li><a class='list-group-item' href='535.htm'>How to use Direct Show MFC Samples</a></li>
+                            </ul>
+
+                        </article>
+
+                    </div>
+
+                        <!-- Sidebar -->
+                    <section id="sidebar">
+
+                            <!-- Intro -->
+                            <section id="intro">
+                            </section>
+
+                            <section>
+                                    <span id="lblLinks"></span>
+                            </section>
+
+
+                            <!-- About -->
+                            <section class="blurb">
+                                <h2>This site is design to help business and developers meet their goals and objectives</h2>
+                                <p>Many of the articles include code snippet which have immediate utility in solving problems</p>
+                                <ul class="actions">
+                                    <li><a href="lsshelp.aspx" class="button">Learn More</a></li>
+                                </ul>
+                            </section>
+
+                            <!-- Footer -->
+                            <section id="footer">
+                                <ul class="icons">
+                                    <li><a href="https://www.facebook.com/Listen-Software-Solutions-397537720283641/" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                                    <li><a href="lssContact.aspx" class="fa-envelope"><span class="label">Email</span></a></li>
+                                    <li><a class="list-group-item" href="lssArticleList.html" class="button">Articles</a></li>
+                                </ul>
+                                <p class="copyright">Listen Software Solutions 2016</a></p>
+                            </section>
+
+                        </section>
+
+            </div>
+ 
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
