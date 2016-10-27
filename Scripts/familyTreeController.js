@@ -29,11 +29,23 @@ myApp.controller('FamilyTreeController', function ($scope,$http) {
     //alert(sURL.indexOf('=') + 1)
     iMemberId = sURL.substring(sURL.indexOf('=') + 1);
     //alert('reached' + iMemberId);
+//alert("family" + iMemberId +".json");
 
-     $http.get("family" + iMemberId +".json").then(function(response) {
-       
+var req = {
+                method: 'GET',
+                url: "family" + iMemberId +".json",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                data: ""
+            };
+
+  $http(req).then(function(response) {
+
+
+     //$http.get("family" + iMemberId +".json").then(function(response) {
+       //$http.get("family" + iMemberId +".json").success(function (data, status, headers, config){
         $scope.myData = response.data;
 
+        //alert(response.data);
         lblReportView.innerHTML='';
        
        angular.forEach($scope.myData, function(value,key){
