@@ -1,0 +1,229 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;\csgray\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Overview: This code snippet demonstrates how to call a json string that is stored on webserver.   json strings are document types in a nosql database.   I moved the document to the file system for storage.\
+\
+The id is passed by an angular ng-click event from the master page.  The ids are hard coded into the list of names as a key/value pair.  The query parameter is then parsed for the id.\
+\
+I create a group of key/value pairs in a json string.  I created this from the database using a query in vb then added it to a collection list then serialize the collection into a json string.  Here is the resulting json string store as a file \'93family\'94+id+\'94.json\'94\
+\
+I build an prototype class called \'93Person\'94 with fields that I am search for in the json string.  I use angular foreach to parse the key/value pairs and match the key to the field in the \'93Person\'94 class\
+\
+I take the person entity an output it to html and insert html into a span variable call \'93lblReportView\'94\
+\
+<h3>FamilyXXX.json</h3>\
+<pre>\
+\
+[\{"sName":"Momoyo Kuramoto","sToName":"Misue Nakandono","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Mother AFN"\},\{"sName":"Momoyo Kuramoto","sToName":"Misue Nakandono","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Father AFN"\},\{"sName":"Momoyo Kuramoto","sToName":"Zaburo Kuramoto","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Father AFN"\},\{"sName":"Momoyo Kuramoto","sToName":"Zaburo Kuramoto","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Father"\},\{"sName":"Momoyo Kuramoto","sToName":"Misue Nakandono","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Father"\},\{"sName":"Momoyo Kuramoto","sToName":"Zaburo Kuramoto","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Mother AFN"\},\{"sName":"Momoyo Kuramoto","sToName":"Misue Nakandono","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Mother"\},\{"sName":"Momoyo Kuramoto","sToName":"","sMyDate":"","sMyText":"Hiroshimaken, Japan","sMyMemo":"","sMyLabel":"Birth Location"\},\{"sName":"Momoyo Kuramoto","sToName":"","sMyDate":"1/1/1909","sMyText":"","sMyMemo":"","sMyLabel":"Birth Date"\},\{"sName":"Momoyo Kuramoto","sToName":"Zaburo Kuramoto","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Mother"\},\{"sName":"Momoyo Kuramoto","sToName":"","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Burial Date"\},\{"sName":"Momoyo Kuramoto","sToName":"","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Death Date"\},\{"sName":"Momoyo Kuramoto","sToName":"","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Place of Death"\},\{"sName":"Momoyo Kuramoto","sToName":"","sMyDate":"","sMyText":"","sMyMemo":"","sMyLabel":"Burial Location"\}]\
+\
+\
+<h3>AngularJS Code</h3>\
+\
+var myApp=angular.module('FamilyTreeApp', []);\
+\
+myApp.controller('FamilyTreeController', function ($scope,$http) \{\
+    var iMemberId;\
+\
+ var Person = function()\
+    \{\
+        sName;\
+        sBirthLocation;\
+        sBurialDate;\
+        sDeathDate;\
+        sPlaceOfDeath;\
+        sBirthDate;\
+        sMarriageDate;\
+        sMarriageLocation;\
+        sSpouse;\
+        sJournalEntry;\
+        sFather;\
+        sMother;\
+    \}\
+ var sURL = document.URL;\
+\
+ var iMemberId = sURL.substring(sURL.indexOf('=') + 1);\
+\
+var req = \{\
+                method: 'GET',\
+                url: "family" + iMemberId +".json",\
+                headers: \{ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'\},\
+                data: ""\
+            \};\
+\
+  $http(req).then(function(response) \{\
+\
+\
+        $scope.myData = response.data;\
+\
+ 	       angular.forEach($scope.myData, function(value,key)\{\
+\
+        \
+            if (Person.sName==undefined)\
+            \{\
+                Person.sName=value.sName;\
+            \}\
+            if ((value.sMyLabel=='Birth Date') && ((value.sMyText!=undefined) || (value.sMyDate!=undefined)))\
+            \{\
+                if (value.sMyText!=undefined)\
+                Person.sBirthDate=value.sMyText;\
+                if (value.sMyDate!=undefined)\
+                Person.sBirthDate=value.sMyDate;\
+            \}\
+            if ((value.sMyLabel=='Birth Location') && (value.sMyText!=undefined))\
+            \{\
+                Person.sBirthLocation=value.sMyText;\
+            \}\
+            if ((value.sMyLabel=='Burial Date') && ((value.sMyText!=undefined) || (value.sMyDate!=undefined)))\
+            \{\
+                if (value.sMyText!=undefined)\
+                    Person.sBurialDate=value.sMyText;\
+                if (value.sMyDate!=undefined)\
+                    Person.sBurialDate=value.sMyDate;\
+            \}\
+            if ((value.sMyLabel=='Burial Location') && (value.sMyText!=undefined))\
+            \{\
+                Person.sBurialLocation=value.sMyText;\
+            \}\
+             if ((value.sMyLabel=='Death Date') && ((value.sMyText!=undefined) || (value.sMyDate!=undefined)))\
+            \{\
+                if (value.sMyText!=undefined)\
+                Person.sDeathDate=value.sMyText;\
+                if (value.sMyDate!=undefined)\
+                Person.sDeathDate=value.sMyDate;\
+            \}\
+            if ((value.sMyLabel=='Place of Death') && (value.sMyText!=undefined))\
+            \{\
+                Person.sPlaceOfDeath=value.sMyText;\
+            \}\
+              if ((value.sMyLabel=='Marriage Date') && ((value.sMyText!=undefined) || (value.sMyDate!=undefined)))\
+            \{\
+                if (value.sMyText!=undefined)\
+                Person.sMarriageDate=value.sMyText;\
+                if (value.sMyDate!=undefined)\
+                Person.sMarriageDate=value.sMyDate;\
+            \}\
+            if ((value.sMyLabel=='Marriage Location') && (value.sMyText!=undefined))\
+            \{\
+                Person.sMarriageLocation=value.sMyText;\
+            \}\
+            if ((value.sMyLabel=='Spouse') && (value.sToName!=undefined))\
+            \{\
+                \
+                Person.sSpouse=value.sToName;\
+            \}\
+            if (((value.sMyLabel=='Journal Entry') || (value.sMyLabel=='Research Note'))&& (value.sMyMemo!=undefined))\
+            \{\
+                if (Person.sJournalEntry!=undefined)\
+                    \{\
+                        Person.sJournalEntry+='<H3>Note</h3>' + value.sMyMemo.replace("<br>","");\
+                    \}\
+                    else\
+                    \{\
+                        Person.sJournalEntry='<h3>Note</h3>' + value.sMyMemo.replace("<br>","");\
+                    \}\
+                \
+            \}\
+           if ((value.sMyLabel=='Father') && (value.sToName!=undefined))\
+           \{\
+             if ((value.sToName!=Person.sMother) && (Person.sFather==undefined))\
+             \{\
+               Person.sFather=value.sToName;\
+             \}\
+           \}\
+           if ((value.sMyLabel=='Mother') && (value.sToName!=undefined))\
+           \{\
+                if ((value.sToName!=Person.sFather) && (Person.sMother==undefined))\
+                \{\
+               Person.sMother=value.sToName;\
+                \}\
+           \}\
+          \
+        \});\
+\
+       lblReportView=document.getElementById('lblReportView');\
+  \
+        lblReportView.innerHTML='';     \
+        lblReportView.innerHTML+="<form class='form-horizontal' role='form'>"\
+        lblReportView.innerHTML+="<div class='form-group'>"\
+        lblReportView.innerHTML+="<label for='lbl1' class='col-lg-3 control-label'>Name</label><span placeholder='lbl1' class='col-lg-8'>" + Person.sName + "</span>";\
+        lblReportView.innerHTML+="</div>"\
+\
+        if (Person.sBirthLocation != undefined)   \
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Birth Location</label><span class='col-lg-8'> " + Person.sBirthLocation + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sBirthDate != undefined)   \
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Birth Date</label><span class='col-lg-8'> " + Person.sBirthDate + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sBurialLocation!=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Burial Location</label><span class='col-lg-8'> " + Person.sBurialLocation + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sBurialDate!=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Burial Date</label><span class='col-lg-8'> " + Person.sBurialDate + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if(Person.sPlaceOfDeath!=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Place of Death</label> <span class='col-lg-8'>" + Person.sPlaceOfDeath + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if(Person.sDeathDate!=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Death Date</label><span class='col-lg-8'> " + Person.sDeathDate + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+       if (Person.sMarriageLocation != undefined)   \
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Marriage Location</label> <span class='col-lg-8'>" + Person.sMarriageLocation + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sMarriageDate != undefined)   \
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Marriage Date</label> <span class='col-lg-8'>" + Person.sMarriageDate + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sSpouse != undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Spouse</label><span class='col-lg-8'>" + Person.sSpouse + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sFather !=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Father</label> <span class='col-lg-8'>" + Person.sFather + "</span>";   \
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sMother !=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Mother</label> <span class='col-lg-8'>" + Person.sMother + "</span>" ;\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        if (Person.sJournalEntry !=undefined)\
+        \{\
+            lblReportView.innerHTML+="<div class='form-group'>"\
+            lblReportView.innerHTML+="<label class='col-lg-3 control-label'>Journal Entry</label><span class='col-lg-8'> " + Person.sJournalEntry + "</span>";\
+            lblReportView.innerHTML+="</div>"\
+        \}\
+        lblReportView.innerHTML+="</div>"\
+      \
+</pre>}
