@@ -1,0 +1,83 @@
+﻿body {
+}
+@media (min-width: 1200px)  { /* Large Desktops and laptops */
+    body {
+        font-size: 1.9em; 
+    }
+    }
+    @media (min-width: 992px) and (max-width:1199px) { /* Landscape tablets and medium desktops */
+    body {
+        font-size: 1.7em; 
+        }
+    }
+    @media (min-width: 768px) and (max-width:991px) { /*portrait tablets and small desktops */
+    body {
+        font-size: 1.7em; 
+        }
+    }
+
+    @media (max-width: 767px) { /* Landscape phones and portrait tablets */
+    body {
+        font-size: 1.7em; 
+        }
+    }
+
+   @media (max-width: 480px) { /* Protrait phones and small */
+    body {
+        font-size: 1.8em; 
+        }
+    } 
+   .panel{
+    
+    background-color: rgba(0,0,0,0.15);
+    border: 1px #222;
+}
+   .transparent{    
+       color:peru;
+       font-family:Arial,Verdana;
+     background: rgba(122, 130, 136, 0.2)!important;
+}
+
+   .fixedCarouselImg img {
+  width: auto;
+  height: 600px;
+  max-height: 600px;
+}
+ .carousel {
+  max-height: 700px;
+  overflow: hidden;
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+}
+   /*
+   .panel-transparent .panel-body{
+    background: rgba(46, 51, 56, 0.2)!important;
+       background-color: rgba(0,0,0,0.15);
+}
+       */
+ .modal-dialog{
+    position: relative;
+    display: table; 
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;   
+   
+}
+  .nav-pills > li > a {
+        color: white;
+        background-color: royalblue;
+    }
+  .nav-pills > li.active > a:hover, .nav-pills > li > a:hover {
+            background-color: #b3b3b3;
+            color:black;
+        }
+  .nav-pills > li.active > a {
+        color: white;
+        background-color: #005595;
+    }
+  .links .list-group {
+}
