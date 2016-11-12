@@ -33,15 +33,13 @@ myApp.controller('LinksController', function ($scope,$http,$interval) {
 
 var promise;
 
-
+/*
 var oReq = getXMLHttpRequest();
 
 //************Greeting**************
 if (oReq != null) {
     oReq.open("POST", sUrl, true);
     oReq.setRequestHeader("Content-type", "application/json; charset=utf-8");
-    //oReq.setRequestHeader("Content-length", params.length);
-    //oReq.setRequestHeader("Connection", "close");
     oReq.onreadystatechange = handler;
     oReq.send();
 }
@@ -66,6 +64,7 @@ function handler()
         }
     }
 }
+*/
 
 function getXMLHttpRequest() 
 {

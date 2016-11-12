@@ -1,0 +1,365 @@
+﻿<%@ Master Language="VB" %>
+
+<%@ Import Namespace="System.Net.Mail" %>
+<%@ Import Namespace="Microtheory" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script runat="server">
+    Public ofnc As New cMT_Functions
+
+    Function IsBlockedIP() As Boolean
+        Dim sIPAddress As String = Trim(Request.ServerVariables("Remote_Addr"))
+
+        Dim myArray() As String = New String() {"108.59.8.80", "62.212.64.", "82.192.64.", "83.149.64.", "85.17.0.", "94.75.192.", "95.211.0.", "212.95.32.", "212.95.32."}
+
+        For Each _Item As String In myArray
+            If (sIPAddress.Contains(_Item)) Then Return True
+        Next
+
+        Dim myUserAgent As String = Request.UserAgent.ToLower
+
+        If myUserAgent.Contains("googlebot") = True Then
+            Return (False)
+        End If
+
+        Dim mybotArray() As String = New String() {"java", "bot", "wotbox", "teoma", "alexa", "froogle", "gigabot", _
+        "inktomi", "majestic12", "looksmart", "url_spider_sql", "firefly", "nationaldirectory", _
+        "ask jeeves", "tecnoseek", "infoseek", "webfindbot", "girafabot", "crawler", _
+        "www.galaxy.com", "googlebot", "scooter", "slurp", "msnbot", "appie", "fast", _
+        "webbug", "spade", "zyborg", "rabaz", "baiduspider", "feedfetcher-google", _
+        "technoratisnoop", "rankivabot", "mediapartners-google", "sogou web spider", _
+        "webalta crawler", "ezoom", "yandex", "bingbot", "baidu", "linkdex", "ahrefs", "ahrefsbot", "facebookexternalhit"}
+
+        For Each _Item As String In mybotArray
+            If (myUserAgent.Contains(_Item)) Then Return True
+        Next
+
+        'Call SendEmail("dnishimoto@listensoftware.com", "dnishimoto@listensoftware.com", myUserAgent & " " & sIPAddress)
+
+        Return (False)
+    End Function
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
+        If IsBlockedIP() = True Then
+            'Response.Redirect("http://www.google.com")
+            Response.End()
+        End If
+    End Sub
+
+    'Sub AdCreated(ByVal Source As Object, ByVal E As AdCreatedEventArgs)
+    '    If E.AdProperties("Caption") <> "" Then
+    '        lnkAdCaption.Text = E.AdProperties("Caption")
+    '        lnkAdCaption.NavigateUrl = E.AdProperties("NavigateUrl")
+    '    End If
+    'End Sub
+
+    ' Sub DML_Record(ByVal sender As Object, ByVal e As DataListCommandEventArgs)
+    ' Dim iId As Integer
+    ' Dim oContactName As TextBox = CType(e.Item.FindControl("txtContactName"), TextBox)
+    ' Dim oDescription As TextBox = CType(e.Item.FindControl("txtDescription"), TextBox)
+    ' Dim oURL As TextBox = CType(e.Item.FindControl("txtURL"), TextBox)
+    ' Dim oAdDays As TextBox = CType(e.Item.FindControl("txtADDays"), TextBox)
+    ' Dim oEmail As TextBox = CType(e.Item.FindControl("txtEmail"), TextBox)
+    ' Dim iAdDays As Integer = 0
+
+    '    If Not oAdDays Is Nothing Then
+    '        If oAdDays.Text <> "" Then
+    '            If IsNumeric(oAdDays.Text) = True Then
+    '                iAdDays = oAdDays.Text
+    '            End If
+    '        End If
+    '    End If
+    'txtChanged.text=iWordId
+    '    txtChanged.Text = e.CommandName
+    '    Select Case UCase(e.CommandName)
+    '        Case "EDIT"
+    '            dlAD.EditItemIndex = e.Item.ItemIndex
+    '            dlAD.DataBind()
+    '        Case "UPDATE"
+    '            iId = dlAD.DataKeys(e.Item.ItemIndex)
+    '            dbAD.UpdateParameters("Id").DefaultValue = iId
+    '            dbAD.UpdateCommand = "update Ad set contactname=" & ofnc.IsNvlString(oContactName.Text)
+    '            dbAD.UpdateCommand = dbAD.UpdateCommand & " ,description=" & ofnc.IsNvlString(oDescription.Text)
+    '            dbAD.UpdateCommand = dbAD.UpdateCommand & " ,url=" & ofnc.IsNvlString(oURL.Text)
+    '            dbAD.UpdateCommand = dbAD.UpdateCommand & " ,addays=" & iAdDays
+    '            dbAD.UpdateCommand = dbAD.UpdateCommand & " ,lastupdated=#" & FormatDateTime(Now, 2) & "#"
+    '            dbAD.UpdateCommand = dbAD.UpdateCommand & " ,email=" & ofnc.IsNvlString(oEmail.Text)
+    '            dbAD.UpdateCommand = dbAD.UpdateCommand & " where id=" & iId
+    '            dbAD.Update()
+    '            dlAD.EditItemIndex = -1
+    '            dlAD.DataBind()
+    '        Case "DELETE"
+    '            iId = dlAD.DataKeys(e.Item.ItemIndex)
+    '            dbAD.DeleteParameters("Id").DefaultValue = iId
+    '            dbAD.Delete()
+
+    '            dlAD.DataBind()
+    '            dlAD.SelectedIndex = iId
+
+    '        Case "INSERT"
+    '            txtChanged.Text = "Insert"
+    '            pnlInputForm.Visible = True
+    'Dim rand As Random = New Random()
+    'Dim iRandomId As Long = 0
+    '            lblErrorMessage.Text = ""
+    '            iRandomId = rand.Next(0, 10000)
+    '            lblAdCode.Text = iRandomId
+    '        Case "CANCEL"
+    '            dlAD.EditItemIndex = -1
+    '            dlAD.DataBind()
+    'dbAD.DataBind()
+    '    End Select
+    'End Sub
+
+    Sub SendEmail(ByVal sToEmail As String, ByVal sFromEmail As String, ByVal sMessageContent As String)
+
+        Dim oFromAddress As New MailAddress(sFromEmail)
+        Dim oToAddress As New MailAddress(sToEmail)
+        Dim Mail As New MailMessage(oFromAddress, oToAddress)
+
+
+        'Mail.From = sFromEmail
+        Mail.Subject = "LSS AD Registration"
+
+        Mail.Body = sMessageContent
+        Mail.IsBodyHtml = True
+
+        Dim smtp As New System.Net.Mail.SmtpClient
+        smtp.Send(Mail)
+    End Sub
+    'Sub AddNewRecord(ByVal sender As Object, ByVal e As System.EventArgs)
+    'Dim sql As String
+    'Dim sIPAddress As String
+
+    '    sIPAddress = Trim(Request.ServerVariables("Remote_Addr"))
+
+
+    '    If sIPAddress = "174.139.135.218" Or sIPAddress = "69.46.84.24" Or sIPAddress = "95.215.62.104" Or sIPAddress = "94.100.22.210" Or sIPAddress = "118.107.166.53" Or sIPAddress = "188.143.233.111" Or sIPAddress = "205.202.52.130" Or sIPAddress = "204.124.183.34" Then
+    '        Response.Redirect("http://www.google.com")
+    '    End If
+    '    If lblAdCode.Text <> txtAdCode.Text Then
+    '        lblErrorMessage.Text = "Ad Code does not Match"
+    '        Exit Sub
+    '    End If
+
+    '    txtChanged.Text = "Inserted"
+
+    '    sql = "insert into AD(contactname,description,url,posteddate,lastupdated,AdDays,email) "
+    '    sql = sql & " values("
+    '    sql = sql & ofnc.IsNvlString(txtInputContactName.Text)
+    '    sql = sql & "," & ofnc.IsNvlString(txtInputDescription.Text)
+    '    sql = sql & "," & ofnc.IsNvlString(txtInputURL.Text)
+    '    sql = sql & ",#" & FormatDateTime(Now, 2) & "#"
+    '    sql = sql & ",#" & FormatDateTime(Now, 2) & "#"
+    '    sql = sql & ",0"
+    '    sql = sql & "," & ofnc.IsNvlString(txtInputEmail.Text)
+    '    sql = sql & ")"
+
+    '    dbAD.InsertCommand = sql
+    '    dbAD.Insert()
+    '    dlAD.DataBind()
+
+    '    resetControls()
+
+    '    Call SendEmail("dnishimoto@listensoftware.com", "dnishimoto@listensoftware.com", sql & " " & sIPAddress)
+
+    'End Sub
+
+    'Sub resetControls()
+    '    txtInputContactName.Text = ""
+    '    txtInputDescription.Text = ""
+    '    txtInputURL.Text = "http://"
+    '    pnlInputForm.Visible = False
+    '    lblErrorMessage.Text = ""
+
+    'End Sub
+
+    'Sub CancelNewRecord(ByVal sender As Object, ByVal e As System.EventArgs)
+    '    resetControls()
+    'End Sub
+    Sub Home_click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Response.Redirect("lssDefault.aspx")
+    End Sub
+    Sub development_click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Response.Redirect("lssDevelopment.aspx")
+    End Sub
+    Sub contact_click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Response.Redirect("lssContact.aspx")
+    End Sub
+
+    Sub DevelopmentDown
+        '    Image2.ImageUrl = "images/lss-Development-On.png"
+    end sub
+    sub GraphicsDown
+        '    Image3.Imageurl="images/lss-Graphics-On.png"
+    end sub
+    sub PricingDown
+        '    Image4.imageurl="images/lss-Pricing-On.png"
+    end Sub
+
+    '<asp:AdRotator ID="AdRotator1"  OnAdCreated="AdCreated" ToolTip="Advertisements" AdvertisementFile="Ads.xml" runat="server" />
+    '<br /><asp:hyperlink  Font-Size=Small ID=lnkAdCaption runat=server></asp:hyperlink>
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server" id="MicrotheoryHeader">
+    <title>Listen Software Solutions - Microtheory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Search the business, technology, financial, and Health K-Lines" />
+    <meta name="keywords" content="yellow pages,yellow pages extreme pro,white pages,people,locator,local,information,telephone numbers,	telephone directory,telephone directories,telephone books,state yellow pages,software,shopping,shop online,search,reverse phone number search,reverse phone number lookup,phonebook,phone numbers,phone	listings,phone directory assistance,phone book,person finder,peoplepages,people pages,yellowpages,	people finder,operator assistance,online shopping,online phone book,	online advertising,online Yellow Pages,national yellow pages,internet,internet yellow pages,	internet access,information directories,home phone numbers,home addresses,fax numbers,	directory,directory information,directory assistance,web yellow pages,	united states yellow pages,directories,customers,consumer guide,	computers,classified,city yellow pages,churches,business locator,	,advertisements,advertise,address finder,utah" />
+    <meta name="subject" content="Web Site directory of businesses. Includes Business Services and Software descriptions" />
+    <meta name="RATING" content="General" />
+    <meta name="REVISIT-AFTER" content="7 days" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta name="robots" content="index,follow,all" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/override.css" rel="stylesheet" />
+
+    <style type="text/css" media="screen">
+        body
+        {
+            background-color: white;
+        }
+        #Content
+        {
+            width: 100%;
+        }
+        p
+        {
+            font-size: 13px;
+        }
+        a:focus
+        {
+            outline: 1px dotted invert;
+        }
+        a:visited
+        {
+            color: navy;
+        }
+        a:hover
+        {
+            color: black;
+        }
+        a
+        {
+            color: navy;
+            font-size: ==12px;}
+        hr
+        {
+            border-color: #ccc;
+            border-style: solid;
+            border-width: 1px 0 0;
+            clear: both;
+            height: 0;
+        }
+        h1
+        {
+            font-size: 25px;
+        }
+        h2
+        {
+            font-size: 23px;
+        }
+        h3
+        {
+            font-size: 21px;
+        }
+        h4
+        {
+            font-size: 19px;
+        }
+        h5
+        {
+            font-size: 17px;
+        }
+        h6
+        {
+            font-size: 15px;
+        }
+        ol
+        {
+            list-style: decimal;
+        }
+        ul
+        {
+            list-style: square;
+        }
+        li
+        {
+            margin-left: 30px;
+        }
+        p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset
+        {
+            margin-bottom: 20px;
+        }
+    </style>
+    <style type="text/css" media="print">
+        body
+        {
+            background-color: white;
+            font-size: 13px;
+            font-family: Helvetica, Arial; "}/*... your CSS here ...*/
+        #Menu, #AdvertismentContainer
+        {
+            display: none;
+        }
+        .microtheory_title
+        {
+            display: none;
+        }
+        #Content
+        {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+              <img src="images/logo.svg" border="0" />
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-responsive-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a href="cwindex.html" class="navbar-brand">Listen Software Solutions</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="cwindex.html">Home</a></li>
+                    <li><asp:hyperlink ID="hyperlinkContactUs" runat="server" NavigateUrl="lssContact.aspx"  Text="Contact"/></li>
+                </ul>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 pull-right">
+                    <form class="navbar-form" role="search" action="cmWebsite.aspx" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="txtSearch">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+        <form id="form1" runat="server">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/jquery-2.2.3.js"  />
+            <asp:ScriptReference Path="~/Scripts/bootstrap.js"  />            
+                    </Scripts>
+            </asp:ScriptManager>
+
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+        </form>
+        </div>
+</body>
+</html>

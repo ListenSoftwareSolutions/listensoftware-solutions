@@ -12,7 +12,7 @@
 <br />
     <a href="cmwebsite.aspx?txtSearch=GO+Blog"><font size=2>GOTO BLOG</font></a>
 <br />
-    <a href="mtdefault.aspx"><font size=2>GOTO Theories</font></a>
+    <a href="lssMicrotheories.html"><font size=2>GOTO Theories</font></a>
 <br />
     <a href="lssDirectory.htm"><font size=2>GOTO Links</font></a>
     <br />
@@ -21,7 +21,8 @@
      <a href="calculator.htm"><font size=2>Calculator</font></a>
      <br>
 <a href="stopwatch.html"><font size=2>Stop Watch</font></a>
-     
+     <br>
+<a href="lssFamilytree.html"><font size=2>Family Tree</font></a>
 <!--
     <h3>Fun things to try</h3>
 
