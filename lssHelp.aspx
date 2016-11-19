@@ -14,7 +14,7 @@
 <br />
     <a href="lssMicrotheories.html"><font size=2>GOTO Theories</font></a>
 <br />
-    <a href="lssDirectory.htm"><font size=2>GOTO Links</font></a>
+<a href="lssTopics.htm"><font size=2>GOTO Links/Topics</font></a>
     <br />
      <a href="lssMedia.aspx"><font size=2>GOTO Videos</font></a>
       <br />
@@ -23,6 +23,8 @@
 <a href="stopwatch.html"><font size=2>Stop Watch</font></a>
      <br>
 <a href="lssFamilytree.html"><font size=2>Family Tree</font></a>
+<br>
+<a href="lssImages.aspx"><font size=2>Image Gallery</font></a>
 <!--
     <h3>Fun things to try</h3>
 
@@ -34,7 +36,7 @@
 -->
 <p></p>
 <font size=4>
-    Ask the Robot, "what", "why", and "how" questions.  We expand functionality from your questions.
+    Ask us, <a href="lsswhyquestions.html">"why"</a> questions. 
 </font>
 
 </asp:Content>

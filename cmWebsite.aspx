@@ -619,7 +619,7 @@
         sb.append("<h3>Keyword Search</h3>")
         Do While dr.Read
 
-            sb.Append("<a href='cmwebsite.aspx?txtSearch=" & Replace(dr("uniqueword"), " ", "+") & "'>" & Strings.StrConv(dr("uniqueword"), VbStrConv.ProperCase) & "</a>&nbsp;(" & dr("SumCount") & ")&nbsp;&nbsp;&nbsp;<br>")
+            sb.Append("<a href='cmwebsite.aspx?txtSearch=" & Replace(dr("uniqueword"), " ", "+") & "'>" & Strings.StrConv(dr("uniqueword"), VbStrConv.ProperCase) & "</a>&nbsp;(" & dr("SumCount") & ")&nbsp;&nbsp;&nbsp;")
         Loop
         ' sb.Append("</tr></table>")
         lblUniqueWordList.Text = sb.ToString
@@ -790,57 +790,28 @@
         Dim sb As StringBuilder = New StringBuilder
         Dim iCount As Integer
 
-        'connectURLMDB()
-
-        'panelView3.Visible = True
-
-        'sql = "SELECT "
-        'sql = sql & " hits,id,uniqueword,URL,Description"
-        'sql = sql & " FROM AssociatedLinks "
-        'sql = sql & " where uniqueword like '" & Replace(UCase(sCategoryName), "'", "''") & "%'"
-        'sql = sql & " order by id desc"
-
-        'cmdSelect = New OleDbCommand(sql, dbconnurl)
-        'dr = cmdSelect.ExecuteReader
-
-        'sb.Append("<table><tr><td><center><a href='http://www.listensoftware.com/hrxp/cmUniqueWord.asp?txtCategory=&process=AddUrl&txtUniqueWord=" & sCategoryName & "'>Add URL</a></center><p><hr>")
-        'sb.Append("<font size=5>Recently Added</font><br>")
-        'iCount = 0
-        'Do While dr.Read
-        'sb.Append("<a target=_blank href='" & dr("url") & "'>" & dr("description") & "</a>" & "<br><br>")
-        'iCount += 1
-        'If iCount > 10 Then
-        'Exit Do
-        'End If
-        'Loop
-        'sb.Append("</td></tr></table>")
 
         sql = "SELECT "
         sql = sql & " hits,id,uniqueword,URL,Description"
         sql = sql & " FROM AssociatedLinks "
         sql = sql & " where uniqueword like '" & Replace(UCase(sCategoryName), "'", "''") & "%'"
         sql = sql & " order by id desc"
-        'cmdSelect = New OleDbCommand(sql, dbconnurl)
         cmdSelect = New OleDbCommand(sql, dbsqlserverconn)
         dr = cmdSelect.ExecuteReader
-        'sb.Append("<hr>")
-        sb.Append("<table><tr><td>")
         iCount = 0
+        sb.append("<ul class=list-group>")
         Do While dr.Read
-            'lblView3.Text += "<a target=_blank href='" & dr("url") & "'>" & dr("description") & "(" & dr("hits") & ")" & "</a><br>"
-            'sb.Append("<a target=_blank href='hrxp/cmUniqueWord.asp?id=" & dr("id") & "&process=UserClick&url=" & dr("url") & "'>" & dr("description") & "</a>&nbsp;(" & dr("hits") & ")" & "<br><br>")
-            sb.Append("<a target=_blank href='" & dr("url") & "'>" & dr("description") & "</a>" & "<br><br>")
+              sb.Append("<li class=list-group-item><a target=_blank href='" & dr("url") & "'>" & dr("description") & "</a></li>")
             iCount += 1
             If iCount > 1000 Then
                 Exit Do
             End If
         Loop
-        sb.Append("</td></tr></table>")
-
-        lblView3.Text = sb.ToString
+        sb.append("</ul>")
+   
+        lblView3.Text = "<h3>External Links</h3>" & sb.ToString
         dr.Close()
-        'closeURLMDB()
-
+   
     End Sub
     Function GetCategoryName(ByVal iType As Integer) As String
         Dim sql As String
@@ -1355,19 +1326,19 @@
         cmdSelect = New OleDbCommand(sql, dbconn)
         drlocal = cmdSelect.ExecuteReader
 
-        sHTML = "<div class='list-group'>"
+        sHTML = "<ul class='list-group'>"
         iCount = 1
         Do While drlocal.Read
             If File.Exists(Server.MapPath("microtheory/" & drlocal("contentid") & ".htm")) = False Then
-                sHTML = sHTML & "<a class='list-group-item' href='lsscontent.aspx?process=LoadView&SiteId=" & drlocal("SiteId") & "&txtContentId=" & drlocal("contentid") & "#DisplayOutput'>" & iCount & "." & Left(drlocal("headline"), 100) & " <font color=darkred>hits=" & drlocal("hits") & "</font></a>"
+                sHTML = sHTML & "<li class=list-group-item><a class='list-group-item' href='lsscontent.aspx?process=LoadView&SiteId=" & drlocal("SiteId") & "&txtContentId=" & drlocal("contentid") & "#DisplayOutput'>" & iCount & "." & Left(drlocal("headline"), 100) & " <font color=darkred>hits=" & drlocal("hits") & "</font></a></li>"
             Else
-                sHTML = sHTML & "<a class='list-group-item' href='microtheory/" & drlocal("contentid") & ".htm'>" & iCount & "." & Left(drlocal("headline"), 100) & " <font color=darkred>hits=" & drlocal("hits") & "</font></a>"
+                sHTML = sHTML & "<li class=list-group-item><a class='list-group-item' href='microtheory/" & drlocal("contentid") & ".htm'>" & iCount & "." & Left(drlocal("headline"), 100) & " <font color=darkred>hits=" & drlocal("hits") & "</font></a></li>"
             End If
             iCount = iCount + 1
         Loop
-        sHTML = sHTML & "</div>"
+        sHTML = sHTML & "</ul>"
         drlocal.Close()
-        lblView4.Text = "<table><tr><td><h3>Articles</h3>" & sHTML & "</td></tr></table>"
+        lblView4.Text = "<h3>Articles</h3>" & sHTML 
 
         Dim sb As New StringBuilder
 
@@ -1389,6 +1360,7 @@
             Dim sURL As String
 
             iCount = 1
+            sb.append("<ul class=list-group>")
             Do While dr.Read
                 sURL = "cmwebsite.aspx?process=SearchMicrotheory&txtSearch=" & Replace(Replace(dr("question"), " ", "+"), "'", "")
 
@@ -1397,14 +1369,15 @@
                 sQuestion = sQuestion & LCase(Mid(sBuffer, 2, Len(sBuffer)))
                 sQuestion = Strings.StrConv(dr("question"), VbStrConv.ProperCase)
 
-                sb.Append(iCount & "." & "<a href='" & sURL & "'>" & sQuestion & "</a><br>")
+                sb.Append("<li class=list-group-item>" & iCount & "." & "<a href='" & sURL & "'>" & sQuestion & "</a></li>")
                 If iCount > 20 Then
                     Exit Do
                 End If
                 iCount = iCount + 1
             Loop
+            sb.append("</ul>")
             dr.Close()
-            lblView5.Text = "<table><tr><td><h3>Related Questions</h3>" & sb.ToString & "</td></tr></table>"
+            lblView5.Text = "<h3>Related Questions</h3>" & sb.ToString
         End If
 
     End Sub
@@ -1518,38 +1491,34 @@
 </script>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <table width="100%" border=0>
-        <tr>
-            <td valign="top" align=center>
+    <div class="container-fluid">
+    <div class="rows">
+        
                 <asp:Label ID="lblLoginMessage" runat="server"></asp:Label>
                 <asp:TextBox Visible=false ID="txtSearch"
                              runat="server"></asp:TextBox>
                 <br /><asp:Button ID="cmdQuery" Visible="false" runat="server" Text="Search"
                                   OnClick="cmdQuery_Click" />
-            </td>
-        </tr>
-    </table>
+    </div>
 
-    <table>
-        <tr>
-            <td valign="top">
-                <asp:panel ID="panelUniqueWord" runat="server" ScrollBars="vertical" Height="1200">
+    <div class="rows">
+        <div class="col-lg-8 col-md-12 col-xs-12>
+                <asp:panel ID="panelUniqueWord" runat="server"  width=500 ScrollBars="Auto" >
                     <asp:Label ID="lblUniqueWordList" runat="server"></asp:Label>
                 </asp:panel>
-            </td>
-            <td valign="top" align="left">
                 <asp:Panel ID="panelView2" runat="server" Visible="true">
                     <asp:Label ID="lblView2" runat="server" Font-Size="13px"></asp:Label>
                     <asp:Label ID="lblMT" runat="server" Font-Size="13px"></asp:Label>
                     <asp:Label ID="lblView4" runat="server" Font-Size="13px"></asp:Label>
                     <asp:Label ID="lblView5" runat="server" Font-Size="13px"></asp:Label>
                 </asp:Panel>
-            </td>
-            <td valign="top">
+        </div>
+        <div class="col-lg-4 col-md-12 col-xs-12>
+            
                 <asp:Panel ID="panelView3" Visible="true" runat="server">
                     &nbsp;<asp:Label ID="lblView3" runat="server" Font-Size="Small" ></asp:Label>
                 </asp:Panel>
-            </td>
-        </tr>
-    </table>
-</asp:Content>
+        </div>
+    </div>
+    </div> <!--container-->
+    </asp:Content>
