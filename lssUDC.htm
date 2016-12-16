@@ -1,0 +1,63 @@
+<h<!DOCTYPE html>
+<head>
+    <title>UDC</title>
+     <link rel="stylesheet" href="assets/css/main.css" />
+   <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <script src="Scripts/angular.min.js"></script>
+
+    <script src="Scripts/jquery-2.2.3.js"></script>
+            <script src="Scripts/lssudc.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div ng-app="UdcApp" ng-controller="UdcController">
+         
+           <span id="tblUDC"></span>
+            <h3>Second Table</h3>
+
+            <table >
+            <tbody ng-repeat="(key,description1) in UDCs">
+                    <tr>
+                        <td>{{key}}</td>
+                        <td>{{description1}}</td>
+                    </tr>
+                </tbody>
+            </table>
+           <section id=“myId" class="modal fade">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Input Form</h3>
+                </header>
+                <div class="modal-body">
+                    
+                    <div class="form-group">
+                      <label for="txtKey">
+                      <pnput type="textbox" id="txtKey" ng-model="UDC.Key">
+                    </div>
+                    <div class="form-group">
+                      <label for="txtDescription1">
+                      <pnput type="textbox" id="txtDescription1" ng-model="UDC.Description1">
+                    </div>
+
+                </div>
+                <footer class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                </footer>
+            </div>
+        </div>
+    </section>
+
+       
+    </div>
+</div>
+
+        <script src="Scripts/jquery-1.9.1.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
+
+
+
+   
+</body>
+</html>  
