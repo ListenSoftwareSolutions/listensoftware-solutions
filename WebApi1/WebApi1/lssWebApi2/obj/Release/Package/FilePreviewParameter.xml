@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="ListenSoftwareApp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\WebApi1\\WebApi1\\lssWebApi2\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\WebApi1\\WebApi1\\lssWebApi2\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="EFAddressBookContext-Web.config Connection String" description="" value="data source=tcp:listensoftware.database.windows.net,1433;initial catalog=listensoftwareDB;user id=dnishimoto@listensoftware.database.windows.net;password=Amanda7258;MultipleActiveResultSets=False;App=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\WebApi1\\WebApi1\\lssWebApi2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EFAddressBookContext']/@connectionString" />
+  </parameter>
+  <parameter name="lssDBConnectionString-Web.config Connection String" description="" value="data source=tcp:listensoftware.database.windows.net,1433;initial catalog=listensoftwareDB;user id=dnishimoto@listensoftware.database.windows.net;password=Amanda7258;MultipleActiveResultSets=False" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\WebApi1\\WebApi1\\lssWebApi2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='lssDBConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="lssDBConnectionString-Web.config Connection String" description="lssDBConnectionString Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:listensoftware.database.windows.net,1433;Initial Catalog=listensoftwareDB;Persist Security Info=False;User ID=dnishimoto;Password=Amanda7258;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\WebApi1\\WebApi1\\lssWebApi2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='lssDBConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="EFAddressBookContext-Web.config Connection String" description="EFAddressBookContext Connection String used in web.config by the application to access the database." defaultValue="data source=tcp:listensoftware.database.windows.net,1433;initial catalog=listensoftwareDB;persist security info=False;user id=dnishimoto;password=Amanda7258;multipleactiveresultsets=False;connect timeout=30;encrypt=True;trustservercertificate=False;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\WebApi1\\WebApi1\\lssWebApi2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EFAddressBookContext']/@connectionString" />
+  </parameter>
+</parameters>

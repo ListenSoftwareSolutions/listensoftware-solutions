@@ -10,6 +10,7 @@ using System.Reflection;
 
 
 
+
 namespace WebApi1.Services
 {
     public class AddressBookRepository
@@ -75,27 +76,24 @@ string paramType, string paramValue, string paramName)
             {
                 using (var db = new EFAddressBookContext())
                 {
-                    //var addressBookOriginal = db.AddressBooks.Single(e => e.Id == addressBookUpdate.Id);
-                    //addressBookOriginal.CopyFromData(addressBookUpdate);
-
-                    /*
-                    foreach (PropertyInfo propertyInfo in addressBookOriginal.GetType().GetProperties())
-                    {
-                        if (propertyInfo.GetValue(addressBookUpdate, null) == null)
-                        {
-                            propertyInfo.SetValue(addressBookUpdate, propertyInfo.GetValue(addressBookOriginal, null), null);
-                        }
-                    }
-                    db.Entry(addressBookOriginal).CurrentValues.SetValues(addressBookUpdate);
-                    */
                     AddressBook original = new AddressBook { Id = addressBookUpdate.Id };   /// stub model, only has Id
-                    db.AddressBooks.Attach(addressBookUpdate); /// track your stub model
-                    //db.Entry(original).CurrentValues.SetValues(addressBookUpdate); /// reflection
 
                     var entry = db.Entry(original);
-                    //entry.State = EntityState.Modified;
-                    //entry.Property("Id").IsModified = false;
-                    entry.CurrentValues.SetValues(addressBookUpdate); 
+                    entry.State = System.Data.Entity.EntityState.Modified;
+                    entry.CurrentValues.SetValues(addressBookUpdate);
+
+                    //var inspectionFields = addressBookUpdate.GetType().GetProperties();
+
+                    PropertyInfo propertyInfo = addressBookUpdate.GetType().GetProperty("item");
+
+                    //PropertyInfo prop = typeof(Foo).GetProperty("Bar");
+                    var vals = GetPropertyAttributes(propertyInfo);
+
+                    //foreach (var field in inspectionFields)
+                    //{
+                      //  var value = field.GetValue(null);
+                    
+                    //}
 
 
                     db.SaveChanges();
@@ -104,6 +102,23 @@ string paramType, string paramValue, string paramName)
             catch (Exception ex)
             {
             }
+        }
+        public static Dictionary<string, object> GetPropertyAttributes(PropertyInfo property)
+        {
+            Dictionary<string, object> attribs = new Dictionary<string, object>();
+            // look for attributes that takes one constructor argument
+            foreach (CustomAttributeData attribData in property.GetCustomAttributesData())
+            {
+
+                if (attribData.ConstructorArguments.Count == 1)
+                {
+                    string typeName = attribData.Constructor.DeclaringType.Name;
+                    if (typeName.EndsWith("Attribute")) typeName = typeName.Substring(0, typeName.Length - 9);
+                    attribs[typeName] = attribData.ConstructorArguments[0].Value;
+                }
+
+            }
+            return attribs;
         }
 
         public void UpdateAddressBook(int paramId, string name)

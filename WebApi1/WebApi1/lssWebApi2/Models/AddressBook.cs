@@ -7,7 +7,7 @@
     using System.Data.Entity.Spatial;
 
     [Table("AddressBook")]
-    public partial class AddressBook
+    public partial class AddressBook 
     {
         [Key]
         [Column(Order = 0)]
