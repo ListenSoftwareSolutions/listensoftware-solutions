@@ -7,9 +7,7 @@ using System.Web.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
-
-
-
+using Newtonsoft.Json;
 
 namespace WebApi1.Services
 {
@@ -70,30 +68,43 @@ string paramType, string paramValue, string paramName)
                 db.SaveChanges();
             }
         }
-        public void UpdateAddressBook(AddressBook addressBookUpdate)
+         public void UpdateAddressBook(AddressBook addressBookUpdate)
+        //public void UpdateAddressBook(string addressBookUpdateJson)
         {
             try
             {
                 using (var db = new EFAddressBookContext())
                 {
+                   
                     AddressBook original = new AddressBook { Id = addressBookUpdate.Id };   /// stub model, only has Id
 
                     var entry = db.Entry(original);
                     entry.State = System.Data.Entity.EntityState.Modified;
                     entry.CurrentValues.SetValues(addressBookUpdate);
+                    
+
+                    //var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(addressBookUpdateJson);
+                    //foreach (var kv in dict)
+                    //{
+                    //    Console.WriteLine(kv.Key + ":" + kv.Value);
+                   // }
+
 
                     //var inspectionFields = addressBookUpdate.GetType().GetProperties();
 
-                    PropertyInfo propertyInfo = addressBookUpdate.GetType().GetProperty("item");
+                    //var propertyInfoContainer= addressBookUpdate.GetType().GetProperties(BindingFlags.DeclaredOnly |
+                    //                       BindingFlags.Public |
+                    //                       BindingFlags.Instance);
 
                     //PropertyInfo prop = typeof(Foo).GetProperty("Bar");
-                    var vals = GetPropertyAttributes(propertyInfo);
+                    //var vals = GetPropertyAttributes(propertyInfo);
 
-                    //foreach (var field in inspectionFields)
+                    //foreach (var field in propertyInfoContainer)
                     //{
-                      //  var value = field.GetValue(null);
-                    
+                    //  var value = field.GetValue(null);
+
                     //}
+                    //db.Entry(stud).State = System.Data.Entity.EntityState.Modified;
 
 
                     db.SaveChanges();
@@ -102,6 +113,14 @@ string paramType, string paramValue, string paramName)
             catch (Exception ex)
             {
             }
+        }
+        public IEnumerable<PropertyInfo> GetProperties()
+        {
+            Type t = this.GetType();
+
+            return t.GetProperties()
+                .Where(p => (p.Name != "EntityKey" && p.Name != "EntityState"))
+                .Select(p => p).ToList();
         }
         public static Dictionary<string, object> GetPropertyAttributes(PropertyInfo property)
         {

@@ -35,8 +35,11 @@ namespace WebApi1.Controllers
        
         [HttpPut]
         public void PutAddressBook(AddressBook addressBook)
+        //public void PutAddressBook(string addressBookJson)
+
         {
-             addressBookRepository.UpdateAddressBook(addressBook);
+            // addressBookRepository.UpdateAddressBook(addressBookJson);
+            addressBookRepository.UpdateAddressBook(addressBook);
         } 
         [HttpDelete]
         public void DeleteAddressBook(int Id)

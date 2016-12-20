@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebApiModelStoreContainer" CdmEntityContainer="listensoftwareDBEntities1">
+    <EntitySetMapping Name="ServiceInformations">
+      <EntityTypeMapping TypeName="WebApiModel.ServiceInformation">
+        <MappingFragment StoreEntitySet="ServiceInformation">
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AddOnsXRefId" ColumnName="AddOnsXRefId" />
+          <ScalarProperty Name="ServiceTypeXRefId" ColumnName="ServiceTypeXRefId" />
+          <ScalarProperty Name="MinEmployeeCount" ColumnName="MinEmployeeCount" />
+          <ScalarProperty Name="MaxEmployeeCount" ColumnName="MaxEmployeeCount" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="CustomerAddressId" ColumnName="CustomerAddressId" />
+          <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+          <ScalarProperty Name="SquareFeetOfStructure" ColumnName="SquareFeetOfStructure" />
+          <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+          <ScalarProperty Name="LocationGPS" ColumnName="LocationGPS" />
+          <ScalarProperty Name="ProcessStage" ColumnName="ProcessStage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

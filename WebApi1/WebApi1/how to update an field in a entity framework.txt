@@ -1,0 +1,13 @@
+How to update a field in a entity frame work instance
+
+Expression<Func<T, object>>[] properties
+
+http://stackoverflow.com/questions/21350818/how-to-update-one-field-of-specific-records-using-entity-framework
+
+How to use reflections to get field names of an instantiated class
+
+http://stackoverflow.com/questions/5851274/how-to-get-all-names-of-properties-in-an-entity
+
+How to create a dictionary key value pair using reflections
+
+http://stackoverflow.com/questions/25420477/entity-framework-can-i-map-a-class-to-a-key-value-table

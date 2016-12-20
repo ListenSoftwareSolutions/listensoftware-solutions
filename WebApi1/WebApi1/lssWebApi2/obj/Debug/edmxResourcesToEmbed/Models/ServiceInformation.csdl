@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebApiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ServiceInformation">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AddOnsXRefId" Type="Int64" />
+    <Property Name="ServiceTypeXRefId" Type="Int64" />
+    <Property Name="MinEmployeeCount" Type="Int32" />
+    <Property Name="MaxEmployeeCount" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerAddressId" Type="Int64" />
+    <Property Name="ContractId" Type="Int64" />
+    <Property Name="SquareFeetOfStructure" Type="Int32" />
+    <Property Name="LocationDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LocationGPS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ProcessStage" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="listensoftwareDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ServiceInformations" EntityType="Self.ServiceInformation" />
+  </EntityContainer>
+</Schema>
