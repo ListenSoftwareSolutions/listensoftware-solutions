@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApi1.Models;
+using lssWebApi2.Models;
 using System.Web.Configuration;
 using System.Data.SqlClient;
 using System.Data;
@@ -52,17 +52,17 @@ string paramType, string paramValue, string paramName)
         }//SetParameter
         public void AddAdressBook(AddressBook addressBook)
         {
-            using (var db = new EFAddressBookContext())
+            using (var db = new databaseContext())
             {
                 db.AddressBooks.Add(addressBook);
                 db.SaveChanges();
             }
         }
-        public void DeleteAddressBook(int paramId)
+        public void DeleteAddressBook(int paramAddressId)
         {
-            using (var db = new EFAddressBookContext())
+            using (var db = new databaseContext())
             {
-                var addressBookDelete = db.AddressBooks.Single(e => e.Id == paramId);
+                var addressBookDelete = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
 
                 db.AddressBooks.Remove(addressBookDelete);
                 db.SaveChanges();
@@ -73,10 +73,10 @@ string paramType, string paramValue, string paramName)
         {
             try
             {
-                using (var db = new EFAddressBookContext())
+                using (var db = new databaseContext())
                 {
                    
-                    AddressBook original = new AddressBook { Id = addressBookUpdate.Id };   /// stub model, only has Id
+                    AddressBook original = new AddressBook { AddressId = addressBookUpdate.AddressId };   /// stub model, only has Id
 
                     var entry = db.Entry(original);
                     entry.State = System.Data.Entity.EntityState.Modified;
@@ -140,36 +140,36 @@ string paramType, string paramValue, string paramName)
             return attribs;
         }
 
-        public void UpdateAddressBook(int paramId, string name)
+        public void UpdateAddressBook(int paramAddressId, string name)
         {
-            using (var db = new EFAddressBookContext())
+            using (var db = new databaseContext())
             {
-                var addressBookUpdate = db.AddressBooks.Single(e => e.Id == paramId);
+                var addressBookUpdate = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
                 addressBookUpdate.Name = name;
                 db.SaveChanges();
             }
         }
 
-        public List<AddressBook> GetAddressBook(int paramId)
+        public List<AddressBook> GetAddressBook(int paramAddressId)
         { 
             List<AddressBook> resultList = null;
             try
             {
                 resultList = new List<AddressBook>();
-                using (var db = new EFAddressBookContext())
+                using (var db = new databaseContext())
                 {
                     //var query = from b in db.AddressBooks
                     //            orderby b.Name
                     //            select b;
 
-                    AddressBook item = db.AddressBooks.Single(e => e.Id == paramId);
+                    AddressBook item = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
                     //var item = db.AddressBooks.Find(paramId);
 
                     AddressBook addressBook = new AddressBook();
 
                     if (item != null)
                     {
-                        addressBook.Id = item.Id;
+                        addressBook.AddressId = item.AddressId;
                         addressBook.Name = item.Name;
                         addressBook.FirstName = item.FirstName;
                         addressBook.LastName = item.LastName;
@@ -233,7 +233,7 @@ public List<AddressBook> GetAllAddressBooks()
         resultList.Add(addressBook);
     }
     */
-    using (var db = new EFAddressBookContext())
+    using (var db = new databaseContext())
     {
         var query = from b in db.AddressBooks
                     orderby b.Name

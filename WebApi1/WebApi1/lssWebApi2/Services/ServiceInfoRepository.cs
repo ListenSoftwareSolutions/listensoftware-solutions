@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApi1.Models;
+using lssWebApi2.Models;
 
 namespace WebApi1.Services
 {
@@ -14,7 +14,7 @@ namespace WebApi1.Services
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new listensoftwareDBContext())
+                using (var db = new databaseContext())
                 {
                     ServiceInformation item = db.ServiceInformations.Single(e => e.ServiceId == paramServiceId);
                     ServiceInformation serviceInformation= new ServiceInformation();

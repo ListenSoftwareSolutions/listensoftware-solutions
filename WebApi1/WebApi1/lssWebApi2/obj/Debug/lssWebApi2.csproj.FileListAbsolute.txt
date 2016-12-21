@@ -47,4 +47,3 @@ C:\Users\dnish\Source\Repos\listensoftware-solutions\WebApi1\WebApi1\lssWebApi2\
 C:\Users\dnish\Source\Repos\listensoftware-solutions\WebApi1\WebApi1\lssWebApi2\bin\Antlr3.Runtime.pdb
 C:\Users\dnish\Source\Repos\listensoftware-solutions\WebApi1\WebApi1\lssWebApi2\obj\Debug\lssWebApi2.dll
 C:\Users\dnish\Source\Repos\listensoftware-solutions\WebApi1\WebApi1\lssWebApi2\obj\Debug\lssWebApi2.pdb
-C:\Users\dnish\Source\Repos\listensoftware-solutions\WebApi1\WebApi1\lssWebApi2\obj\Debug\lssWebApi2.csprojResolveAssemblyReference.cache

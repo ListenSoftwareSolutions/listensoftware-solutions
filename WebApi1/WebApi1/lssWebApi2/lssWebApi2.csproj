@@ -173,25 +173,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddressBook.cs" />
-    <Compile Include="Models\EFAddressBook.cs" />
-    <Compile Include="Models\ServiceInformation.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceInformation.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ServiceInformation.cs">
-      <DependentUpon>ServiceInformation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ServiceInformation.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceInformation.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ServiceInformation1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceInformation.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\databaseContext.cs" />
+    <Compile Include="Models\ScheduleEvent.cs" />
+    <Compile Include="Models\ServiceInformation.cs" />
+    <Compile Include="Models\UDC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AddressBookRepository.cs" />
     <Compile Include="Services\ServiceInfoRepository.cs" />
@@ -203,16 +189,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ServiceInformation.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ServiceInformation.edmx</DependentUpon>
-      <LastGenOutput>ServiceInformation.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ServiceInformation.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ServiceInformation.edmx</DependentUpon>
-      <LastGenOutput>ServiceInformation1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -234,13 +210,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\ServiceInformation.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ServiceInformation.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ServiceInformation.edmx.diagram">
-      <DependentUpon>ServiceInformation.edmx</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\ListenSoftwareApp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ListenSoftwareApp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
