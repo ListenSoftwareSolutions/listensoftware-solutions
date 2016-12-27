@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lssWebApi2", "lssWebApi2\lssWebApi2.csproj", "{07D41B22-D23F-47C1-B246-791E30AAD1B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestLssWebApi", "..\UnitTestLssWebApi\UnitTestLssWebApi\UnitTestLssWebApi.csproj", "{65D9AC15-F7FC-4472-914D-69FEF45B9A7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestLssWebApi.Tests", "UnitTestLssWebApi.Tests\UnitTestLssWebApi.Tests.csproj", "{D5F83142-F555-4E5D-9DDA-5DA66FE5E83B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsLssWebApi2", "..\UnitTestsLssWebApi2\UnitTestsLssWebApi2\UnitTestsLssWebApi2.csproj", "{DA44A424-A120-43EE-A94F-BB107328829B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{07D41B22-D23F-47C1-B246-791E30AAD1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D41B22-D23F-47C1-B246-791E30AAD1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D41B22-D23F-47C1-B246-791E30AAD1B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D9AC15-F7FC-4472-914D-69FEF45B9A7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D9AC15-F7FC-4472-914D-69FEF45B9A7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D9AC15-F7FC-4472-914D-69FEF45B9A7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D9AC15-F7FC-4472-914D-69FEF45B9A7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5F83142-F555-4E5D-9DDA-5DA66FE5E83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5F83142-F555-4E5D-9DDA-5DA66FE5E83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5F83142-F555-4E5D-9DDA-5DA66FE5E83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5F83142-F555-4E5D-9DDA-5DA66FE5E83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA44A424-A120-43EE-A94F-BB107328829B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA44A424-A120-43EE-A94F-BB107328829B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA44A424-A120-43EE-A94F-BB107328829B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA44A424-A120-43EE-A94F-BB107328829B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
