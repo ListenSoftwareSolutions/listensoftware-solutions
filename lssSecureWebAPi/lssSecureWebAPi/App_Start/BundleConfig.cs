@@ -20,6 +20,14 @@ namespace lssSecureWebAPi
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                      "~/Scripts/MyScripts/Module.js",
+                      "~/Scripts/MyScripts/AddressBook.js",
+                      "~/Scripts/MyScripts/LoginLogic.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
