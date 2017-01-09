@@ -13,7 +13,6 @@ namespace lssWebApi2.Models
         public AddressBook()
         {
             ScheduleEvents = new HashSet<ScheduleEvent>();
-            ScheduleEvents1 = new HashSet<ScheduleEvent>();
             ServiceInformations = new HashSet<ServiceInformation>();
         }
 
@@ -64,9 +63,6 @@ namespace lssWebApi2.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScheduleEvent> ScheduleEvents { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScheduleEvent> ScheduleEvents1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceInformation> ServiceInformations { get; set; }

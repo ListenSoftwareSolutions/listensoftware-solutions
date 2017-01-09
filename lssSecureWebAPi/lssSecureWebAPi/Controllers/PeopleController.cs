@@ -14,6 +14,10 @@ namespace lssSecureWebAPi.Controllers
 
             return View();
         }
+        public ActionResult AddressBook()
+        {
+            return View();
+        }
 
         // GET: People/Details/5
         public ActionResult Details(int id)

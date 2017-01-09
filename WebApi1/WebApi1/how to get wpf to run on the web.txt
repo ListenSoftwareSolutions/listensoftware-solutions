@@ -1,0 +1,3 @@
+How to get wpf to run on the web
+
+http://stackoverflow.com/questions/17261858/run-wpf-application-in-browser

@@ -1,0 +1,39 @@
+﻿<div ng-app="AppModule">
+    <div ng-controller="PeopleController">
+    <h3>Add Person</h3>
+
+        <form name="addAddressBook" ng-controller="PeopleController">
+
+            <div>Name: <input name="name" ng-model="addressBook.Name" /></div>
+            <div>FirstName: <input name="FirstName" ng-model="addressBook.FirstName" /></div>
+            <!--
+        public string LastName { get; set; }
+
+        public string Company { get; set; }
+
+        public string CellPhone { get; set; }
+
+        public string MailingCity { get; set; }
+
+        public string MailingState { get; set; }
+
+        public string MailingAddress { get; set; }
+
+        public string MailingZipcode { get; set; }
+
+        public string BillingCity { get; set; }
+
+        public string BillingState { get; set; }
+
+        public string BillingZipcode { get; set; }
+
+        public string BillingAddress { get; set; }
+
+        public string Type { get; set; }
+            -->
+            <div><button ng-click="addPerson()">Submit</button></div>
+            {{Message}}
+        
+        </form> 
+    </div>
+</div>

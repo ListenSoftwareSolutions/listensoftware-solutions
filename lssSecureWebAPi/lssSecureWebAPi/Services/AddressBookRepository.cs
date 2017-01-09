@@ -68,44 +68,18 @@ string paramType, string paramValue, string paramName)
                 db.SaveChanges();
             }
         }
-         public void UpdateAddressBook(AddressBook addressBookUpdate)
-        //public void UpdateAddressBook(string addressBookUpdateJson)
+        public void UpdateAddressBook(AddressBook addressBookUpdate)
         {
             try
             {
                 using (var db = new databaseContext())
                 {
-                   
+
                     AddressBook original = new AddressBook { AddressId = addressBookUpdate.AddressId };   /// stub model, only has Id
 
                     var entry = db.Entry(original);
                     entry.State = System.Data.Entity.EntityState.Modified;
                     entry.CurrentValues.SetValues(addressBookUpdate);
-                    
-
-                    //var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(addressBookUpdateJson);
-                    //foreach (var kv in dict)
-                    //{
-                    //    Console.WriteLine(kv.Key + ":" + kv.Value);
-                   // }
-
-
-                    //var inspectionFields = addressBookUpdate.GetType().GetProperties();
-
-                    //var propertyInfoContainer= addressBookUpdate.GetType().GetProperties(BindingFlags.DeclaredOnly |
-                    //                       BindingFlags.Public |
-                    //                       BindingFlags.Instance);
-
-                    //PropertyInfo prop = typeof(Foo).GetProperty("Bar");
-                    //var vals = GetPropertyAttributes(propertyInfo);
-
-                    //foreach (var field in propertyInfoContainer)
-                    //{
-                    //  var value = field.GetValue(null);
-
-                    //}
-                    //db.Entry(stud).State = System.Data.Entity.EntityState.Modified;
-
 
                     db.SaveChanges();
                 }
@@ -151,7 +125,7 @@ string paramType, string paramValue, string paramName)
         }
 
         public List<AddressBook> GetAddressBook(int paramAddressId)
-        { 
+        {
             List<AddressBook> resultList = null;
             try
             {
@@ -195,100 +169,100 @@ string paramType, string paramValue, string paramName)
             }
             return (resultList);
         }
-        
-public List<AddressBook> GetAllAddressBooks()
-{
-    List<AddressBook> resultList = new List<AddressBook>();
-    //string connectionString = WebConfigurationManager.ConnectionStrings["lssDBConnectionString"].ConnectionString;
-    //SqlConnection conn = new SqlConnection(connectionString);
-    //conn.Open();
-    //string sql = "usp_addressbook";
 
-    //SqlCommand command = new SqlCommand(sql, conn);
-    //command.CommandType = CommandType.StoredProcedure;
-
-    //SetParameter(ref command, "Int32", "2", "@Id");
-    //SqlDataReader reader = command.ExecuteReader();
-
-    //while (reader.Read() == true)
-    /*{
-        AddressBook addressBook = new AddressBook();
-
-
-        addressBook.name = reader["Name"].ToString();
-        addressBook.firstName = reader["FirstName"].ToString();
-        addressBook.lastName = reader["LastName"].ToString();
-        addressBook.company = reader["Company"].ToString();
-        addressBook.cellPhone = reader["CellPhone"].ToString();
-        addressBook.mailingCity = reader["mailingCity"].ToString();
-
-        addressBook.mailingState = reader["mailingState"].ToString();
-        addressBook.mailingAddress = reader["mailingAddress"].ToString();
-        addressBook.mailingZipcode = reader["mailingZipCode"].ToString();
-        addressBook.billingCity = reader["billingCity"].ToString();
-        addressBook.billingState = reader["billingState"].ToString();
-        addressBook.billingZipcode = reader["billingZipCode"].ToString();
-        addressBook.billingAddress = reader["billingAddress"].ToString();
-
-        resultList.Add(addressBook);
-    }
-    */
-    using (var db = new databaseContext())
-    {
-        var query = from b in db.AddressBooks
-                    orderby b.Name
-                    select b;
-
-        AddressBook addressBook = new AddressBook();
-
-        foreach (var item in query)
+        public List<AddressBook> GetAllAddressBooks()
         {
+            List<AddressBook> resultList = new List<AddressBook>();
+            //string connectionString = WebConfigurationManager.ConnectionStrings["lssDBConnectionString"].ConnectionString;
+            //SqlConnection conn = new SqlConnection(connectionString);
+            //conn.Open();
+            //string sql = "usp_addressbook";
 
-            addressBook.Name = item.Name;
-            addressBook.FirstName = item.FirstName;
-            addressBook.LastName = item.LastName;
-            addressBook.Company = item.Company;
-            addressBook.CellPhone = item.CellPhone;
-            addressBook.MailingCity = item.MailingCity;
+            //SqlCommand command = new SqlCommand(sql, conn);
+            //command.CommandType = CommandType.StoredProcedure;
 
-            addressBook.MailingState = item.MailingState;
-            addressBook.MailingAddress = item.MailingAddress;
-            addressBook.MailingZipcode = item.MailingZipcode;
-            addressBook.BillingCity = item.BillingCity;
-            addressBook.BillingState = item.BillingState;
-            addressBook.BillingZipcode = item.BillingZipcode;
-            addressBook.BillingAddress = item.BillingAddress;
+            //SetParameter(ref command, "Int32", "2", "@Id");
+            //SqlDataReader reader = command.ExecuteReader();
 
-            resultList.Add(addressBook);
+            //while (reader.Read() == true)
+            /*{
+                AddressBook addressBook = new AddressBook();
+
+
+                addressBook.name = reader["Name"].ToString();
+                addressBook.firstName = reader["FirstName"].ToString();
+                addressBook.lastName = reader["LastName"].ToString();
+                addressBook.company = reader["Company"].ToString();
+                addressBook.cellPhone = reader["CellPhone"].ToString();
+                addressBook.mailingCity = reader["mailingCity"].ToString();
+
+                addressBook.mailingState = reader["mailingState"].ToString();
+                addressBook.mailingAddress = reader["mailingAddress"].ToString();
+                addressBook.mailingZipcode = reader["mailingZipCode"].ToString();
+                addressBook.billingCity = reader["billingCity"].ToString();
+                addressBook.billingState = reader["billingState"].ToString();
+                addressBook.billingZipcode = reader["billingZipCode"].ToString();
+                addressBook.billingAddress = reader["billingAddress"].ToString();
+
+                resultList.Add(addressBook);
+            }
+            */
+            using (var db = new databaseContext())
+            {
+                var query = from b in db.AddressBooks
+                            orderby b.Name
+                            select b;
+
+
+
+                foreach (var item in query)
+                {
+                    AddressBook addressBook = new AddressBook();
+                    addressBook.Name = item.Name;
+                    addressBook.FirstName = item.FirstName;
+                    addressBook.LastName = item.LastName;
+                    addressBook.Company = item.Company;
+                    addressBook.CellPhone = item.CellPhone;
+                    addressBook.MailingCity = item.MailingCity;
+
+                    addressBook.MailingState = item.MailingState;
+                    addressBook.MailingAddress = item.MailingAddress;
+                    addressBook.MailingZipcode = item.MailingZipcode;
+                    addressBook.BillingCity = item.BillingCity;
+                    addressBook.BillingState = item.BillingState;
+                    addressBook.BillingZipcode = item.BillingZipcode;
+                    addressBook.BillingAddress = item.BillingAddress;
+
+                    resultList.Add(addressBook);
+                }
+
+
+            }
+            /*
+           {
+             new AddressBook {
+                name="David Nishimoto",
+                firstName ="David",
+                lastName ="Nishimoto",
+                company ="Listen Software Solutions",
+                cellPhone="Phone",
+                mailingCity ="Caldwell",
+
+                mailingState ="Idaho",
+                mailingAddress="20094 Winslow Dr",
+                mailingZipcode= "83607",
+                billingCity ="Caldwell",
+                billingState= "Idaho",
+                billingZipcode ="83607"
+
+                }
+
+           };
+           */
+
+
+
+            return (resultList);
         }
-
-
-    }
-    /*
-   {
-     new AddressBook {
-        name="David Nishimoto",
-        firstName ="David",
-        lastName ="Nishimoto",
-        company ="Listen Software Solutions",
-        cellPhone="Phone",
-        mailingCity ="Caldwell",
-
-        mailingState ="Idaho",
-        mailingAddress="20094 Winslow Dr",
-        mailingZipcode= "83607",
-        billingCity ="Caldwell",
-        billingState= "Idaho",
-        billingZipcode ="83607"
-
-        }
-
-   };
-   */
-
-
-
-    return (resultList);
-}
     }
 }

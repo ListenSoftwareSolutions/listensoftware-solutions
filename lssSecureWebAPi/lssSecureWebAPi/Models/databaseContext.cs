@@ -81,11 +81,6 @@ namespace lssWebApi2.Models
                 .WithOptional(e => e.AddressBook)
                 .HasForeignKey(e => e.CustomerAddressId);
 
-            modelBuilder.Entity<AddressBook>()
-                .HasMany(e => e.ScheduleEvents1)
-                .WithOptional(e => e.AddressBook1)
-                .HasForeignKey(e => e.EmployeeAddressId);
-
             modelBuilder.Entity<Contract>()
                 .Property(e => e.Cost)
                 .HasPrecision(19, 4);
