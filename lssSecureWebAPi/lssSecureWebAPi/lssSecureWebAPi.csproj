@@ -208,8 +208,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\LoginControllerMVC.cs" />
+    <Compile Include="Controllers\PeopleControllerMVC.cs" />
     <Compile Include="Controllers\ServiceInformationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1057,10 +1057,12 @@
     <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\MyScripts\AddressBook.js" />
+    <Content Include="Scripts\MyScripts\AddressBookApp.js" />
     <Content Include="Scripts\MyScripts\LoginLogic.js" />
     <Content Include="Scripts\MyScripts\Module.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\People\AddressBook.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1079,9 +1081,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Login\SecurityInfo.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
-    <Content Include="Views\People\AddressBook.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
-    <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

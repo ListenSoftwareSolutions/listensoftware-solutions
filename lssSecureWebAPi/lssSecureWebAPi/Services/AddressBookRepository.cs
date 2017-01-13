@@ -218,6 +218,7 @@ string paramType, string paramValue, string paramName)
                 foreach (var item in query)
                 {
                     AddressBook addressBook = new AddressBook();
+                    addressBook.AddressId = item.AddressId;
                     addressBook.Name = item.Name;
                     addressBook.FirstName = item.FirstName;
                     addressBook.LastName = item.LastName;

@@ -1,0 +1,41 @@
+﻿@model lssWebApi2.Models.AddressBook
+@{
+
+ViewBag.Title="Edit";   
+
+}
+
+    <h3>Edit Person</h3>
+        
+        @Html.BeginForm("Update","People",null,System.Web.Mvc.FormMethod.Post,null)
+        {
+        <div>Name:</div>
+
+        <form name="addAddressBook" ng-controller="PeopleController">
+            <div class="form-group"><label>Id:</label>@Html.TextBoxFor(m=>m.AddressId)</div>
+            <div class="form-group"><label>Name:</label> @Html.TextBoxFor(m => m.Name)</div>
+            <div class="form-group"><label>First Name:</label> @Html.TextBoxFor(m => m.FirstName)</div>
+            <div class="form-group"><label>Last Name:</label>@Html.TextBoxFor(m => m.LastName)</div>
+            <div class="form-group"><label>Company:</label>@Html.TextBoxFor(m => m.Company)</div>
+            <div class="form-group"><label>Cell Phone:</label>@Html.TextBoxFor(m => m.CellPhone)</div>
+            <div class="form-group"><label>Mailing Address:</label>@Html.TextBoxFor(m => m.MailingAddress)</div>
+            <div class="form-group"><label>Mailing City:</label>@Html.TextBoxFor(m => m.MailingCity)</div>
+            <div class="form-group"><label>Mailing State:</label>@Html.TextBoxFor(m => m.MailingState)</div>
+            <div class="form-group"><label>Mailing Zipcode:</label>@Html.TextBoxFor(m => m.MailingZipcode)</div>
+
+            <div class="form-group"><label>Billing Address:</label>@Html.TextBoxFor(m => m.BillingAddress)</div>
+            <div class="form-group"><label>Billing City:</label>@Html.TextBoxFor(m => m.BillingCity)</div>
+            <div class="form-group"><label>Billing State:</label>@Html.TextBoxFor(m => m.BillingState)</div>
+            <div class="form-group"><label>Billing Zipcode:</label>@Html.TextBoxFor(m => m.BillingZipcode)</div>
+            <div class="form-group"><label>
+    Type:</label>
+    <select ng-model="addressBook.Type">
+        <option value="Customer" selected>Customer</option>
+        <option value="Employee">Employee</option>
+
+    </select>
+            </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" />
+                </div>
+        } 

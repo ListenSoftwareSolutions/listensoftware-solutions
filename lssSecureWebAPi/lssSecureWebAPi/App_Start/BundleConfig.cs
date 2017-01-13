@@ -35,6 +35,7 @@ namespace lssSecureWebAPi
 
 
             bundles.Add(new Bundle("~/bundles/custom").Include(
+                      //"~/Scripts/MyScripts/AddressBookApp.js",
                       "~/Scripts/MyScripts/Module.js",
                       "~/Scripts/MyScripts/AddressBook.js",
                       "~/Scripts/MyScripts/LoginLogic.js"));
