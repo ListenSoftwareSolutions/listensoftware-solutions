@@ -1,0 +1,41 @@
+﻿@model List<lssCore.Models.AddressBook>
+@{
+
+    ViewBag.Title = "List";
+
+}
+<div ng-app="AppModule">
+<div ng-controller="PeopleController">
+    <h4>Address Book</h4>
+
+  
+    @Html.ActionLink("Add Person", "AddressBook", "People", new { area = "" }, null)
+    <table class="table table-striped table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Id</th>
+                <th>Name</th>
+             </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            { 
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit1", "Edit", "People", new { id = person.AddressId }, null)
+                </td>
+
+                   <td>
+                    <span>@person.AddressId</span>
+                </td>
+                <td>
+                    <span>@person.Name</span>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+   
+</div>
+</div>
