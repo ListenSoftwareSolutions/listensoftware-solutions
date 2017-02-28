@@ -238,8 +238,7 @@ string paramType, string paramValue, string paramName)
                 var query = from b in db.AddressBooks
                             orderby b.Name
                             select b;
-
-
+                
 
                 foreach (var item in query)
                 {
