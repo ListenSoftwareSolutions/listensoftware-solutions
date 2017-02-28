@@ -1,0 +1,1 @@
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi.Tests\obj\Debug\lssSecureWebAPi.Tests.csprojResolveAssemblyReference.cache

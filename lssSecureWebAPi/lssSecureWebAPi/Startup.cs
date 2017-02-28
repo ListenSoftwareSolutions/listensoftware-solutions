@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(lssSecureWebAPi.Startup))]
+[assembly: OwinStartup(typeof(lssSecureWeb.Startup))]
 
-namespace lssSecureWebAPi
+namespace lssSecureWeb
 {
     public partial class Startup
     {

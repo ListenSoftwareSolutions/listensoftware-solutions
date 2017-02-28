@@ -1,9 +1,10 @@
-namespace lssWebApi2.Models
+namespace lssSecureWeb.Models
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using lssCore.Models;
 
     public partial class databaseContext : DbContext
     {

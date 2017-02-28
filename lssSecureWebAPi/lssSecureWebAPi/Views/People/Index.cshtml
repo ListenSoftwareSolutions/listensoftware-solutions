@@ -1,44 +1,88 @@
-﻿@model List<lssWebApi2.Models.AddressBook>
+﻿@model IEnumerable<lssCore.Models.AddressBook>
+
 @{
-
-    ViewBag.Title = "List";
-
+    ViewBag.Title = "Index2";
 }
-<div ng-app="AppModule">
-<div ng-controller="PeopleController">
-    <h4>Address Book</h4>
 
-    <h2>
-        <span>{{userName}}</span>
-        <input type="button" class="btn" value="logoff" ng-click="logout()" />
-    </h2>
-    @Html.ActionLink("Add Person", "AddressBook", "People", new { area = "" }, null)
-    <table class="table table-striped table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Action</th>
-                <th>Id</th>
-                <th>Name</th>
-             </tr>
-        </thead>
-        <tbody>
-            @foreach (var person in Model)
-            { 
-            <tr>
-                <td>
-                    @Html.ActionLink("Edit1", "Edit", "People", new { id = person.AddressId }, null)
-                </td>
+<h2>Index2</h2>
 
-                   <td>
-                    <span>@person.AddressId</span>
-                </td>
-                <td>
-                    <span>@person.Name</span>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
-    <div><span>{{Message}}</span></div>
-</div>
-</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CellPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailingCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailingState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailingAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailingZipcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingZipcode)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AddressId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AddressId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AddressId })
+        </td>
+    </tr>
+}
+
+</table>

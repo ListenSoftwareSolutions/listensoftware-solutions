@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using lssWebApi2.Models;
-using WebApi1.Services;
+using lssCore.Models;
+using lssCore.Services;
 
-namespace WebApi1.Controllers
+namespace lssSecureWeb.Controllers
 {
     public class ServiceInformationController : ApiController
     {

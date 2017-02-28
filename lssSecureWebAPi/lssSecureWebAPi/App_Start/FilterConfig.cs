@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace lssSecureWebAPi
+namespace lssSecureWeb
 {
     public class FilterConfig
     {

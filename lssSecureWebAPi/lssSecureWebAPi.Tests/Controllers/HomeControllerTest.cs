@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using lssSecureWebAPi;
-using lssSecureWebAPi.Controllers;
+using lssSecureWebApi2;
+using lssSecureWebApi2.Controllers;
 
 namespace lssSecureWebAPi.Tests.Controllers
 {
@@ -12,7 +12,7 @@ namespace lssSecureWebAPi.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeApiController controller = new HomeApiController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;

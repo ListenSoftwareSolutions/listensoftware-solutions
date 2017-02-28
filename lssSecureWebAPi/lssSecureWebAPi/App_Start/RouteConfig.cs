@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace lssSecureWebAPi
+namespace lssSecureWeb
 {
     public class RouteConfig
     {
@@ -16,6 +16,7 @@ namespace lssSecureWebAPi
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                namespaces: new[] { "lssSecureWeb.Controllers" },
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

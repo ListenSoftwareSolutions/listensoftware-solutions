@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="ListenSoftwareApp" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Owner\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Owner\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
   <parameter name="databaseContext-Web.config Connection String" description="" value="data source=tcp:listensoftware.database.windows.net,1433;initial catalog=listensoftwareDB;persist security info=False;user id=dnishimoto;password=Amanda7258;multipleactiveresultsets=False;connect timeout=30;encrypt=True;trustservercertificate=False;application name=EntityFramework" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Owner\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='databaseContext']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:listensoftware.database.windows.net,1433;Initial Catalog=listensoftwareDB;User Id=dnishimoto@listensoftware.database.windows.net;Password=Amanda7258" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\dnish\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Owner\\Source\\Repos\\listensoftware-solutions\\lssSecureWebAPi\\lssSecureWebAPi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

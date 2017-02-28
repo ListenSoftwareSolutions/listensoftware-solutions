@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApi1.Services;
-using lssWebApi2.Models;
+using lssCore.Services;
+using lssCore.Models;
 
-namespace lssSecureWebAPi.Controllers
+namespace lssSecureWeb.Controllers
 {
+    [RoutePrefix("people")]
     public class PeopleController : Controller
     {
         private AddressBookRepository addressBookRepository;
@@ -17,11 +18,12 @@ namespace lssSecureWebAPi.Controllers
             this.addressBookRepository = new AddressBookRepository();
         }
         // GET: People
+       [Authorize]
         public ActionResult Index()
         {
             List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks();
 
-            return View(listPeople);
+            return View("index",listPeople);
         }
         public ActionResult AddressBook()
         {
@@ -55,21 +57,22 @@ namespace lssSecureWebAPi.Controllers
                 return View();
             }
         }
-        [HttpPost]
-        public ActionResult Edit()
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //[HttpPost]
+        //public ActionResult Edit()
+        //{
+        //    try
+        //    {
+        //        // TODO: Add update logic here
 
-                return RedirectToAction("addressBook");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("addressBook");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
+       
         // GET: People/Edit/5
         public ActionResult Edit(int id)
         {
@@ -78,12 +81,24 @@ namespace lssSecureWebAPi.Controllers
 
             person = listPeople[0];
 
+            List<UDC> udc_list = addressBookRepository.GetUdcList("AB_Type").ToList<UDC>();
+            ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
+            {
+                 Text=c.KeyCode,
+                 Value=c.Value
+            }).ToList();
+            ;
             return View("Edit",person);
         }
+
+        
+
+       
         public ActionResult Update(AddressBook addressBook)
         {
 
             addressBookRepository.UpdateAddressBook(addressBook);
+
 
             return RedirectToAction("index");
         }

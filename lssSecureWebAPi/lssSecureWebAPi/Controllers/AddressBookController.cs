@@ -4,12 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApi1.Services;
-using lssWebApi2.Models;
+using lssCore.Services;
+using lssCore.Models;
 
 
 
-namespace WebApi1.Controllers
+namespace lssSecureWeb.Controllers
 {
 
         public class AddressBookController : ApiController
