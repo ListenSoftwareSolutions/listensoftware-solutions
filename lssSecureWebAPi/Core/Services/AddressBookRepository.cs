@@ -50,7 +50,7 @@ string paramType, string paramValue, string paramName)
 
             }
         }//SetParameter
-        public void AddAdressBook(AddressBook addressBook)
+        public void AddAddressBook(AddressBook addressBook)
         {
             using (var db = new databaseContext())
             {
@@ -196,7 +196,7 @@ string paramType, string paramValue, string paramName)
             return (resultList);
         }
 
-        public List<AddressBook> GetAllAddressBooks()
+        public List<AddressBook> GetAllAddressBooks(string searchString)
         {
             List<AddressBook> resultList = new List<AddressBook>();
             //string connectionString = WebConfigurationManager.ConnectionStrings["lssDBConnectionString"].ConnectionString;
@@ -235,10 +235,16 @@ string paramType, string paramValue, string paramName)
             */
             using (var db = new databaseContext())
             {
-                var query = from b in db.AddressBooks
-                            orderby b.Name
-                            select b;
-                
+                var query = from b in db.AddressBooks select b;
+       
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    query = query.Where(s => s.Name.Contains(searchString) || s.FirstName.Contains(searchString) || s.LastName.Contains(searchString));
+
+                }
+              
+                query=query.OrderBy(s => s.Name);
+
 
                 foreach (var item in query)
                 {

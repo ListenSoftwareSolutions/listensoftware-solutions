@@ -21,7 +21,7 @@ namespace lssSecureWeb.Controllers
         }
         public List<AddressBook>  Get()
         {
-            return addressBookRepository.GetAllAddressBooks();
+            return addressBookRepository.GetAllAddressBooks("");
         }
         public List<AddressBook> Get(int Id)
         {
@@ -31,7 +31,7 @@ namespace lssSecureWeb.Controllers
         [HttpPost]
         public IHttpActionResult Add(AddressBook addressBook)
         {
-            addressBookRepository.AddAdressBook(addressBook);
+            addressBookRepository.AddAddressBook(addressBook);
             return Ok();
         }
        

@@ -22,7 +22,7 @@ namespace lssSecureWebApi2.Controllers
         
         public ActionResult Index()
         {
-            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks();
+            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks("");
 
             return View(listPeople);
         }

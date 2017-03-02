@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using lssCore.Services;
 using lssCore.Models;
+using PagedList;
 
 namespace lssSecureWeb.Controllers
 {
@@ -19,11 +20,32 @@ namespace lssSecureWeb.Controllers
         }
         // GET: People
        [Authorize]
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+     
+        //}
+        public ViewResult Index(string currentFilter, string searchString, int? page)
         {
-            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks();
 
-            return View("index",listPeople);
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks(searchString);
+
+          
+            //return View("index", listPeople);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View("index",listPeople.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult AddressBook()
         {
@@ -33,22 +55,35 @@ namespace lssSecureWeb.Controllers
         // GET: People/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AddressBook person;
+            List<AddressBook> listPeople = addressBookRepository.GetAddressBook(id);
+
+            person = listPeople[0];
+            return View(person);
         }
 
         // GET: People/Create
         public ActionResult Create()
         {
+            List<UDC> udc_list = addressBookRepository.GetUdcList("AB_Type").ToList<UDC>();
+            ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
+            {
+                Text = c.KeyCode,
+                Value = c.Value
+            }).ToList();
+            ;
             return View();
         }
 
         // POST: People/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AddressBook addressBook)
         {
             try
             {
                 // TODO: Add insert logic here
+
+                addressBookRepository.AddAddressBook(addressBook);
 
                 return RedirectToAction("Index");
             }
@@ -84,8 +119,8 @@ namespace lssSecureWeb.Controllers
             List<UDC> udc_list = addressBookRepository.GetUdcList("AB_Type").ToList<UDC>();
             ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
             {
-                 Text=c.KeyCode,
-                 Value=c.Value
+                 Text=c.Value,
+                 Value=c.KeyCode
             }).ToList();
             ;
             return View("Edit",person);
@@ -122,7 +157,11 @@ namespace lssSecureWeb.Controllers
         // GET: People/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            AddressBook person;
+            List<AddressBook> listPeople = addressBookRepository.GetAddressBook(id);
+
+            person = listPeople[0];
+            return View(person);
         }
 
         // POST: People/Delete/5
@@ -132,6 +171,8 @@ namespace lssSecureWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
+
+                addressBookRepository.DeleteAddressBook(id);
 
                 return RedirectToAction("Index");
             }

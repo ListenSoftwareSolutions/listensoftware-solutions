@@ -1,0 +1,130 @@
+﻿@model lssCore.Models.AddressBook
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AddressBook</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailingCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailingCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailingState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailingState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailingAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailingAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailingZipcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailingZipcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillingCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillingCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillingState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillingState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillingZipcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillingZipcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillingAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillingAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AddressId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

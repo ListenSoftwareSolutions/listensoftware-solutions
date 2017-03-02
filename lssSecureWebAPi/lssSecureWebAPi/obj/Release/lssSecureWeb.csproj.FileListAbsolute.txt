@@ -91,3 +91,7 @@ C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWe
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\obj\Release\lssSecureWeb.csprojResolveAssemblyReference.cache
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\obj\Release\lssSecureWeb.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\obj\Release\lssSecureWeb.pdb
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.dll
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.Mvc.dll
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.xml
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.Mvc.xml

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<lssCore.Models.AddressBook>
-
+﻿@model PagedList.IPagedList<lssCore.Models.AddressBook>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index2";
 }
@@ -9,38 +9,49 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Index", "People", FormMethod.Get))
+{
+    <p>Find: @Html.TextBox("SearchString",ViewBag.CurrentFilter as string)
+    <input type="submit" value="Search" /></p>
+
+}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+             Name
+     
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            First Name
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            Last Name
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Company)
+            Company
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CellPhone)
+            Cell Ph
+      
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MailingCity)
+            Mailing City
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MailingState)
+            Maling State
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MailingAddress)
+            Mailing Address
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MailingZipcode)
+            Mailing ZipCode
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
+            Type</th>
         <th></th>
     </tr>
 
@@ -86,3 +97,8 @@
 }
 
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
