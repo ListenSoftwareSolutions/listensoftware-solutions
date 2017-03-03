@@ -112,7 +112,7 @@ namespace lssCore.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<ServiceInformation>()
-                .Property(e => e.ProcessStage)
+                .Property(e => e.Comments)
                 .IsUnicode(false);
 
             modelBuilder.Entity<UDC>()

@@ -231,7 +231,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Api\Controllers\LoginApiController.cs" />
     <Compile Include="Controllers\PeopleControllerMVC.cs" />
-    <Compile Include="Controllers\ServiceInformationController.cs" />
+    <Compile Include="Controllers\ServiceInformationControllerMVC.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -239,7 +239,7 @@
     <Compile Include="Areas\Api\Models\AccountBindingApiModels.cs" />
     <Compile Include="Areas\Api\Models\AccountViewAPIModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\databaseContext.cs" />
+    <Compile Include="Models\Obsolete_databaseContext.cs" />
     <Compile Include="Areas\Api\Models\IdentityApiModels.cs" />
     <Compile Include="Models\IdentityConfig.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1131,6 +1131,11 @@
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\People\Delete.cshtml" />
     <Content Include="Views\People\Details.cshtml" />
+    <Content Include="Views\ServiceInformation\Index.cshtml" />
+    <Content Include="Views\ServiceInformation\Create.cshtml" />
+    <Content Include="Views\ServiceInformation\Edit.cshtml" />
+    <Content Include="Views\ServiceInformation\Delete.cshtml" />
+    <Content Include="Views\ServiceInformation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,10 +7,10 @@
 <h2>Edit2</h2>
 
 
-@using (Html.BeginForm("update","people"))
+@using (Html.BeginForm("update", "people"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>AddressBook</h4>
         <hr />
@@ -124,7 +124,23 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Type,ViewBag.Type as IEnumerable<SelectListItem>,"Type")
+
+                <select id="Type" name="Type">
+                    @foreach (var item in ViewBag.Type)
+                    {
+                        if (item.Value == Model.Type)
+                        {
+                            <option value="@item.Value" selected>@item.Text</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+
+                    }
+
+                </select>
+                <!--Html.DropDownListFor(model => model.Type,new SelectList(ViewBag.Type,"Value","Text",Model.Type),"Type")-->
             </div>
         </div>
 

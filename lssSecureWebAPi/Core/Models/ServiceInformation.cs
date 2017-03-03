@@ -24,15 +24,11 @@ namespace lssCore.Models
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
 
-        public long? AddOnsXRefId { get; set; }
+        public string AddOns { get; set; }
 
         public long? ServiceTypeXRefId { get; set; }
 
-        public int? MinEmployeeCount { get; set; }
-
-        public int? MaxEmployeeCount { get; set; }
-
-        public DateTime? StartDate { get; set; }
+       public DateTime? CreatedDate { get; set; }
 
         public long? AddressId { get; set; }
 
@@ -47,7 +43,9 @@ namespace lssCore.Models
         public string LocationGPS { get; set; }
 
         [StringLength(20)]
-        public string ProcessStage { get; set; }
+        public string Comments { get; set; }
+
+        public int? Status { get; set; }
 
         public virtual AddressBook AddressBook { get; set; }
 

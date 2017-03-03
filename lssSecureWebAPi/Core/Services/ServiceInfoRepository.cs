@@ -8,8 +8,9 @@ namespace lssCore.Services
 {
     public class ServiceInformationRepository
     {
-        public void DeleteServiceInformation(int paramId)
+        public bool DeleteServiceInformation(int paramId)
         {
+            bool retVal = false;
             try
             {
                 using (var db = new databaseContext())
@@ -18,17 +19,20 @@ namespace lssCore.Services
 
                     db.ServiceInformations.Remove(serviceInformationDelete);
                     db.SaveChanges();
+                    retVal = true;
                 }
             }
 
             catch (Exception ex)
             {
+                retVal = false;
             }
+            return retVal;
         }
-    public void AddServiceInformation(ServiceInformation serviceInformation)
-    {
-        try
+        public void AddServiceInformation(ServiceInformation serviceInformation)
         {
+            try
+            {
                 using (var db = new databaseContext())
                 {
                     db.ServiceInformations.Add(serviceInformation);
@@ -36,11 +40,11 @@ namespace lssCore.Services
                 }
             }
 
-        catch (Exception ex)
-        {
+            catch (Exception ex)
+            {
+            }
         }
-    }
-public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate)
+        public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate)
         {
             try
             {
@@ -59,6 +63,7 @@ public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate
             {
             }
         }
+       
         public List<ServiceInformation> GetServiceInformation(int paramServiceId)
         {
             List<ServiceInformation> resultList = null;
@@ -77,6 +82,32 @@ public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate
                         
                         resultList.Add(serviceInformation);
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return (resultList);
+        }
+        public List<ServiceInformation> GetAllServiceInformation()
+        {
+            List<ServiceInformation> resultList = null;
+            try
+            {
+                resultList = new List<ServiceInformation>();
+                using (var db = new databaseContext())
+                {
+                    var query =from b in db.ServiceInformations
+                        where (b.Status == null)
+                        select b;
+
+                    foreach (var item in query)
+                    {
+                        resultList.Add(item);
+                    }
+                        
+                    
                 }
             }
             catch (Exception ex)

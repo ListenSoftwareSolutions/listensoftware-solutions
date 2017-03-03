@@ -6,9 +6,9 @@ namespace lssSecureWeb.Models
     using System.Linq;
     using lssCore.Models;
 
-    public partial class databaseContext : DbContext
+    public partial class databaseContextArchive: DbContext
     {
-        public databaseContext()
+        public databaseContextArchive()
             : base("name=databaseContext")
         {
         }
@@ -111,7 +111,7 @@ namespace lssSecureWeb.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<ServiceInformation>()
-                .Property(e => e.ProcessStage)
+                .Property(e => e.Comments)
                 .IsUnicode(false);
 
             modelBuilder.Entity<UDC>()
