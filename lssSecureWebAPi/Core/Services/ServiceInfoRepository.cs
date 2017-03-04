@@ -90,6 +90,61 @@ namespace lssCore.Services
             }
             return (resultList);
         }
+     
+       
+        public List<AddressBook> GetAddressBook(string type)
+        {
+            List<AddressBook> resultList = null;
+            try
+            {
+                resultList = new List<AddressBook>();
+                using (var db = new databaseContext())
+                {
+                    var query = from b in db.AddressBooks
+                                where(b.Type==type)
+                                select b;
+
+                    foreach (var item in query)
+                    {
+                        resultList.Add(item);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return (resultList);
+
+        }
+        public List<ServiceInformation> GetServiceInformationByAddressId(int addressId)
+        {
+            List<ServiceInformation> resultList = null;
+            try
+            {
+                resultList = new List<ServiceInformation>();
+                using (var db = new databaseContext())
+                {
+                    var query = from b in db.ServiceInformations
+                                where (b.Status == null && b.AddressId==addressId)
+                                select b;
+
+                    foreach (var item in query)
+                    {
+                        resultList.Add(item);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return (resultList);
+        }
         public List<ServiceInformation> GetAllServiceInformation()
         {
             List<ServiceInformation> resultList = null;

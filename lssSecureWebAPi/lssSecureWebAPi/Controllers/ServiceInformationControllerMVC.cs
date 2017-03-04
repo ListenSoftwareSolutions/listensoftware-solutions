@@ -8,10 +8,11 @@ using lssCore.Services;
 
 namespace lssSecureWeb.Controllers
 {
-    [RoutePrefix("serviceInformation")]
+    [RoutePrefix("ServiceInformation")]
     public class ServiceInformationController : Controller
     {
         private ServiceInformationRepository serviceInformationRepository;
+        private static int _addressId;
         // GET: ServiceInformationMVC
 
         public ServiceInformationController()
@@ -21,6 +22,15 @@ namespace lssSecureWeb.Controllers
         public ActionResult Index()
         {
             List<ServiceInformation> serviceList = serviceInformationRepository.GetAllServiceInformation();
+            ViewBag.AddressId = _addressId;
+            return View("Index", serviceList);
+        }
+        public ActionResult ServiceList(int addressId)
+        {
+        
+            _addressId = addressId;
+            ViewBag.AddressId = _addressId;
+            List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(_addressId);
             return View("Index", serviceList);
          
         }
@@ -36,6 +46,9 @@ namespace lssSecureWeb.Controllers
         // GET: ServiceInformationMVC/Create
         public ActionResult Create()
         {
+            ViewBag.AddressId = _addressId;
+            LoadCustomerName();
+            LoadContractDropDown();
             return View();
         }
 
@@ -47,6 +60,7 @@ namespace lssSecureWeb.Controllers
             {
                 // TODO: Add insert logic here
                 serviceInformationRepository.AddServiceInformation(serviceInformation);
+            
                 return RedirectToAction("Index");
             }
             catch
@@ -54,11 +68,38 @@ namespace lssSecureWeb.Controllers
                 return View();
             }
         }
+        void LoadCustomerName()
+        {
+            AddressBookRepository addressBookRepository = new AddressBookRepository();
+            ViewBag.CustomerName = addressBookRepository.GetCustomerName(_addressId);
+        }
+        void LoadCustomerDropDown()
+        {
+            var customer = serviceInformationRepository.GetAddressBook("customer");
 
+            ViewBag.Customers = customer.ToList().Select(c => new SelectListItem
+            {
+                Text = c.Name,
+                Value = c.AddressId.ToString()
+            }).ToList();
+        }
+        void LoadContractDropDown()
+        {
+            ContractRepository contractRepository = new ContractRepository();
+            var contracts = contractRepository.GetContractsByAddressId(_addressId);
+            ViewBag.Contracts = contracts.ToList().Select(c => new SelectListItem
+            {
+                Text = c.StartDate.ToString(),
+                Value = c.ContractId.ToString()
+            }).ToList();
+        }
         // GET: ServiceInformationMVC/Edit/5
         public ActionResult Edit(int id)
         {
             List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
+            LoadCustomerDropDown();
+            LoadContractDropDown();
+              
             return View("Edit", serviceList[0]);
         }
 

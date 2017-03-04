@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lssSecureWeb", "lssSecureWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lssSecureWebAPi.Tests", "lssSecureWebAPi.Tests\lssSecureWebAPi.Tests.csproj", "{C2451403-7BFA-44B3-98FA-373928125B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{837F50B9-7DDC-42D3-9386-79FFF63F8D0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lssCore", "Core\lssCore.csproj", "{837F50B9-7DDC-42D3-9386-79FFF63F8D0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

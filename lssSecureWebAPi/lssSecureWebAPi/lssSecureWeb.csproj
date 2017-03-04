@@ -228,6 +228,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressBookController.cs" />
     <Compile Include="Areas\Api\Controllers\HomeApiController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Api\Controllers\LoginApiController.cs" />
     <Compile Include="Controllers\PeopleControllerMVC.cs" />
@@ -1136,6 +1137,10 @@
     <Content Include="Views\ServiceInformation\Edit.cshtml" />
     <Content Include="Views\ServiceInformation\Delete.cshtml" />
     <Content Include="Views\ServiceInformation\Details.cshtml" />
+    <Content Include="Views\Contract\Index.cshtml" />
+    <Content Include="Views\Contract\Detail.cshtml" />
+    <Content Include="Views\Contract\Create.cshtml" />
+    <Content Include="Views\Contract\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1145,9 +1150,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\Core\lssCore.csproj">
       <Project>{837f50b9-7ddc-42d3-9386-79fff63f8d0e}</Project>
-      <Name>Core</Name>
+      <Name>lssCore</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

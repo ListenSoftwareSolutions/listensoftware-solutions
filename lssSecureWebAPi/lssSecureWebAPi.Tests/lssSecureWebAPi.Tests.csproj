@@ -935,9 +935,9 @@
     <None Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\Core\lssCore.csproj">
       <Project>{837f50b9-7ddc-42d3-9386-79fff63f8d0e}</Project>
-      <Name>Core</Name>
+      <Name>lssCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\lssSecureWebAPi\lssSecureWeb.csproj">
       <Project>{3E36FDE6-7417-4F5B-BDB9-B85F28B595A2}</Project>

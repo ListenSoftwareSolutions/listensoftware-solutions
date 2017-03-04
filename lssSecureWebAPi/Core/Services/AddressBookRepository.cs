@@ -58,6 +58,29 @@ string paramType, string paramValue, string paramName)
                 db.SaveChanges();
             }
         }
+        public string GetCustomerName(int addressId)
+        {
+            string retVal = "";
+
+            try
+            {
+                using (var db = new databaseContext())
+                {
+                    var query = (from b in db.AddressBooks
+                                 where (b.AddressId == addressId)
+                                 select b).FirstOrDefault();
+
+                    retVal = query.Name;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return retVal;
+        }
         public void DeleteAddressBook(int paramAddressId)
         {
             using (var db = new databaseContext())
@@ -161,32 +184,7 @@ string paramType, string paramValue, string paramName)
                     AddressBook item = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
 
                     resultList.Add(item);
-                    //var item = db.AddressBooks.Find(paramId);
-
-
-                    /*AddressBook addressBook = new AddressBook();
-
-                    if (item != null)
-                    {
-                        addressBook.AddressId = item.AddressId;
-                        addressBook.Name = item.Name;
-                        addressBook.FirstName = item.FirstName;
-                        addressBook.LastName = item.LastName;
-                        addressBook.Company = item.Company;
-                        addressBook.CellPhone = item.CellPhone;
-                        addressBook.MailingCity = item.MailingCity;
-
-                        addressBook.MailingState = item.MailingState;
-                        addressBook.MailingAddress = item.MailingAddress;
-                        addressBook.MailingZipcode = item.MailingZipcode;
-                        addressBook.BillingCity = item.BillingCity;
-                        addressBook.BillingState = item.BillingState;
-                        addressBook.BillingZipcode = item.BillingZipcode;
-                        addressBook.BillingAddress = item.BillingAddress;
-
-                        resultList.Add(addressBook);
-                    }
-                    */
+                  
                 }
             }
             catch (Exception ex)
@@ -212,23 +210,7 @@ string paramType, string paramValue, string paramName)
 
             //while (reader.Read() == true)
             /*{
-                AddressBook addressBook = new AddressBook();
-
-
-                addressBook.name = reader["Name"].ToString();
-                addressBook.firstName = reader["FirstName"].ToString();
-                addressBook.lastName = reader["LastName"].ToString();
-                addressBook.company = reader["Company"].ToString();
-                addressBook.cellPhone = reader["CellPhone"].ToString();
-                addressBook.mailingCity = reader["mailingCity"].ToString();
-
-                addressBook.mailingState = reader["mailingState"].ToString();
-                addressBook.mailingAddress = reader["mailingAddress"].ToString();
-                addressBook.mailingZipcode = reader["mailingZipCode"].ToString();
-                addressBook.billingCity = reader["billingCity"].ToString();
-                addressBook.billingState = reader["billingState"].ToString();
-                addressBook.billingZipcode = reader["billingZipCode"].ToString();
-                addressBook.billingAddress = reader["billingAddress"].ToString();
+              
 
                 resultList.Add(addressBook);
             }
@@ -253,30 +235,6 @@ string paramType, string paramValue, string paramName)
 
 
             }
-            /*
-           {
-             new AddressBook {
-                name="David Nishimoto",
-                firstName ="David",
-                lastName ="Nishimoto",
-                company ="Listen Software Solutions",
-                cellPhone="Phone",
-                mailingCity ="Caldwell",
-
-                mailingState ="Idaho",
-                mailingAddress="20094 Winslow Dr",
-                mailingZipcode= "83607",
-                billingCity ="Caldwell",
-                billingState= "Idaho",
-                billingZipcode ="83607"
-
-                }
-
-           };
-           */
-
-
-
             return (resultList);
         }
     }

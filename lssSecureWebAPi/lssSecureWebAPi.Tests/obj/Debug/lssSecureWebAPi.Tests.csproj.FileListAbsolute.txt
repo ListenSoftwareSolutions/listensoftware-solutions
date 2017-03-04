@@ -81,3 +81,5 @@ C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWe
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi.Tests\bin\Debug\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi.Tests\bin\Debug\roslyn\vbc.exe.config
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi.Tests\bin\Debug\roslyn\vbc.rsp
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi.Tests\bin\Debug\PagedList.dll
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi.Tests\bin\Debug\PagedList.xml
