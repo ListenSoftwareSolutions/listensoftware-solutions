@@ -1,0 +1,113 @@
+﻿@model PagedList.IPagedList<lssCore.Database.AddressBook>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "People", FormMethod.Get))
+{
+    <p>Find: @Html.TextBox("SearchString",ViewBag.CurrentFilter as string)
+    <input type="submit" value="Search" /></p>
+
+}
+<table class="table">
+    <tr>
+        <th>Actions</th>
+        <th>
+             Name
+     
+        </th>
+        <th>
+            First Name
+
+        </th>
+        <th>
+            Last Name
+
+        </th>
+        <th>
+            Company
+
+        </th>
+        <th>
+            Cell Ph
+      
+        </th>
+        <th>
+            Mailing City
+        </th>
+        <th>
+            Maling State
+        </th>
+        <th>
+            Mailing Address
+            
+        </th>
+        <th>
+            Mailing ZipCode
+        </th>
+        <th>
+            Type</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Service Call", "ServiceList", "ServiceInformation", new { addressId = item.AddressId },null)
+
+            <p></p>
+            @Html.ActionLink("Contracts", "ContractList", "Contract", new { addressId = item.AddressId }, null)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingZipcode)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PeopleXrefId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AddressId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AddressId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AddressId }) |
+ 
+        </td>
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+

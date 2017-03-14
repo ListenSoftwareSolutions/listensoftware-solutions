@@ -1,0 +1,34 @@
+﻿<div ng-app="AppModule">
+    <div ng-controller="PeopleController">
+    <h3>Add Person</h3>
+
+        <form name="addAddressBook" ng-controller="PeopleController">
+
+            <div>Name: <input name="name" ng-model="addressBook.Name" /></div>
+            <div>First Name: <input name="FirstName" ng-model="addressBook.FirstName" /></div>
+            <div>Last Name:<input name="LastName" ng-model="addressBook.LastName" /></div>
+            <div>Company:<input name="Company" ng-model="addressBook.Company" /></div>
+            <div>Cell Phone:<input name="CellPhone" ng-model="addressBook.CellPhone" /></div>
+            <div>Mailing Address:<input name="MailingAddress" ng-model="addressBook.MailingAddress" /></div>
+            <div>Mailing City:<input name="MailingCity" ng-model="addressBook.MailingCity" /></div>
+            <div>Mailing State:<input name="MailingState" ng-model="addressBook.MailingState" /></div>
+            <div>Mailing Zipcode:<input name="MailingZipCode" ng-model="addressBook.MailingZipCode" /></div>
+
+            <div>Billing Address:<input name="BillingAddress" ng-model="addressBook.BillingAddress" /></div>
+            <div>Billing City:<input name="BillingCity" ng-model="addressBook.BillingCity" /></div>
+            <div>Billing State:<input name="BillingState" ng-model="addressBook.BillingState" /></div>
+            <div>Billing Zipcode:<input name="BillingZipCode" ng-model="addressBook.BillingZipCode" /></div>
+            <div>Type:
+                <select ng-model="addressBook.Type">
+                    <option value="Customer" selected>Customer</option>
+                    <option value="Employee">Employee</option>
+
+                </select>
+            </div>
+       
+            <div><button ng-click="addPerson()">Submit</button></div>
+            {{Message}}
+        
+        </form> 
+    </div>
+</div>

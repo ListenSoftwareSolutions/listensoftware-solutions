@@ -1,0 +1,114 @@
+﻿@model lssCore.Database.ServiceInformation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ServiceInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddOns)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddOns)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceTypeXRefId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceTypeXRefId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SquareFeetOfStructure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SquareFeetOfStructure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationGPS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationGPS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
