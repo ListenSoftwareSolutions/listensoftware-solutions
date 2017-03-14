@@ -21,7 +21,7 @@ namespace lssSecureWeb.Controllers
         }
         public ActionResult Index()
         {
-            List<ServiceInformation> serviceList = serviceInformationRepository.GetAllServiceInformation();
+            IList<ServiceInformation> serviceList = serviceInformationRepository.GetAllServiceInformation();
             ViewBag.AddressId = _addressId;
             return View("Index", serviceList);
         }
@@ -30,7 +30,7 @@ namespace lssSecureWeb.Controllers
         
             _addressId = addressId;
             ViewBag.AddressId = _addressId;
-            List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(_addressId);
+            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(_addressId);
             return View("Index", serviceList);
          
         }

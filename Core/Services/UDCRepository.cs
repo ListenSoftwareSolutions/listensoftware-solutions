@@ -8,6 +8,26 @@ namespace lssCore.Services
 {
     public class UDCRepository
     {
+        public UDC GetUdcById(long ? id)
+        {
+            UDC udc = null;
+            try
+            {
+                using (var db = new DatabaseContext())
+                {
+                     udc = (from p in db.UDCs
+                              where p.XRefId == id
+                              select p).FirstOrDefault();
+
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return udc;
+        }
         public IEnumerable<UDC> GetUdcList(string product_code)
         {
             try

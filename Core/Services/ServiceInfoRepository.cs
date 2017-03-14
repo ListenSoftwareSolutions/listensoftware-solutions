@@ -76,7 +76,7 @@ namespace lssCore.Services
                 {
           
                     ServiceInformation item = db.ServiceInformations.Include(s1 => s1.ScheduleEvents).Single(e => e.ServiceId == paramServiceId);
-                    ServiceInformation serviceInformation= new ServiceInformation();
+                    //ServiceInformation serviceInformation= new ServiceInformation();
 
                     if (item != null)
                     {
@@ -93,9 +93,9 @@ namespace lssCore.Services
         }
      
        
-        public List<AddressBook> GetAddressBook(string type)
+        public IList<AddressBook> GetAddressBook(string type)
         {
-            List<AddressBook> resultList = null;
+            IList<AddressBook> resultList = null;
             try
             {
                 resultList = new List<AddressBook>();
@@ -120,9 +120,9 @@ namespace lssCore.Services
             return (resultList);
 
         }
-        public List<ServiceInformation> GetServiceInformationByAddressId(int addressId)
+        public IList<ServiceInformation> GetServiceInformationByAddressId(int addressId)
         {
-            List<ServiceInformation> resultList = null;
+            IList<ServiceInformation> resultList = null;
             try
             {
                 resultList = new List<ServiceInformation>();
@@ -146,9 +146,9 @@ namespace lssCore.Services
             }
             return (resultList);
         }
-        public List<ServiceInformation> GetAllServiceInformation()
+        public IList<ServiceInformation> GetAllServiceInformation()
         {
-            List<ServiceInformation> resultList = null;
+            IList<ServiceInformation> resultList = null;
             try
             {
                 resultList = new List<ServiceInformation>();

@@ -9,6 +9,7 @@ using PagedList;
 
 namespace lssSecureWeb.Controllers
 {
+     
     [RoutePrefix("people")]
     public class PeopleController : Controller
     {

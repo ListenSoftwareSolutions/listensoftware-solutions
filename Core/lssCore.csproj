@@ -99,6 +99,8 @@
     <Content Include="Database\Database2.edmx.diagram">
       <DependentUpon>Database2.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\ListenSoftwareApp - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ListenSoftwareApp - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -155,6 +157,7 @@
     <Compile Include="Services\ContractRepository.cs" />
     <Compile Include="Services\ServiceInfoRepository.cs" />
     <Compile Include="Services\UDCRepository.cs" />
+    <Compile Include="Services\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

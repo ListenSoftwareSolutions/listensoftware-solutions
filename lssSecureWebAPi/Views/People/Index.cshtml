@@ -1,5 +1,7 @@
 ﻿@model PagedList.IPagedList<lssCore.Database.AddressBook>
 @using PagedList.Mvc;
+@using lssCore.Database;
+@using lssCore.Services;
 @{
     ViewBag.Title = "Index2";
 }
@@ -94,7 +96,17 @@
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.PeopleXrefId)
+            @{ 
+
+                UDCRepository udcRepository = new UDCRepository();
+                UDC udc = udcRepository.GetUdcById(item.PeopleXrefId);
+                if (udc != null)
+                {
+                    @udc.Value;
+                }
+            }
+           
+            
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AddressId }) |
