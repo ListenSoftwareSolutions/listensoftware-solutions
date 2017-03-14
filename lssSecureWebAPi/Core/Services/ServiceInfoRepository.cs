@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using lssCore.Models;
+using lssCore.Database;
+using System.Data.Entity;
 
 namespace lssCore.Services
 {
@@ -13,7 +14,7 @@ namespace lssCore.Services
             bool retVal = false;
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var serviceInformationDelete = db.ServiceInformations.Single(e => e.ServiceId == paramId);
 
@@ -33,7 +34,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     db.ServiceInformations.Add(serviceInformation);
                     db.SaveChanges();
@@ -48,7 +49,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var serviceInformationOriginal = db.ServiceInformations.Find(serviceInformationUpdate.ServiceId);
 
@@ -64,23 +65,23 @@ namespace lssCore.Services
             }
         }
        
-        public List<ServiceInformation> GetServiceInformation(int paramServiceId)
+        public IList<ServiceInformation> GetServiceInformation(int paramServiceId)
         {
-            List<ServiceInformation> resultList = null;
+            IList<ServiceInformation> resultList=null;
+            //List<ServiceInformation> resultList = null;
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
-                    ServiceInformation item = db.ServiceInformations.Single(e => e.ServiceId == paramServiceId);
+          
+                    ServiceInformation item = db.ServiceInformations.Include(s1 => s1.ScheduleEvents).Single(e => e.ServiceId == paramServiceId);
                     ServiceInformation serviceInformation= new ServiceInformation();
 
                     if (item != null)
                     {
-                        var entry = db.Entry(item);
-                        entry.CurrentValues.SetValues(serviceInformation);
-                        
-                        resultList.Add(serviceInformation);
+                             
+                        resultList.Add(item);
                     }
                 }
             }
@@ -98,7 +99,7 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<AddressBook>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var query = from b in db.AddressBooks
                                 where(b.Type==type)
@@ -125,7 +126,7 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var query = from b in db.ServiceInformations
                                 where (b.Status == null && b.AddressId==addressId)
@@ -151,7 +152,7 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var query =from b in db.ServiceInformations
                         where (b.Status == null)

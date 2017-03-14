@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="listensoftwareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AcctRec">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OpenAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DiscountDueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GLDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DocNumber" Type="Int64" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NetTerms" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AddressBook">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CellPhone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="MailingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MailingState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MailingAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MailingZipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillingState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillingZipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillingAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PeopleXrefId" Type="Int64" />
+    <NavigationProperty Name="ScheduleEvents" Relationship="Self.FK__ScheduleE__Custo__778AC167" FromRole="AddressBook" ToRole="ScheduleEvent" />
+    <NavigationProperty Name="ScheduleEvents1" Relationship="Self.FK__ScheduleE__Emplo__76969D2E" FromRole="AddressBook" ToRole="ScheduleEvent" />
+    <NavigationProperty Name="ServiceInformations" Relationship="Self.FK__ServiceIn__Addre__282DF8C2" FromRole="AddressBook" ToRole="ServiceInformation" />
+  </EntityType>
+  <EntityType Name="ChartOfAcct">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BusUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Subsidiary" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SubSub" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+    </Key>
+    <Property Name="ContractId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressId" Type="Int64" />
+    <Property Name="ServiceTypeXRefId" Type="Int64" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RemainingBalance" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="ServiceInformations" Relationship="Self.FK__ServiceIn__Contr__29221CFB" FromRole="Contract" ToRole="ServiceInformation" />
+  </EntityType>
+  <EntityType Name="GeneralLedger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocNumber" Type="Int64" Nullable="false" />
+    <Property Name="DocType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="LedgerType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GLDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AccountId" Type="Int64" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddressId" Type="Int64" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ScheduleEvent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeAddressId" Type="Int64" />
+    <Property Name="EventDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ServiceId" Type="Int64" />
+    <Property Name="DurationMinutes" Type="Int64" />
+    <Property Name="CustomerAddressId" Type="Int64" />
+    <NavigationProperty Name="AddressBook" Relationship="Self.FK__ScheduleE__Custo__778AC167" FromRole="ScheduleEvent" ToRole="AddressBook" />
+    <NavigationProperty Name="AddressBook1" Relationship="Self.FK__ScheduleE__Emplo__76969D2E" FromRole="ScheduleEvent" ToRole="AddressBook" />
+    <NavigationProperty Name="ServiceInformation" Relationship="Self.FK__ScheduleE__Servi__75A278F5" FromRole="ScheduleEvent" ToRole="ServiceInformation" />
+  </EntityType>
+  <EntityType Name="ServiceInformation">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AddOns" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceTypeXRefId" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="AddressId" Type="Int64" />
+    <Property Name="ContractId" Type="Int64" />
+    <Property Name="SquareFeetOfStructure" Type="Int32" />
+    <Property Name="LocationDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LocationGPS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="AddressBook" Relationship="Self.FK__ServiceIn__Addre__282DF8C2" FromRole="ServiceInformation" ToRole="AddressBook" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK__ServiceIn__Contr__29221CFB" FromRole="ServiceInformation" ToRole="Contract" />
+    <NavigationProperty Name="ScheduleEvents" Relationship="Self.FK__ScheduleE__Servi__75A278F5" FromRole="ServiceInformation" ToRole="ScheduleEvent" />
+    <NavigationProperty Name="UDC" Relationship="Self.FK__ServiceIn__Servi__2A164134" FromRole="ServiceInformation" ToRole="UDC" />
+  </EntityType>
+  <EntityType Name="UDC">
+    <Key>
+      <PropertyRef Name="XRefId" />
+    </Key>
+    <Property Name="XRefId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="KeyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ServiceInformations" Relationship="Self.FK__ServiceIn__Servi__2A164134" FromRole="UDC" ToRole="ServiceInformation" />
+  </EntityType>
+  <Association Name="FK__ScheduleE__Custo__778AC167">
+    <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="0..1" />
+    <End Role="ScheduleEvent" Type="Self.ScheduleEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressBook">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ScheduleEvent">
+        <PropertyRef Name="CustomerAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ScheduleE__Emplo__76969D2E">
+    <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="0..1" />
+    <End Role="ScheduleEvent" Type="Self.ScheduleEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressBook">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ScheduleEvent">
+        <PropertyRef Name="EmployeeAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceIn__Addre__282DF8C2">
+    <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="0..1" />
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressBook">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ServiceInformation">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceIn__Contr__29221CFB">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ContractId" />
+      </Principal>
+      <Dependent Role="ServiceInformation">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ScheduleE__Servi__75A278F5">
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="0..1" />
+    <End Role="ScheduleEvent" Type="Self.ScheduleEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceInformation">
+        <PropertyRef Name="ServiceId" />
+      </Principal>
+      <Dependent Role="ScheduleEvent">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceIn__Servi__2A164134">
+    <End Role="UDC" Type="Self.UDC" Multiplicity="0..1" />
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UDC">
+        <PropertyRef Name="XRefId" />
+      </Principal>
+      <Dependent Role="ServiceInformation">
+        <PropertyRef Name="ServiceTypeXRefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="databaseContext2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AcctRecs" EntityType="Self.AcctRec" />
+    <EntitySet Name="AddressBooks" EntityType="Self.AddressBook" />
+    <EntitySet Name="ChartOfAccts" EntityType="Self.ChartOfAcct" />
+    <EntitySet Name="Contracts" EntityType="Self.Contract" />
+    <EntitySet Name="GeneralLedgers" EntityType="Self.GeneralLedger" />
+    <EntitySet Name="ScheduleEvents" EntityType="Self.ScheduleEvent" />
+    <EntitySet Name="ServiceInformations" EntityType="Self.ServiceInformation" />
+    <EntitySet Name="UDCs" EntityType="Self.UDC" />
+    <AssociationSet Name="FK__ScheduleE__Custo__778AC167" Association="Self.FK__ScheduleE__Custo__778AC167">
+      <End Role="AddressBook" EntitySet="AddressBooks" />
+      <End Role="ScheduleEvent" EntitySet="ScheduleEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ScheduleE__Emplo__76969D2E" Association="Self.FK__ScheduleE__Emplo__76969D2E">
+      <End Role="AddressBook" EntitySet="AddressBooks" />
+      <End Role="ScheduleEvent" EntitySet="ScheduleEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceIn__Addre__282DF8C2" Association="Self.FK__ServiceIn__Addre__282DF8C2">
+      <End Role="AddressBook" EntitySet="AddressBooks" />
+      <End Role="ServiceInformation" EntitySet="ServiceInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceIn__Contr__29221CFB" Association="Self.FK__ServiceIn__Contr__29221CFB">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="ServiceInformation" EntitySet="ServiceInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ScheduleE__Servi__75A278F5" Association="Self.FK__ScheduleE__Servi__75A278F5">
+      <End Role="ServiceInformation" EntitySet="ServiceInformations" />
+      <End Role="ScheduleEvent" EntitySet="ScheduleEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceIn__Servi__2A164134" Association="Self.FK__ServiceIn__Servi__2A164134">
+      <End Role="UDC" EntitySet="UDCs" />
+      <End Role="ServiceInformation" EntitySet="ServiceInformations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

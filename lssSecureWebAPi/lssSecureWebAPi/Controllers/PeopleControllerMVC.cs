@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using lssCore.Services;
-using lssCore.Models;
+using lssCore.Database;
 using PagedList;
 
 namespace lssSecureWeb.Controllers
@@ -65,7 +65,8 @@ namespace lssSecureWeb.Controllers
         // GET: People/Create
         public ActionResult Create()
         {
-            List<UDC> udc_list = addressBookRepository.GetUdcList("AB_Type").ToList<UDC>();
+            UDCRepository udcRepository = new UDCRepository();
+            List<UDC> udc_list = udcRepository.GetUdcList("AB_Type").ToList<UDC>();
             ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
             {
                 Text = c.KeyCode,
@@ -113,16 +114,16 @@ namespace lssSecureWeb.Controllers
         {
             AddressBook person;
             List<AddressBook> listPeople= addressBookRepository.GetAddressBook(id);
-
+            UDCRepository udcRepository = new UDCRepository();
             person = listPeople[0];
 
-            List<UDC> udc_list = addressBookRepository.GetUdcList("AB_Type").ToList<UDC>();
+            List<UDC> udc_list = udcRepository.GetUdcList("AB_Type").ToList<UDC>();
             ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
             {
                  Text=c.Value,
-                 Value=c.KeyCode
+                 Value=c.XRefId.ToString()
             }).ToList();
-            ;
+           
             return View("Edit",person);
         }
 

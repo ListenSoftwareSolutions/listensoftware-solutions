@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using lssCore.Services;
 using lssSecureWebApi2.Models;
-using lssCore.Models;
+using lssCore.Database;
 
 namespace lssSecureWebApi2.Controllers
 {

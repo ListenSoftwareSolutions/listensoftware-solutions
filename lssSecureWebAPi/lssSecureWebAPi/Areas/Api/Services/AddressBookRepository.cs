@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using lssCore.Models;
+using lssCore.Database;
 using System.Web.Configuration;
 using System.Data.SqlClient;
 using System.Data;
@@ -52,7 +52,7 @@ string paramType, string paramValue, string paramName)
         }//SetParameter
         public void AddAdressBook(AddressBook addressBook)
         {
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 db.AddressBooks.Add(addressBook);
                 db.SaveChanges();
@@ -60,7 +60,7 @@ string paramType, string paramValue, string paramName)
         }
         public void DeleteAddressBook(int paramAddressId)
         {
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 var addressBookDelete = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
 
@@ -72,7 +72,7 @@ string paramType, string paramValue, string paramName)
         {
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
 
                     AddressBook original = new AddressBook { AddressId = addressBookUpdate.AddressId };   /// stub model, only has Id
@@ -116,7 +116,7 @@ string paramType, string paramValue, string paramName)
 
         public void UpdateAddressBook(int paramAddressId, string name)
         {
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 var addressBookUpdate = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
                 addressBookUpdate.Name = name;
@@ -130,7 +130,7 @@ string paramType, string paramValue, string paramName)
             try
             {
                 resultList = new List<AddressBook>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     //var query = from b in db.AddressBooks
                     //            orderby b.Name
@@ -207,7 +207,7 @@ string paramType, string paramValue, string paramName)
                 resultList.Add(addressBook);
             }
             */
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 var query = from b in db.AddressBooks
                             orderby b.Name

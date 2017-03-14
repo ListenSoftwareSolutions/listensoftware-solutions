@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using lssCore.Models;
+using lssCore.Database;
 using lssCore.Services;
 
 namespace lssSecureWebApi2.Controllers
@@ -16,7 +16,7 @@ namespace lssSecureWebApi2.Controllers
         {
             this.serviceInformationRepository = new ServiceInformationRepository();
         }
-        public List<ServiceInformation> Get(int Id)
+        public IList<ServiceInformation> Get(int Id)
         {
             return serviceInformationRepository.GetServiceInformation(Id);
         }

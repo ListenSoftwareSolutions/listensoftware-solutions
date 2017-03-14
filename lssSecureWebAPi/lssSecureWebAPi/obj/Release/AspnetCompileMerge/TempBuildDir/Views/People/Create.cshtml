@@ -1,4 +1,4 @@
-﻿@model lssCore.Models.AddressBook
+﻿@model lssCore.Database.AddressBook
 
 @{
     ViewBag.Title = "Create";
@@ -122,7 +122,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Type, ViewBag.Type as IEnumerable<SelectListItem>, "Type")
+                @Html.DropDownListFor(model => model.PeopleXrefId, ViewBag.Type as IEnumerable<SelectListItem>, "Type")
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>

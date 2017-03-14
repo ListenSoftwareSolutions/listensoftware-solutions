@@ -1138,9 +1138,11 @@
     <Content Include="Views\ServiceInformation\Delete.cshtml" />
     <Content Include="Views\ServiceInformation\Details.cshtml" />
     <Content Include="Views\Contract\Index.cshtml" />
-    <Content Include="Views\Contract\Detail.cshtml" />
+    <Content Include="Views\Contract\Details.cshtml" />
     <Content Include="Views\Contract\Create.cshtml" />
     <Content Include="Views\Contract\Edit.cshtml" />
+    <Content Include="Views\Contract\Delete.cshtml" />
+    <Content Include="Views\ServiceInformation\ScheduleEventIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using lssCore.Models;
+using lssCore.Database;
 using lssCore.Services;
 
 namespace lssSecureWeb.Controllers
@@ -47,6 +47,16 @@ namespace lssSecureWeb.Controllers
         {
             AddressBookRepository addressBookRepository = new AddressBookRepository();
 
+            UDCRepository udcRepository = new UDCRepository();
+          
+            List<UDC> udc_list = udcRepository.GetUdcList("SERVICE_Type").ToList<UDC>();
+            ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
+            {
+                Text = c.Value,
+                Value = c.XRefId.ToString()
+            }).ToList();
+          
+
             ViewBag.AddressId = _addressId;
             ViewBag.CustomerName = addressBookRepository.GetCustomerName(_addressId);
             return View();
@@ -72,7 +82,15 @@ namespace lssSecureWeb.Controllers
         public ActionResult Edit(int id)
         {
             AddressBookRepository addressBookRepository = new AddressBookRepository();
+            UDCRepository udcRepository = new UDCRepository();
 
+            List<UDC> udc_list = udcRepository.GetUdcList("SERVICE_Type").ToList<UDC>();
+            ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
+            {
+                Text = c.Value,
+                Value = c.XRefId.ToString()
+            }).ToList();
+            
             ViewBag.AddressId = _addressId;
             ViewBag.CustomerName = addressBookRepository.GetCustomerName(_addressId);
             Contract contract = contractRepository.GetContractsById(id);
@@ -98,10 +116,14 @@ namespace lssSecureWeb.Controllers
         // GET: Contract/Delete/5
         public ActionResult Delete(int id)
         {
+            bool status = false;
             ViewBag.AddressId = _addressId;
-            Contract contract = contractRepository.GetContractsById(id);
+            status=contractRepository.DeleteContract(id);
 
-            return View(contract);
+            ViewBag.AddressId = _addressId;
+            List<Contract> contractList = contractRepository.GetContractsByAddressId(_addressId);
+
+            return View("index",contractList);
         }
 
         // POST: Contract/Delete/5

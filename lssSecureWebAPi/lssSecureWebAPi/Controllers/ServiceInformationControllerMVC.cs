@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using lssCore.Models;
+using lssCore.Database;
 using lssCore.Services;
 
 namespace lssSecureWeb.Controllers
@@ -38,7 +38,7 @@ namespace lssSecureWeb.Controllers
         // GET: ServiceInformationMVC/Details/5
         public ActionResult Details(int id)
         {
-            List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
+            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
             return View("Details", serviceList[0]);
 
         }
@@ -48,6 +48,7 @@ namespace lssSecureWeb.Controllers
         {
             ViewBag.AddressId = _addressId;
             LoadCustomerName();
+            LoadServiceTypeDropDown();
             LoadContractDropDown();
             return View();
         }
@@ -83,6 +84,16 @@ namespace lssSecureWeb.Controllers
                 Value = c.AddressId.ToString()
             }).ToList();
         }
+        void LoadServiceTypeDropDown()
+        {
+            UDCRepository udcRepository = new UDCRepository();
+            List<UDC> udc_list = udcRepository.GetUdcList("SERVICE_Type").ToList<UDC>();
+            ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
+            {
+                Text = c.Value,
+                Value = c.XRefId.ToString()
+            }).ToList();
+        }
         void LoadContractDropDown()
         {
             ContractRepository contractRepository = new ContractRepository();
@@ -96,9 +107,11 @@ namespace lssSecureWeb.Controllers
         // GET: ServiceInformationMVC/Edit/5
         public ActionResult Edit(int id)
         {
-            List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
+            ViewBag.AddressId = _addressId;
+            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
             LoadCustomerDropDown();
             LoadContractDropDown();
+            LoadServiceTypeDropDown();
               
             return View("Edit", serviceList[0]);
         }
@@ -124,7 +137,7 @@ namespace lssSecureWeb.Controllers
         // GET: ServiceInformationMVC/Delete/5
         public ActionResult Delete(int id)
         {
-            List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
+            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
             return View("Delete", serviceList[0]);
         }
 

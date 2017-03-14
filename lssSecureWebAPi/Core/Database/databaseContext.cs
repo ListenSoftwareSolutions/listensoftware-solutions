@@ -1,15 +1,15 @@
-namespace lssCore.Models
+namespace lssCore2.Models
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using lssCore;
-    using lssCore.Models;
+    //using lssCore;
+    using lssCore.Database;
 
-    public partial class databaseContext : DbContext
+    public partial class databaseContext2 : DbContext
     {
-        public databaseContext()
+        public databaseContext2()
             : base("name=databaseContext")
         {
         }
@@ -90,10 +90,6 @@ namespace lssCore.Models
             modelBuilder.Entity<Contract>()
                 .Property(e => e.RemainingBalance)
                 .HasPrecision(19, 4);
-
-            modelBuilder.Entity<ScheduleEvent>()
-                .Property(e => e.Comments)
-                .IsUnicode(false);
 
             modelBuilder.Entity<ServiceInformation>()
                 .Property(e => e.ServiceDescription)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using lssCore.Models;
+using lssCore.Database;
 using System.Web.Configuration;
 using System.Data.SqlClient;
 using System.Data;
@@ -52,7 +52,7 @@ string paramType, string paramValue, string paramName)
         }//SetParameter
         public void AddAddressBook(AddressBook addressBook)
         {
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 db.AddressBooks.Add(addressBook);
                 db.SaveChanges();
@@ -64,7 +64,7 @@ string paramType, string paramValue, string paramName)
 
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var query = (from b in db.AddressBooks
                                  where (b.AddressId == addressId)
@@ -83,7 +83,7 @@ string paramType, string paramValue, string paramName)
         }
         public void DeleteAddressBook(int paramAddressId)
         {
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 var addressBookDelete = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
 
@@ -91,33 +91,12 @@ string paramType, string paramValue, string paramName)
                 db.SaveChanges();
             }
         }
-        public IEnumerable<UDC> GetUdcList(string product_code)
-        {
-            try
-            {
-                using (var db = new databaseContext())
-                {
 
-                    var udc_list = from p in db.UDCs
-                                   where p.ProductCode == product_code
-                                   orderby p.KeyCode
-                                   select p;
-
-                    var x = udc_list.ToList<UDC>();
-
-                    return (x);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return (null);
-        }
         public void UpdateAddressBook(AddressBook addressBookUpdate)
         {
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
 
                     AddressBook original = new AddressBook { AddressId = addressBookUpdate.AddressId };   /// stub model, only has Id
@@ -161,7 +140,7 @@ string paramType, string paramValue, string paramName)
 
         public void UpdateAddressBook(int paramAddressId, string name)
         {
-            using (var db = new databaseContext())
+            using (var db = new DatabaseContext())
             {
                 var addressBookUpdate = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
                 addressBookUpdate.Name = name;
@@ -175,7 +154,7 @@ string paramType, string paramValue, string paramName)
             try
             {
                 resultList = new List<AddressBook>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     //var query = from b in db.AddressBooks
                     //            orderby b.Name
@@ -197,25 +176,8 @@ string paramType, string paramValue, string paramName)
         public List<AddressBook> GetAllAddressBooks(string searchString)
         {
             List<AddressBook> resultList = new List<AddressBook>();
-            //string connectionString = WebConfigurationManager.ConnectionStrings["lssDBConnectionString"].ConnectionString;
-            //SqlConnection conn = new SqlConnection(connectionString);
-            //conn.Open();
-            //string sql = "usp_addressbook";
-
-            //SqlCommand command = new SqlCommand(sql, conn);
-            //command.CommandType = CommandType.StoredProcedure;
-
-            //SetParameter(ref command, "Int32", "2", "@Id");
-            //SqlDataReader reader = command.ExecuteReader();
-
-            //while (reader.Read() == true)
-            /*{
-              
-
-                resultList.Add(addressBook);
-            }
-            */
-            using (var db = new databaseContext())
+        
+            using (var db = new DatabaseContext())
             {
                 var query = from b in db.AddressBooks select b;
        

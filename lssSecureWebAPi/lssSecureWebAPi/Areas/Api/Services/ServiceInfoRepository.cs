@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using lssCore.Models;
+using lssCore.Database;
 
 namespace lssSecureWebApi2.Services
 {
@@ -12,7 +12,7 @@ namespace lssSecureWebApi2.Services
         {
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var serviceInformationDelete = db.ServiceInformations.Single(e => e.ServiceId == paramId);
 
@@ -29,7 +29,7 @@ namespace lssSecureWebApi2.Services
     {
         try
         {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     db.ServiceInformations.Add(serviceInformation);
                     db.SaveChanges();
@@ -44,7 +44,7 @@ public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate
         {
             try
             {
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     var serviceInformationOriginal = db.ServiceInformations.Find(serviceInformationUpdate.ServiceId);
 
@@ -65,7 +65,7 @@ public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new databaseContext())
+                using (var db = new DatabaseContext())
                 {
                     ServiceInformation item = db.ServiceInformations.Single(e => e.ServiceId == paramServiceId);
                     ServiceInformation serviceInformation= new ServiceInformation();

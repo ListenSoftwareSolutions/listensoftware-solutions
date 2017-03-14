@@ -29,7 +29,6 @@ C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWe
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\lssSecureWeb.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\lssSecureWeb.pdb
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Antlr3.Runtime.dll
-C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Core.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\EntityFramework.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\EntityFramework.SqlServer.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Microsoft.AspNet.Identity.Core.dll
@@ -60,7 +59,6 @@ C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWe
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\System.Web.WebPages.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\System.Web.WebPages.Razor.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\WebGrease.dll
-C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Core.pdb
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Antlr3.Runtime.pdb
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\Newtonsoft.Json.xml
@@ -95,3 +93,5 @@ C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWe
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.Mvc.dll
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.xml
 C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\PagedList.Mvc.xml
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\lssCore.dll
+C:\Users\Owner\Source\Repos\listensoftware-solutions\lssSecureWebAPi\lssSecureWebAPi\bin\lssCore.pdb

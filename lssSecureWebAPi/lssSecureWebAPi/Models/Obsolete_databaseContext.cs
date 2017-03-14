@@ -4,7 +4,7 @@ namespace lssSecureWeb.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using lssCore.Models;
+    using lssCore.Database;
 
     public partial class databaseContextArchive: DbContext
     {
@@ -89,10 +89,6 @@ namespace lssSecureWeb.Models
             modelBuilder.Entity<Contract>()
                 .Property(e => e.RemainingBalance)
                 .HasPrecision(19, 4);
-
-            modelBuilder.Entity<ScheduleEvent>()
-                .Property(e => e.Comments)
-                .IsUnicode(false);
 
             modelBuilder.Entity<ServiceInformation>()
                 .Property(e => e.ServiceDescription)

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="listensoftwareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AcctRec">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="OpenAmount" Type="money" Nullable="false" />
+    <Property Name="DiscountDueDate" Type="date" Nullable="false" />
+    <Property Name="GLDate" Type="date" Nullable="false" />
+    <Property Name="InvoiceDate" Type="date" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="DocNumber" Type="bigint" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="255" />
+    <Property Name="NetTerms" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AddressId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AddressBook">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Company" Type="varchar" MaxLength="255" />
+    <Property Name="CellPhone" Type="nchar" MaxLength="20" />
+    <Property Name="MailingCity" Type="varchar" MaxLength="50" />
+    <Property Name="MailingState" Type="varchar" MaxLength="50" />
+    <Property Name="MailingAddress" Type="varchar" MaxLength="255" />
+    <Property Name="MailingZipcode" Type="varchar" MaxLength="50" />
+    <Property Name="BillingCity" Type="varchar" MaxLength="50" />
+    <Property Name="BillingState" Type="varchar" MaxLength="50" />
+    <Property Name="BillingZipcode" Type="varchar" MaxLength="50" />
+    <Property Name="BillingAddress" Type="varchar" MaxLength="255" />
+    <Property Name="Type" Type="varchar" MaxLength="20" />
+    <Property Name="PeopleXrefId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ChartOfAccts">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="10" />
+    <Property Name="BusUnit" Type="varchar" MaxLength="10" />
+    <Property Name="Subsidiary" Type="varchar" MaxLength="10" />
+    <Property Name="SubSub" Type="varchar" MaxLength="10" />
+    <Property Name="Account" Type="varchar" MaxLength="10" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="CompanyNumber" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+    </Key>
+    <Property Name="ContractId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddressId" Type="bigint" />
+    <Property Name="ServiceTypeXRefId" Type="bigint" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="RemainingBalance" Type="money" />
+  </EntityType>
+  <EntityType Name="GeneralLedger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocNumber" Type="bigint" Nullable="false" />
+    <Property Name="DocType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="LedgerType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="GLDate" Type="datetime" Nullable="false" />
+    <Property Name="AccountId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddressId" Type="bigint" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ScheduleEvent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeAddressId" Type="bigint" />
+    <Property Name="EventDateTime" Type="datetime" />
+    <Property Name="ServiceId" Type="bigint" />
+    <Property Name="DurationMinutes" Type="bigint" />
+    <Property Name="CustomerAddressId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ServiceInformation">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceDescription" Type="varchar" MaxLength="255" />
+    <Property Name="Price" Type="money" />
+    <Property Name="AddOns" Type="varchar" MaxLength="1000" />
+    <Property Name="ServiceTypeXRefId" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="AddressId" Type="bigint" />
+    <Property Name="ContractId" Type="bigint" />
+    <Property Name="SquareFeetOfStructure" Type="int" />
+    <Property Name="LocationDescription" Type="varchar" MaxLength="255" />
+    <Property Name="LocationGPS" Type="varchar" MaxLength="255" />
+    <Property Name="Comments" Type="varchar" MaxLength="1000" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="UDC">
+    <Key>
+      <PropertyRef Name="XRefId" />
+    </Key>
+    <Property Name="XRefId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="20" />
+    <Property Name="KeyCode" Type="varchar" MaxLength="50" />
+    <Property Name="Value" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__ScheduleE__Custo__778AC167">
+    <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="0..1" />
+    <End Role="ScheduleEvent" Type="Self.ScheduleEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressBook">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ScheduleEvent">
+        <PropertyRef Name="CustomerAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ScheduleE__Emplo__76969D2E">
+    <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="0..1" />
+    <End Role="ScheduleEvent" Type="Self.ScheduleEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressBook">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ScheduleEvent">
+        <PropertyRef Name="EmployeeAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ScheduleE__Servi__75A278F5">
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="0..1" />
+    <End Role="ScheduleEvent" Type="Self.ScheduleEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceInformation">
+        <PropertyRef Name="ServiceId" />
+      </Principal>
+      <Dependent Role="ScheduleEvent">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceIn__Addre__282DF8C2">
+    <End Role="AddressBook" Type="Self.AddressBook" Multiplicity="0..1" />
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressBook">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="ServiceInformation">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceIn__Contr__29221CFB">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ContractId" />
+      </Principal>
+      <Dependent Role="ServiceInformation">
+        <PropertyRef Name="ContractId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ServiceIn__Servi__2A164134">
+    <End Role="UDC" Type="Self.UDC" Multiplicity="0..1" />
+    <End Role="ServiceInformation" Type="Self.ServiceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UDC">
+        <PropertyRef Name="XRefId" />
+      </Principal>
+      <Dependent Role="ServiceInformation">
+        <PropertyRef Name="ServiceTypeXRefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="listensoftwareDBModelStoreContainer">
+    <EntitySet Name="AcctRec" EntityType="Self.AcctRec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddressBook" EntityType="Self.AddressBook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChartOfAccts" EntityType="Self.ChartOfAccts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralLedger" EntityType="Self.GeneralLedger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleEvent" EntityType="Self.ScheduleEvent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceInformation" EntityType="Self.ServiceInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UDC" EntityType="Self.UDC" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ScheduleE__Custo__778AC167" Association="Self.FK__ScheduleE__Custo__778AC167">
+      <End Role="AddressBook" EntitySet="AddressBook" />
+      <End Role="ScheduleEvent" EntitySet="ScheduleEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ScheduleE__Emplo__76969D2E" Association="Self.FK__ScheduleE__Emplo__76969D2E">
+      <End Role="AddressBook" EntitySet="AddressBook" />
+      <End Role="ScheduleEvent" EntitySet="ScheduleEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ScheduleE__Servi__75A278F5" Association="Self.FK__ScheduleE__Servi__75A278F5">
+      <End Role="ServiceInformation" EntitySet="ServiceInformation" />
+      <End Role="ScheduleEvent" EntitySet="ScheduleEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceIn__Addre__282DF8C2" Association="Self.FK__ServiceIn__Addre__282DF8C2">
+      <End Role="AddressBook" EntitySet="AddressBook" />
+      <End Role="ServiceInformation" EntitySet="ServiceInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceIn__Contr__29221CFB" Association="Self.FK__ServiceIn__Contr__29221CFB">
+      <End Role="Contract" EntitySet="Contract" />
+      <End Role="ServiceInformation" EntitySet="ServiceInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceIn__Servi__2A164134" Association="Self.FK__ServiceIn__Servi__2A164134">
+      <End Role="UDC" EntitySet="UDC" />
+      <End Role="ServiceInformation" EntitySet="ServiceInformation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
