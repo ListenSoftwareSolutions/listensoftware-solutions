@@ -61,7 +61,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Service Call", "ServiceList", "ServiceInformation", new { addressId = item.AddressId },null)
+            @Html.ActionLink("Service Call", "ServiceList", "ServiceInformation", new { addressId = item.AddressId }, null)
 
             <p></p>
             @Html.ActionLink("Contracts", "ContractList", "Contract", new { addressId = item.AddressId }, null)
@@ -96,16 +96,9 @@
         </td>
 
         <td>
-            @{ 
-
-                UDCRepository udcRepository = new UDCRepository();
-                UDC udc = udcRepository.GetUdcById(item.PeopleXrefId);
-                if (udc != null)
-                {
-                    @udc.Value;
-                }
-            }
-           
+            @Utility.GetUDCValue(item.PeopleXrefId)
+      
+          
             
         </td>
         <td>

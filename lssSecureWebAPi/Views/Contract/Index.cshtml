@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<lssCore.Database.Contract>
-
+@using lssCore.Services;
 @{
     ViewBag.Title = "Index";
 }
@@ -35,10 +35,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AddressId)
+            @Utility.GetPersonName(item.AddressId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ServiceTypeXRefId)
+            @Utility.GetUDCValue(item.ServiceTypeXRefId)
+           
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)

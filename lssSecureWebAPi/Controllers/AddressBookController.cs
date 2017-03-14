@@ -23,7 +23,7 @@ namespace lssSecureWeb.Controllers
         {
             return addressBookRepository.GetAllAddressBooks("");
         }
-        public List<AddressBook> Get(int Id)
+        public AddressBook Get(int Id)
         {
             return addressBookRepository.GetAddressBook(Id);
         }

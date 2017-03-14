@@ -1,5 +1,5 @@
 ﻿@model lssCore.Database.AddressBook
-
+@using lssCore.Services;
 @{
     ViewBag.Title = "Delete";
 }
@@ -120,7 +120,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PeopleXrefId)
+
+            @Utility.GetUDCValue(Model.PeopleXrefId)
         </dd>
 
     </dl>

@@ -1,5 +1,5 @@
 ﻿@model lssCore.Database.Contract
-
+@using lssCore.Services;
 @{
     ViewBag.Title = "Delete";
 }
@@ -16,7 +16,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AddressId)
+            @Utility.GetPersonName(Model.AddressId)
         </dd>
 
         <dt>
@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ServiceTypeXRefId)
+            @Utility.GetUDCValue(Model.ServiceTypeXRefId)
         </dd>
 
         <dt>

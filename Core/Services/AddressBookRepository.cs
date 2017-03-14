@@ -148,21 +148,22 @@ string paramType, string paramValue, string paramName)
             }
         }
 
-        public List<AddressBook> GetAddressBook(int paramAddressId)
+        public AddressBook GetAddressBook(long ? paramAddressId)
         {
-            List<AddressBook> resultList = null;
+            // List<AddressBook> resultList = null;
+            AddressBook item=null;
             try
             {
-                resultList = new List<AddressBook>();
+                //resultList = new List<AddressBook>();
                 using (var db = new DatabaseContext())
                 {
                     //var query = from b in db.AddressBooks
                     //            orderby b.Name
                     //            select b;
 
-                    AddressBook item = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
+                    item = db.AddressBooks.Single(e => e.AddressId == paramAddressId);
 
-                    resultList.Add(item);
+                    //resultList.Add(item);
                   
                 }
             }
@@ -170,7 +171,7 @@ string paramType, string paramValue, string paramName)
             {
 
             }
-            return (resultList);
+            return (item);
         }
 
         public List<AddressBook> GetAllAddressBooks(string searchString)

@@ -56,10 +56,9 @@ namespace lssSecureWeb.Controllers
         // GET: People/Details/5
         public ActionResult Details(int id)
         {
-            AddressBook person;
-            List<AddressBook> listPeople = addressBookRepository.GetAddressBook(id);
-
-            person = listPeople[0];
+            
+            AddressBook person = addressBookRepository.GetAddressBook(id);
+ 
             return View(person);
         }
 
@@ -113,11 +112,10 @@ namespace lssSecureWeb.Controllers
         // GET: People/Edit/5
         public ActionResult Edit(int id)
         {
-            AddressBook person;
-            List<AddressBook> listPeople= addressBookRepository.GetAddressBook(id);
+           
+            AddressBook person = addressBookRepository.GetAddressBook(id);
             UDCRepository udcRepository = new UDCRepository();
-            person = listPeople[0];
-
+      
             List<UDC> udc_list = udcRepository.GetUdcList("AB_Type").ToList<UDC>();
             ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
             {
@@ -159,10 +157,10 @@ namespace lssSecureWeb.Controllers
         // GET: People/Delete/5
         public ActionResult Delete(int id)
         {
-            AddressBook person;
-            List<AddressBook> listPeople = addressBookRepository.GetAddressBook(id);
+          
+            AddressBook person = addressBookRepository.GetAddressBook(id);
 
-            person = listPeople[0];
+       
             return View(person);
         }
 

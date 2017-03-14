@@ -76,10 +76,9 @@ namespace lssSecureWebApi2.Controllers
         // GET: People/Edit/5
         public ActionResult Edit(int id)
         {
-            AddressBook person;
-            List<AddressBook> listPeople= addressBookRepository.GetAddressBook(id);
-
-            person = listPeople[0];
+        
+            AddressBook person= addressBookRepository.GetAddressBook(id);
+      
 
             return View("Edit",person);
         }

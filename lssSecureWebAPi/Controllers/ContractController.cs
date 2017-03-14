@@ -116,23 +116,25 @@ namespace lssSecureWeb.Controllers
         // GET: Contract/Delete/5
         public ActionResult Delete(int id)
         {
-            bool status = false;
+           
             ViewBag.AddressId = _addressId;
-            status=contractRepository.DeleteContract(id);
+      
+          
+            Contract contract = contractRepository.GetContractsById(id);
 
-            ViewBag.AddressId = _addressId;
-            List<Contract> contractList = contractRepository.GetContractsByAddressId(_addressId);
-
-            return View("index",contractList);
+            return View(contract);
         }
 
         // POST: Contract/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            bool status = false;
             try
             {
+                ViewBag.AddressId = _addressId;
                 // TODO: Add delete logic here
+                status = contractRepository.DeleteContract(id);
 
                 return RedirectToAction("Index");
             }
