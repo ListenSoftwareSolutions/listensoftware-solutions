@@ -65,7 +65,7 @@ namespace lssCore.Services
             {
             }
         }
-        public Contract GetContractsById(int id)
+        public Contract GetContractsById(long ? id)
         {
             Contract retVal=null;
             try
@@ -86,7 +86,7 @@ namespace lssCore.Services
             { }
             return retVal;
         }
-        public List<Contract> GetContractsByAddressId(int addressId)
+        public List<Contract> GetContractsByAddressId(long addressId)
         {
             List<Contract> resultList = new List<Contract>();
             try

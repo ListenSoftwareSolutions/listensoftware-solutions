@@ -1,5 +1,5 @@
 ﻿@model lssCore.Database.ServiceInformation
-
+@using lssCore.Services;
 @{
     ViewBag.Title = "Edit";
 }
@@ -45,8 +45,7 @@
             @Html.LabelFor(model => model.ServiceTypeXRefId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ServiceTypeXRefId, ViewBag.Type as IEnumerable<SelectListItem>, "Type")
-                @Html.EditorFor(model => model.ServiceTypeXRefId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ServiceTypeXRefId, "", new { @class = "text-danger" })
+                 @Html.ValidationMessageFor(model => model.ServiceTypeXRefId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -61,8 +60,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AddressId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.AddressId, Model.AddressId)
-                @Html.EditorFor(model => model.AddressId, new { htmlAttributes = new { @class = "form-control" } })
+                @Utility.GetPersonName(Model.AddressId)
+                @Html.HiddenFor(model => model.AddressId)
                 @Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,7 +69,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ContractId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ContractId, new { htmlAttributes = new { @class = "form-control" } })
+                @Utility.GetContract(Model.ContractId)
+                @Html.HiddenFor(model => model.ContractId)
                 @Html.ValidationMessageFor(model => model.ContractId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -122,7 +122,6 @@
         </div>
     </div>
 
-    @Html.Partial("ScheduleEventIndex",Model.ScheduleEvents) 
 }
 
 <div>

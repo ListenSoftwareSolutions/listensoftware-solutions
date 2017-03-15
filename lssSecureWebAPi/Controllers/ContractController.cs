@@ -41,21 +41,23 @@ namespace lssSecureWeb.Controllers
             Contract contract = contractRepository.GetContractsById(id);
             return View(contract);
         }
-
-        // GET: Contract/Create
-        public ActionResult Create()
+        private void LoadContractList()
         {
-            AddressBookRepository addressBookRepository = new AddressBookRepository();
-
             UDCRepository udcRepository = new UDCRepository();
-          
+
             List<UDC> udc_list = udcRepository.GetUdcList("SERVICE_Type").ToList<UDC>();
             ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
             {
                 Text = c.Value,
                 Value = c.XRefId.ToString()
             }).ToList();
-          
+        }
+        // GET: Contract/Create
+        public ActionResult Create()
+        {
+            AddressBookRepository addressBookRepository = new AddressBookRepository();
+
+            LoadContractList();
 
             ViewBag.AddressId = _addressId;
             ViewBag.CustomerName = addressBookRepository.GetCustomerName(_addressId);
@@ -82,14 +84,8 @@ namespace lssSecureWeb.Controllers
         public ActionResult Edit(int id)
         {
             AddressBookRepository addressBookRepository = new AddressBookRepository();
-            UDCRepository udcRepository = new UDCRepository();
 
-            List<UDC> udc_list = udcRepository.GetUdcList("SERVICE_Type").ToList<UDC>();
-            ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
-            {
-                Text = c.Value,
-                Value = c.XRefId.ToString()
-            }).ToList();
+            LoadContractList();
             
             ViewBag.AddressId = _addressId;
             ViewBag.CustomerName = addressBookRepository.GetCustomerName(_addressId);

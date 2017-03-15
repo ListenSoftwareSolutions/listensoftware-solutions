@@ -16,7 +16,10 @@ namespace lssCore.Services
             string retVal = "";
             AddressBookRepository addressBookRepository = new AddressBookRepository();
             AddressBook addressBook = addressBookRepository.GetAddressBook(id);
-            retVal = addressBook.Name;
+            if (addressBook != null)
+            {
+                retVal = addressBook.Name;
+            }
             return retVal;
         }
         public static string GetUDCValue(long ? id) {
@@ -26,6 +29,17 @@ namespace lssCore.Services
             if (udc != null)
             {
                 retVal=udc.Value;
+            }
+            return retVal;
+        }
+        public static string GetContract(long? id)
+        {
+            string retVal = "";
+            ContractRepository contractRepository = new ContractRepository();
+            Contract contract = contractRepository.GetContractsById(id);
+            if (contract != null)
+            {
+                retVal = contract.StartDate + " " + contract.EndDate;
             }
             return retVal;
         }

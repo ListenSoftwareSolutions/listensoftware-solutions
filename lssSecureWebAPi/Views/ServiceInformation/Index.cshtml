@@ -1,16 +1,26 @@
 ﻿@model IEnumerable<lssCore.Database.ServiceInformation>
-
+@using lssCore.Services;
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index  Address Id=@ViewBag.AddressId</h2>
+
 
 <p>
+    @{ 
+        if (ViewBag.AddressId != null)
+        {
+            @ViewBag.AddressId
+            }
+        }
+    <br />
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            Action
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ServiceDescription)
         </th>
@@ -53,6 +63,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.ActionLink("Schedule", "Index", "ScheduleEvent", new { serviceId = item.ServiceId, addressId=item.AddressId },null)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ServiceDescription)
         </td>
         <td>
@@ -62,16 +75,18 @@
             @Html.DisplayFor(modelItem => item.AddOns)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ServiceTypeXRefId)
+            @Utility.GetUDCValue(item.ServiceTypeXRefId)
+          
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AddressId)
+           
+            @Utility.GetPersonName(item.AddressId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContractId)
+            @Utility.GetContract(item.ContractId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SquareFeetOfStructure)

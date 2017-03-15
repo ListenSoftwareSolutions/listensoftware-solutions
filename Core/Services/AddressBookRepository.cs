@@ -58,7 +58,7 @@ string paramType, string paramValue, string paramName)
                 db.SaveChanges();
             }
         }
-        public string GetCustomerName(int addressId)
+        public string GetCustomerName(long addressId)
         {
             string retVal = "";
 
@@ -81,7 +81,7 @@ string paramType, string paramValue, string paramName)
             }
             return retVal;
         }
-        public void DeleteAddressBook(int paramAddressId)
+        public void DeleteAddressBook(long paramAddressId)
         {
             using (var db = new DatabaseContext())
             {
@@ -138,7 +138,7 @@ string paramType, string paramValue, string paramName)
             return attribs;
         }
 
-        public void UpdateAddressBook(int paramAddressId, string name)
+        public void UpdateAddressBook(long paramAddressId, string name)
         {
             using (var db = new DatabaseContext())
             {
@@ -173,7 +173,29 @@ string paramType, string paramValue, string paramName)
             }
             return (item);
         }
+        public List<AddressBook> GetPersonList(string keyCode)
+        {
+            List<AddressBook> resultList = new List<AddressBook>();
+            UDCRepository udcRepository = new UDCRepository();
+            long xRefId = udcRepository.GetUdcByKeyCode(keyCode);
+            using (var db = new DatabaseContext())
+            {
+                var query = from b in db.AddressBooks
+                            .Where(b=>b.PeopleXrefId==xRefId)
+                            select b;
 
+                query = query.OrderBy(s => s.Name);
+
+
+                foreach (var item in query)
+                {
+                    resultList.Add(item);
+                }
+
+
+            }
+            return (resultList);
+        }
         public List<AddressBook> GetAllAddressBooks(string searchString)
         {
             List<AddressBook> resultList = new List<AddressBook>();

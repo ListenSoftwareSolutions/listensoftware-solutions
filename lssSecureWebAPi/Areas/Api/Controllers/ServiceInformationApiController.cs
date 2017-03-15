@@ -16,7 +16,7 @@ namespace lssSecureWebApi2.Controllers
         {
             this.serviceInformationRepository = new ServiceInformationRepository();
         }
-        public IList<ServiceInformation> Get(int Id)
+        public ServiceInformation Get(int Id)
         {
             return serviceInformationRepository.GetServiceInformation(Id);
         }

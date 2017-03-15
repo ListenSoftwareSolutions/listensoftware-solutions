@@ -232,6 +232,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Api\Controllers\LoginApiController.cs" />
     <Compile Include="Controllers\PeopleControllerMVC.cs" />
+    <Compile Include="Controllers\ScheduleEventController.cs" />
     <Compile Include="Controllers\ServiceInformationControllerMVC.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1142,7 +1143,10 @@
     <Content Include="Views\Contract\Create.cshtml" />
     <Content Include="Views\Contract\Edit.cshtml" />
     <Content Include="Views\Contract\Delete.cshtml" />
-    <Content Include="Views\ServiceInformation\ScheduleEventIndex.cshtml" />
+    <Content Include="Views\ScheduleEvent\Index.cshtml" />
+    <Content Include="Views\ScheduleEvent\Create.cshtml" />
+    <Content Include="Views\ScheduleEvent\Delete.cshtml" />
+    <Content Include="Views\ScheduleEvent\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

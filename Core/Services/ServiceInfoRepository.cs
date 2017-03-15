@@ -65,31 +65,32 @@ namespace lssCore.Services
             }
         }
        
-        public IList<ServiceInformation> GetServiceInformation(int paramServiceId)
+        public ServiceInformation GetServiceInformation(int paramServiceId)
         {
-            IList<ServiceInformation> resultList=null;
+            //IList<ServiceInformation> resultList=null;
             //List<ServiceInformation> resultList = null;
+            ServiceInformation item = null;
             try
             {
-                resultList = new List<ServiceInformation>();
+                //resultList = new List<ServiceInformation>();
                 using (var db = new DatabaseContext())
                 {
           
-                    ServiceInformation item = db.ServiceInformations.Include(s1 => s1.ScheduleEvents).Single(e => e.ServiceId == paramServiceId);
+                    item = db.ServiceInformations.Include(s1 => s1.ScheduleEvents).Single(e => e.ServiceId == paramServiceId);
                     //ServiceInformation serviceInformation= new ServiceInformation();
 
-                    if (item != null)
-                    {
+                    //if (item != null)
+                    //{
                              
-                        resultList.Add(item);
-                    }
+                     //   resultList.Add(item);
+                    //}
                 }
             }
             catch (Exception ex)
             {
 
             }
-            return (resultList);
+            return (item);
         }
      
        
@@ -120,7 +121,7 @@ namespace lssCore.Services
             return (resultList);
 
         }
-        public IList<ServiceInformation> GetServiceInformationByAddressId(int addressId)
+        public IList<ServiceInformation> GetServiceInformationByAddressId(long addressId)
         {
             IList<ServiceInformation> resultList = null;
             try
@@ -129,7 +130,8 @@ namespace lssCore.Services
                 using (var db = new DatabaseContext())
                 {
                     var query = from b in db.ServiceInformations
-                                where (b.Status == null && b.AddressId==addressId)
+                                    //where (b.Status == null && b.AddressId==addressId)
+                                where ( b.AddressId == addressId)
                                 select b;
 
                     foreach (var item in query)

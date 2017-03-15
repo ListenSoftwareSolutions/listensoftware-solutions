@@ -1,0 +1,52 @@
+﻿@model lssCore.Database.ScheduleEvent
+
+<div>
+    <h4>ScheduleEvent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeAddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeAddressId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationMinutes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationMinutes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddressId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

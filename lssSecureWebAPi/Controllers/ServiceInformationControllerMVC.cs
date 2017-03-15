@@ -12,34 +12,35 @@ namespace lssSecureWeb.Controllers
     public class ServiceInformationController : Controller
     {
         private ServiceInformationRepository serviceInformationRepository;
-        private static int _addressId;
+        private static long _addressId;
         // GET: ServiceInformationMVC
 
         public ServiceInformationController()
         {
             this.serviceInformationRepository = new ServiceInformationRepository();
         }
-        public ActionResult Index()
+        public ActionResult Index(long addressId)
         {
-            IList<ServiceInformation> serviceList = serviceInformationRepository.GetAllServiceInformation();
-            ViewBag.AddressId = _addressId;
-            return View("Index", serviceList);
-        }
-        public ActionResult ServiceList(int addressId)
-        {
-        
             _addressId = addressId;
+            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(addressId);
             ViewBag.AddressId = _addressId;
-            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(_addressId);
             return View("Index", serviceList);
-         
         }
+        //public ActionResult ServiceList(int addressId)
+        //{
+        
+        //    _addressId = addressId;
+        //    ViewBag.AddressId = _addressId;
+        //    IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(_addressId);
+        //    return View("Index", serviceList);
+         
+        //}
 
         // GET: ServiceInformationMVC/Details/5
         public ActionResult Details(int id)
         {
-            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
-            return View("Details", serviceList[0]);
+            ServiceInformation serviceInformation = serviceInformationRepository.GetServiceInformation(id);
+            return View("Details", serviceInformation);
 
         }
 
@@ -108,12 +109,12 @@ namespace lssSecureWeb.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.AddressId = _addressId;
-            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
+            ServiceInformation serviceInformation = serviceInformationRepository.GetServiceInformation(id);
             LoadCustomerDropDown();
             LoadContractDropDown();
             LoadServiceTypeDropDown();
               
-            return View("Edit", serviceList[0]);
+            return View("Edit", serviceInformation);
         }
 
         // POST: ServiceInformationMVC/Edit/5
@@ -123,6 +124,7 @@ namespace lssSecureWeb.Controllers
             try
             {
                 // TODO: Add update logic here
+                ViewBag.AddressId = _addressId;
 
                 serviceInformationRepository.UpdateServiceInformation(serviceInformation);
 
@@ -137,8 +139,8 @@ namespace lssSecureWeb.Controllers
         // GET: ServiceInformationMVC/Delete/5
         public ActionResult Delete(int id)
         {
-            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformation(id);
-            return View("Delete", serviceList[0]);
+            ServiceInformation serviceInformation = serviceInformationRepository.GetServiceInformation(id);
+            return View("Delete", serviceInformation);
         }
 
         // POST: ServiceInformationMVC/Delete/5

@@ -8,6 +8,30 @@ namespace lssCore.Services
 {
     public class UDCRepository
     {
+        public long GetUdcByKeyCode(string keyCode)
+        {
+            UDC udc;
+            long retVal = 0;
+            try
+            {
+                using (var db = new DatabaseContext())
+                {
+                    udc = (from p in db.UDCs
+                           where p.KeyCode== keyCode
+                           select p).FirstOrDefault();
+
+                    if (udc != null)
+                    {
+                        retVal = udc.XRefId;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return retVal;
+        }
         public UDC GetUdcById(long ? id)
         {
             UDC udc = null;
