@@ -36,7 +36,22 @@ namespace lssCore.Services
             return (resultList);
 
         }
-        public bool DeleteScheduleEvent(int paramId)
+        public ScheduleEvent GetScheduleEventById(long paramId)
+        {
+            ScheduleEvent scheduleEvent = null;
+            try {
+                using (var db = new DatabaseContext())
+                {
+                    scheduleEvent = db.ScheduleEvents.Single(e => e.Id == paramId);
+                }
+            }
+            catch (Exception ex)
+            {
+             
+            }
+            return scheduleEvent;
+        }
+        public bool DeleteScheduleEvent(long paramId)
         {
             bool retVal = false;
             try

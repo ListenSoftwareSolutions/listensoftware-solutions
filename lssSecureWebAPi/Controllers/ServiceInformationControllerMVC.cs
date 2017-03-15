@@ -26,19 +26,11 @@ namespace lssSecureWeb.Controllers
             ViewBag.AddressId = _addressId;
             return View("Index", serviceList);
         }
-        //public ActionResult ServiceList(int addressId)
-        //{
         
-        //    _addressId = addressId;
-        //    ViewBag.AddressId = _addressId;
-        //    IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(_addressId);
-        //    return View("Index", serviceList);
-         
-        //}
-
         // GET: ServiceInformationMVC/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.AddressId = _addressId;
             ServiceInformation serviceInformation = serviceInformationRepository.GetServiceInformation(id);
             return View("Details", serviceInformation);
 
@@ -60,6 +52,7 @@ namespace lssSecureWeb.Controllers
         {
             try
             {
+                ViewBag.AddressId = _addressId;
                 // TODO: Add insert logic here
                 serviceInformationRepository.AddServiceInformation(serviceInformation);
             
@@ -139,6 +132,7 @@ namespace lssSecureWeb.Controllers
         // GET: ServiceInformationMVC/Delete/5
         public ActionResult Delete(int id)
         {
+            ViewBag.AddressId = _addressId;
             ServiceInformation serviceInformation = serviceInformationRepository.GetServiceInformation(id);
             return View("Delete", serviceInformation);
         }
@@ -149,6 +143,7 @@ namespace lssSecureWeb.Controllers
         {
             try
             {
+                ViewBag.AddressId = _addressId;
                 // TODO: Add delete logic here
                 bool status=serviceInformationRepository.DeleteServiceInformation(id);
 

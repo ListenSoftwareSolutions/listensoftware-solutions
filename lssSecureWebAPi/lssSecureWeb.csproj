@@ -231,6 +231,7 @@
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Api\Controllers\LoginApiController.cs" />
+    <Compile Include="Controllers\EmployeeControllerMVC.cs" />
     <Compile Include="Controllers\PeopleControllerMVC.cs" />
     <Compile Include="Controllers\ScheduleEventController.cs" />
     <Compile Include="Controllers\ServiceInformationControllerMVC.cs" />
@@ -1147,6 +1148,13 @@
     <Content Include="Views\ScheduleEvent\Create.cshtml" />
     <Content Include="Views\ScheduleEvent\Delete.cshtml" />
     <Content Include="Views\ScheduleEvent\Detail.cshtml" />
+    <Content Include="Views\People\IndexEmployee.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\ScheduleEvent\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

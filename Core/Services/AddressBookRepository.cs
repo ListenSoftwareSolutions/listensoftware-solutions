@@ -196,13 +196,17 @@ string paramType, string paramValue, string paramName)
             }
             return (resultList);
         }
-        public List<AddressBook> GetAllAddressBooks(string searchString)
+        public List<AddressBook> GetAllAddressBooks(string searchString,string keyCode)
         {
             List<AddressBook> resultList = new List<AddressBook>();
-        
+            UDCRepository udcRepository = new UDCRepository();
+            long xRefId = udcRepository.GetUdcByKeyCode(keyCode);
+
             using (var db = new DatabaseContext())
             {
-                var query = from b in db.AddressBooks select b;
+                var query = from b in db.AddressBooks
+                            .Where(b => b.PeopleXrefId == xRefId)
+                            select b;
        
                 if (!String.IsNullOrEmpty(searchString))
                 {

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<lssCore.Database.ScheduleEvent>
-
+@using lssCore.Services;
 <p>
     @Html.ActionLink("Create New", "Create","ScheduleEvent",new { serviceId=ViewBag.ServiceId, addressId=ViewBag.AddressId })
 </p>
@@ -29,7 +29,8 @@
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EmployeeAddressId)
+            @Utility.GetPersonName(item.EmployeeAddressId)
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventDateTime)
@@ -41,7 +42,8 @@
             @Html.DisplayFor(modelItem => item.DurationMinutes)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CustomerAddressId)
+           
+            @Utility.GetPersonName(item.CustomerAddressId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

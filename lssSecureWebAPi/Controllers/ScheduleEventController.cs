@@ -32,9 +32,11 @@ namespace lssSecureWeb.Controllers
         }
 
         // GET: ScheduleEvent/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(long id)
         {
-            return View();
+            ScheduleEvent scheduleEvent = scheduleEventRepository.GetScheduleEventById(id);
+
+            return View(scheduleEvent);
         }
         private void LoadEmployeeList()
         {
@@ -59,13 +61,16 @@ namespace lssSecureWeb.Controllers
 
         // POST: ScheduleEvent/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ScheduleEvent scheduleEvent)
         {
             try
             {
                 // TODO: Add insert logic here
+                ViewBag.ServiceId = _serviceId;
+                ViewBag.AddressId = _addressId;
+                scheduleEventRepository.AddScheduleEvent(scheduleEvent);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new {serviceId=_serviceId,addressId=_addressId });
             }
             catch
             {
@@ -76,18 +81,25 @@ namespace lssSecureWeb.Controllers
         // GET: ScheduleEvent/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ViewBag.ServiceId = _serviceId;
+            ViewBag.AddressId = _addressId;
+            LoadEmployeeList();
+            ScheduleEvent scheduleEvent = scheduleEventRepository.GetScheduleEventById(id);
+
+            return View(scheduleEvent);
         }
 
         // POST: ScheduleEvent/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ScheduleEvent scheduleEvent)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                ViewBag.ServiceId = _serviceId;
+                ViewBag.AddressId = _addressId;
+                scheduleEventRepository.UpdateScheduleEvent(scheduleEvent);
+                return RedirectToAction("Index", new { serviceId = _serviceId, addressId = _addressId });
             }
             catch
             {
@@ -96,8 +108,11 @@ namespace lssSecureWeb.Controllers
         }
 
         // GET: ScheduleEvent/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(long id)
         {
+            ViewBag.ServiceId = _serviceId;
+            ViewBag.AddressId = _addressId;
+            scheduleEventRepository.DeleteScheduleEvent(id);
             return View();
         }
 
@@ -108,8 +123,9 @@ namespace lssSecureWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                ViewBag.ServiceId = _serviceId;
+                ViewBag.AddressId = _addressId;
+                return RedirectToAction("Index", new { serviceId = _serviceId, addressId = _addressId });
             }
             catch
             {

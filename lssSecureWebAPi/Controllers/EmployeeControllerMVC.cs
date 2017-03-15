@@ -10,12 +10,12 @@ using PagedList;
 namespace lssSecureWeb.Controllers
 {
      
-    [RoutePrefix("people")]
-    public class PeopleController : Controller
+    [RoutePrefix("employee")]
+    public class EmployeeController : Controller
     {
         private AddressBookRepository addressBookRepository;
-    
-        public PeopleController()
+   
+        public EmployeeController()
         {
             this.addressBookRepository = new AddressBookRepository();
         }
@@ -38,40 +38,15 @@ namespace lssSecureWeb.Controllers
             }
             ViewBag.CurrentFilter = searchString;
 
-            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks(searchString,"customer");
+            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks(searchString,"employee");
 
-       
-            //return View("index", listPeople);
-
+     
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
             return View("index",listPeople.ToPagedList(pageNumber, pageSize));
         }
-        public ViewResult IndexEmployee(string currentFilter, string searchString, int? page)
-        {
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-            ViewBag.CurrentFilter = searchString;
-
-            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks(searchString, "employee");
-
-      
-
-            //return View("index", listPeople);
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            return View("indexEmployee", listPeople.ToPagedList(pageNumber, pageSize));
-        }
+   
         public ActionResult AddressBook()
         {
             return View();
@@ -80,8 +55,7 @@ namespace lssSecureWeb.Controllers
         // GET: People/Details/5
         public ActionResult Details(int id)
         {
-            
-            AddressBook person = addressBookRepository.GetAddressBook(id);
+             AddressBook person = addressBookRepository.GetAddressBook(id);
  
             return View(person);
         }
@@ -107,8 +81,7 @@ namespace lssSecureWeb.Controllers
             try
             {
                 // TODO: Add insert logic here
-
-                addressBookRepository.AddAddressBook(addressBook);
+               addressBookRepository.AddAddressBook(addressBook);
 
                 return RedirectToAction("Index");
             }
@@ -136,7 +109,6 @@ namespace lssSecureWeb.Controllers
         // GET: People/Edit/5
         public ActionResult Edit(int id)
         {
-           
             AddressBook person = addressBookRepository.GetAddressBook(id);
             UDCRepository udcRepository = new UDCRepository();
       
@@ -155,8 +127,7 @@ namespace lssSecureWeb.Controllers
        
         public ActionResult Update(AddressBook addressBook)
         {
-
-            addressBookRepository.UpdateAddressBook(addressBook);
+             addressBookRepository.UpdateAddressBook(addressBook);
 
 
             return RedirectToAction("index");
@@ -181,7 +152,6 @@ namespace lssSecureWeb.Controllers
         // GET: People/Delete/5
         public ActionResult Delete(int id)
         {
-          
             AddressBook person = addressBookRepository.GetAddressBook(id);
 
        
@@ -195,8 +165,7 @@ namespace lssSecureWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                addressBookRepository.DeleteAddressBook(id);
+                 addressBookRepository.DeleteAddressBook(id);
 
                 return RedirectToAction("Index");
             }

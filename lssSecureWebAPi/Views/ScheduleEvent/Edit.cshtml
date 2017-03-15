@@ -2,7 +2,7 @@
 
 @using lssCore.Services;
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -10,11 +10,12 @@
         <h4>ScheduleEvent</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.EmployeeAddressId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.EmployeeAddressId, ViewBag.Employees as IEnumerable<SelectListItem>, "Employees")
-
                 @Html.ValidationMessageFor(model => model.EmployeeAddressId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,10 +31,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ServiceId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @ViewBag.ServiceId
-                @Html.TextBoxFor(model => model.ServiceId, new { Id = "ServiceId", Value = @ViewBag.ServiceId })
-                
-
+                @Html.EditorFor(model => model.ServiceId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,22 +47,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerAddressId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Utility.GetPersonName(ViewBag.AddressId)
-                @Html.HiddenFor(model => model.CustomerAddressId, new { Id = "CustomerAddressId", Value = @ViewBag.AddressId })
+                @Utility.GetPersonName(Model.CustomerAddressId)
+                @Html.HiddenFor(model => model.CustomerAddressId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CustomerAddressId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index",new {serviceId=ViewBag.ServiceId,addressId=ViewBag.AddressId })
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

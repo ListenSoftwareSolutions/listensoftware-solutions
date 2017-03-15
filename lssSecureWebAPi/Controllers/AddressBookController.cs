@@ -21,7 +21,7 @@ namespace lssSecureWeb.Controllers
         }
         public List<AddressBook>  Get()
         {
-            return addressBookRepository.GetAllAddressBooks("");
+            return addressBookRepository.GetAllAddressBooks("","customer");
         }
         public AddressBook Get(int Id)
         {
