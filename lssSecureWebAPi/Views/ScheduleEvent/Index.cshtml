@@ -3,6 +3,8 @@
 <p>
     @Html.ActionLink("Create New", "Create","ScheduleEvent",new { serviceId=ViewBag.ServiceId, addressId=ViewBag.AddressId })
 </p>
+Address Id: @ViewBag.AddressId<br />
+Service Id: @ViewBag.ServiceId
 @using (Html.BeginForm("Index", "ScheduleEvent", FormMethod.Get))
 {
 <table class="table">
@@ -56,3 +58,4 @@
 </table>
 
 }
+@Html.ActionLink("Back to List", "Index","ServiceInformation",new { serviceId = ViewBag.ServiceId, addressId = ViewBag.AddressId },null)

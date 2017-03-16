@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using lssCore.Database;
 using lssCore.Services;
+using PagedList;
 
 namespace lssSecureWeb.Controllers
 {
@@ -19,14 +20,38 @@ namespace lssSecureWeb.Controllers
         {
             this.serviceInformationRepository = new ServiceInformationRepository();
         }
-        public ActionResult Index(long addressId)
+        //public ActionResult Index(long addressId)
+        //{
+        //    _addressId = addressId;
+        //    IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(addressId);
+        //    ViewBag.AddressId = _addressId;
+        //    return View("Index", serviceList);
+        //}
+        public ViewResult Index(string currentFilter, string searchString, long addressId, int? page)
         {
-            _addressId = addressId;
-            IList<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(addressId);
+            _addressId =  addressId;
             ViewBag.AddressId = _addressId;
-            return View("Index", serviceList);
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            List<ServiceInformation> serviceList = serviceInformationRepository.GetServiceInformationByAddressId(addressId,searchString).ToList<ServiceInformation>();
+
+
+            //return View("index", listPeople);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View("index", serviceList.ToPagedList(pageNumber, pageSize));
         }
-        
+
         // GET: ServiceInformationMVC/Details/5
         public ActionResult Details(int id)
         {

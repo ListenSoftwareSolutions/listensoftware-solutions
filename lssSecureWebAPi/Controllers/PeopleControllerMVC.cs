@@ -48,30 +48,7 @@ namespace lssSecureWeb.Controllers
 
             return View("index",listPeople.ToPagedList(pageNumber, pageSize));
         }
-        public ViewResult IndexEmployee(string currentFilter, string searchString, int? page)
-        {
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-            ViewBag.CurrentFilter = searchString;
-
-            List<AddressBook> listPeople = addressBookRepository.GetAllAddressBooks(searchString, "employee");
-
-      
-
-            //return View("index", listPeople);
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            return View("indexEmployee", listPeople.ToPagedList(pageNumber, pageSize));
-        }
+     
         public ActionResult AddressBook()
         {
             return View();

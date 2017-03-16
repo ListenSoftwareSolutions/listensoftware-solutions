@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using lssCore.Database;
 using System.Data.Entity;
+using Microsoft.VisualBasic;
 
 namespace lssCore.Services
 {
@@ -121,7 +122,7 @@ namespace lssCore.Services
             return (resultList);
 
         }
-        public IList<ServiceInformation> GetServiceInformationByAddressId(long addressId)
+        public IList<ServiceInformation> GetServiceInformationByAddressId(long addressId,string searchString)
         {
             IList<ServiceInformation> resultList = null;
             try
@@ -133,8 +134,16 @@ namespace lssCore.Services
                                     //where (b.Status == null && b.AddressId==addressId)
                                 where ( b.AddressId == addressId)
                                 select b;
-
-                    foreach (var item in query)
+                    if (Microsoft.VisualBasic.Information.IsDate(searchString))
+                    {
+                        DateTime searchDate = DateTime.Parse(searchString);
+                        query = query.Where(s => s.CreatedDate == searchDate);
+                    }
+                    else if (!String.IsNullOrEmpty(searchString))
+                    {
+                        query = query.Where(s => s.ServiceDescription.Contains(searchString));   
+                    }
+                        foreach (var item in query)
                     {
                         resultList.Add(item);
                     }

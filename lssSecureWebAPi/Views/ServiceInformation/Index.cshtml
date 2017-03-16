@@ -1,61 +1,78 @@
-﻿@model IEnumerable<lssCore.Database.ServiceInformation>
+﻿@model PagedList.IPagedList<lssCore.Database.ServiceInformation>
+@using PagedList.Mvc;
 @using lssCore.Services;
 @{
     ViewBag.Title = "Index";
 }
 
-
-
+<h3>Service Calls</h3>
 <p>
-    @{ 
-        if (ViewBag.AddressId != null)
-        {
-            @ViewBag.AddressId
-            }
-        }
-    <br />
+   
     @Html.ActionLink("Create New", "Create")
 </p>
+Address Id:  @ViewBag.AddressId<br />
+
+@using (Html.BeginForm("Index", "ServiceInformation", FormMethod.Get))
+{
+    <p>
+        Find: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+        @Html.Hidden("AddressId",ViewBag.AddressId as string)
+    </p>
+
+}
+
+
 <table class="table">
     <tr>
         <th>
             Action
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ServiceDescription)
+            Description
+          
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Price
+           
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AddOns)
+            Add Ons
+           
+        <th>
+            Service Type
+           
+        <th>
+            Created Date
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ServiceTypeXRefId)
+            Client
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+            Contract
+          
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AddressId)
+            Square Feet of Structure
+           
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractId)
+            Loc Description
+           
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SquareFeetOfStructure)
+            GPS
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LocationDescription)
+            Comments
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LocationGPS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
+            Status
+            
         </th>
         <th></th>
     </tr>
@@ -112,3 +129,13 @@
 }
 
 </table>
+
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<br />
+@Html.ActionLink("Back to List", "Index", "People")
+
+
+

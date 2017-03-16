@@ -27,6 +27,7 @@ namespace lssSecureWeb.Controllers
             _addressId = addressId;
             IList<ScheduleEvent> scheduleEventList = scheduleEventRepository.GetAllScheduleEvents(_serviceId);
             ViewBag.ServiceId = _serviceId;
+            ViewBag.AddressId = _addressId;
            
             return View(scheduleEventList);
         }
@@ -35,7 +36,8 @@ namespace lssSecureWeb.Controllers
         public ActionResult Details(long id)
         {
             ScheduleEvent scheduleEvent = scheduleEventRepository.GetScheduleEventById(id);
-
+            ViewBag.ServiceId = _serviceId;
+            ViewBag.AddressId = _addressId;
             return View(scheduleEvent);
         }
         private void LoadEmployeeList()
