@@ -28,6 +28,7 @@ Address Id:  @ViewBag.AddressId<br />
         <th>
             Action
         </th>
+        <th>Asgn Employees</th>
         <th>
             Description
           
@@ -83,6 +84,12 @@ Address Id:  @ViewBag.AddressId<br />
             @Html.ActionLink("Schedule", "Index", "ScheduleEvent", new { serviceId = item.ServiceId, addressId=item.AddressId },null)
         </td>
         <td>
+            @foreach (var employee in item.ScheduleEvents)
+            {
+                @Utility.GetPersonName(employee.EmployeeAddressId);  @employee.EventDateTime <br />
+            }
+        </td>
+           <td>
             @Html.DisplayFor(modelItem => item.ServiceDescription)
         </td>
         <td>
@@ -126,6 +133,7 @@ Address Id:  @ViewBag.AddressId<br />
             @Html.ActionLink("Delete", "Delete", new { id=item.ServiceId })
         </td>
     </tr>
+    
 }
 
 </table>

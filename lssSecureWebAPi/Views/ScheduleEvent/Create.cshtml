@@ -31,7 +31,7 @@
             @Html.LabelFor(model => model.ServiceId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @ViewBag.ServiceId
-                @Html.TextBoxFor(model => model.ServiceId, new { Id = "ServiceId", Value = @ViewBag.ServiceId })
+                @Html.HiddenFor(model => model.ServiceId, new { Id = "ServiceId", Value = @ViewBag.ServiceId })
                 
 
                 @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })

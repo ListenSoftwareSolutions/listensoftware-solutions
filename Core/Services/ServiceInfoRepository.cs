@@ -6,6 +6,7 @@ using lssCore.Database;
 using System.Data.Entity;
 using Microsoft.VisualBasic;
 
+
 namespace lssCore.Services
 {
     public class ServiceInformationRepository
@@ -130,10 +131,10 @@ namespace lssCore.Services
                 resultList = new List<ServiceInformation>();
                 using (var db = new DatabaseContext())
                 {
-                    var query = from b in db.ServiceInformations
+                    var query = (from b in db.ServiceInformations
                                     //where (b.Status == null && b.AddressId==addressId)
                                 where ( b.AddressId == addressId)
-                                select b;
+                                select b).Include(s1 => s1.ScheduleEvents);
                     if (Microsoft.VisualBasic.Information.IsDate(searchString))
                     {
                         DateTime searchDate = DateTime.Parse(searchString);

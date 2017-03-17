@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<lssCore.Database.ScheduleEvent>
 @using lssCore.Services;
+
+<h3>Employees Assigned to a Service Call</h3>
 <p>
     @Html.ActionLink("Create New", "Create","ScheduleEvent",new { serviceId=ViewBag.ServiceId, addressId=ViewBag.AddressId })
 </p>
@@ -53,6 +55,7 @@ Service Id: @ViewBag.ServiceId
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
+    
 }
 
 </table>

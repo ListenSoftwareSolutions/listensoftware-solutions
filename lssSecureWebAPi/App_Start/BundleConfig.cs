@@ -11,6 +11,9 @@ namespace lssSecureWeb
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                      "~/Scripts/jquery-ui-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -23,9 +26,24 @@ namespace lssSecureWeb
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new StyleBundle("~/Content/jqueryuicss").Include(
+                      "~/Content/themes/base/jquery-ui.core.css",
+                      "~/Content/themes/base/jquery-ui.resizeable.css",
+                      "~/Content/themes/base/jquery-ui.selectable.css",
+                      "~/Content/themes/base/jquery-ui.accordion.css",
+                      "~/Content/themes/base/jquery-ui.autocomplete.css",
+                      "~/Content/themes/base/jquery-ui.button.css",
+                      "~/Content/themes/base/jquery-ui.dialog.css",
+                      "~/Content/themes/base/jquery-ui.slider.css",
+                      "~/Content/themes/base/jquery-ui.tabs.css",
+                      "~/Content/themes/base/jquery-ui.progressbar.css",
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/themes/base/jquery-ui.datepicker.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                     "~/Content/bootstrap.css",
+                     "~/Content/site.css"));
+
         }
     }
 }
