@@ -16,7 +16,7 @@ namespace lssCore.Database
     public partial class EntitiesContext : DbContext
     {
         public EntitiesContext()
-            : base("name=EntitiesContext")
+            : base("name=Entities")
         {
         }
     

@@ -11,7 +11,8 @@ namespace lssCore.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ServiceInformation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +26,9 @@ namespace lssCore.Database
         public Nullable<decimal> Price { get; set; }
         public string AddOns { get; set; }
         public Nullable<long> ServiceTypeXRefId { get; set; }
+
+        [DataType(DataType.DateTime)]
+
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> AddressId { get; set; }
         public Nullable<long> ContractId { get; set; }
