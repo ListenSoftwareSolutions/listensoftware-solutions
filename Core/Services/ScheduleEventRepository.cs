@@ -15,7 +15,7 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<ScheduleEvent>();
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query = from b in db.ScheduleEvents
                                 where (b.ServiceId == serviceId)
@@ -40,7 +40,7 @@ namespace lssCore.Services
         {
             ScheduleEvent scheduleEvent = null;
             try {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     scheduleEvent = db.ScheduleEvents.Single(e => e.Id == paramId);
                 }
@@ -56,7 +56,7 @@ namespace lssCore.Services
             bool retVal = false;
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var scheduleEventDelete = db.ScheduleEvents.Single(e => e.Id == paramId);
 
@@ -76,7 +76,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     db.ScheduleEvents.Add(scheduleEvent);
                     db.SaveChanges();
@@ -91,7 +91,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var scheduleEventOriginal = db.ScheduleEvents.Find(scheduleEventUpdate.Id);
 

@@ -14,7 +14,7 @@ namespace lssCore.Services
             long retVal = 0;
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     udc = (from p in db.UDCs
                            where p.KeyCode== keyCode
@@ -37,7 +37,7 @@ namespace lssCore.Services
             UDC udc = null;
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                      udc = (from p in db.UDCs
                               where p.XRefId == id
@@ -56,7 +56,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
 
                     var udc_list = from p in db.UDCs

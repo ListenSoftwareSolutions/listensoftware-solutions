@@ -32,7 +32,7 @@ namespace lssCore.Database
         public string LocationDescription { get; set; }
         public string LocationGPS { get; set; }
         public string Comments { get; set; }
-        public Nullable<int> Status { get; set; }
+        public bool Status { get; set; }
     
         public virtual AddressBook AddressBook { get; set; }
         public virtual Contract Contract { get; set; }

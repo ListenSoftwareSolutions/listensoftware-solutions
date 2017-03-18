@@ -15,7 +15,7 @@ namespace lssCore.Services
             bool retVal = false;
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var contract = db.Contracts.Single(e => e.ContractId==contractId);
 
@@ -35,7 +35,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     db.Contracts.Add(contract);
                     db.SaveChanges();
@@ -50,7 +50,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var contractOriginal = db.Contracts.Find(contract.ContractId);
 
@@ -70,7 +70,7 @@ namespace lssCore.Services
             Contract retVal=null;
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query = (from b in db.Contracts
                                 where (b.ContractId==id)
@@ -91,7 +91,7 @@ namespace lssCore.Services
             List<Contract> resultList = new List<Contract>();
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query = from b in db.Contracts
                                 where(b.AddressId==addressId)
@@ -118,7 +118,7 @@ namespace lssCore.Services
             List<Contract> resultList = new List<Contract>();
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query = from b in db.Contracts select b;
 

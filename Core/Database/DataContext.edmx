@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="listensoftwareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LssModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AcctRec">
           <Key>
             <PropertyRef Name="Id" />
@@ -109,7 +109,7 @@
           <Property Name="LocationDescription" Type="varchar" MaxLength="255" />
           <Property Name="LocationGPS" Type="varchar" MaxLength="255" />
           <Property Name="Comments" Type="varchar" MaxLength="1000" />
-          <Property Name="Status" Type="int" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="UDC">
           <Key>
@@ -192,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="listensoftwareDBModelStoreContainer">
+        <EntityContainer Name="LssModelStoreContainer">
           <EntitySet Name="AcctRec" EntityType="Self.AcctRec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AddressBook" EntityType="Self.AddressBook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChartOfAccts" EntityType="Self.ChartOfAccts" Schema="dbo" store:Type="Tables" />
@@ -230,7 +230,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="listensoftwareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="LssModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AcctRec">
           <Key>
             <PropertyRef Name="Id" />
@@ -342,7 +342,7 @@
           <Property Name="LocationDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LocationGPS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="AddressBook" Relationship="Self.FK__ServiceIn__Addre__282DF8C2" FromRole="ServiceInformation" ToRole="AddressBook" />
           <NavigationProperty Name="Contract" Relationship="Self.FK__ServiceIn__Contr__29221CFB" FromRole="ServiceInformation" ToRole="Contract" />
           <NavigationProperty Name="ScheduleEvents" Relationship="Self.FK__ScheduleE__Servi__75A278F5" FromRole="ServiceInformation" ToRole="ScheduleEvent" />
@@ -430,7 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="databaseContext2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EntitiesContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AcctRecs" EntityType="Self.AcctRec" />
           <EntitySet Name="AddressBooks" EntityType="Self.AddressBook" />
           <EntitySet Name="ChartOfAccts" EntityType="Self.ChartOfAcct" />
@@ -469,9 +469,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="listensoftwareDBModelStoreContainer" CdmEntityContainer="databaseContext2">
+        <EntityContainerMapping StorageEntityContainer="LssModelStoreContainer" CdmEntityContainer="EntitiesContext">
           <EntitySetMapping Name="AcctRecs">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.AcctRec">
+            <EntityTypeMapping TypeName="LssModel.AcctRec">
               <MappingFragment StoreEntitySet="AcctRec">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
@@ -488,7 +488,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AddressBooks">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.AddressBook">
+            <EntityTypeMapping TypeName="LssModel.AddressBook">
               <MappingFragment StoreEntitySet="AddressBook">
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -510,7 +510,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChartOfAccts">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.ChartOfAcct">
+            <EntityTypeMapping TypeName="LssModel.ChartOfAcct">
               <MappingFragment StoreEntitySet="ChartOfAccts">
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
@@ -524,7 +524,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contracts">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.Contract">
+            <EntityTypeMapping TypeName="LssModel.Contract">
               <MappingFragment StoreEntitySet="Contract">
                 <ScalarProperty Name="ContractId" ColumnName="ContractId" />
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
@@ -537,7 +537,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GeneralLedgers">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.GeneralLedger">
+            <EntityTypeMapping TypeName="LssModel.GeneralLedger">
               <MappingFragment StoreEntitySet="GeneralLedger">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
@@ -553,7 +553,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ScheduleEvents">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.ScheduleEvent">
+            <EntityTypeMapping TypeName="LssModel.ScheduleEvent">
               <MappingFragment StoreEntitySet="ScheduleEvent">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmployeeAddressId" ColumnName="EmployeeAddressId" />
@@ -565,7 +565,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ServiceInformations">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.ServiceInformation">
+            <EntityTypeMapping TypeName="LssModel.ServiceInformation">
               <MappingFragment StoreEntitySet="ServiceInformation">
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
@@ -584,7 +584,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UDCs">
-            <EntityTypeMapping TypeName="listensoftwareDBModel.UDC">
+            <EntityTypeMapping TypeName="LssModel.UDC">
               <MappingFragment StoreEntitySet="UDC">
                 <ScalarProperty Name="XRefId" ColumnName="XRefId" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />

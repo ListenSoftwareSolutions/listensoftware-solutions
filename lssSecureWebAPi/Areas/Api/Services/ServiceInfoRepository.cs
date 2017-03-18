@@ -12,7 +12,7 @@ namespace lssSecureWebApi2.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var serviceInformationDelete = db.ServiceInformations.Single(e => e.ServiceId == paramId);
 
@@ -29,7 +29,7 @@ namespace lssSecureWebApi2.Services
     {
         try
         {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     db.ServiceInformations.Add(serviceInformation);
                     db.SaveChanges();
@@ -44,7 +44,7 @@ public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var serviceInformationOriginal = db.ServiceInformations.Find(serviceInformationUpdate.ServiceId);
 
@@ -65,7 +65,7 @@ public void UpdateServiceInformation(ServiceInformation serviceInformationUpdate
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     ServiceInformation item = db.ServiceInformations.Single(e => e.ServiceId == paramServiceId);
                     ServiceInformation serviceInformation= new ServiceInformation();

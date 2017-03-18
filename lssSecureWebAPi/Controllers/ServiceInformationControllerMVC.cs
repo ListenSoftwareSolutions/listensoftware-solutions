@@ -81,7 +81,7 @@ namespace lssSecureWeb.Controllers
                 // TODO: Add insert logic here
                 serviceInformationRepository.AddServiceInformation(serviceInformation);
             
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { currentFilter = "", searchString = "", addressId = _addressId });
             }
             catch
             {
@@ -146,7 +146,7 @@ namespace lssSecureWeb.Controllers
 
                 serviceInformationRepository.UpdateServiceInformation(serviceInformation);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new {currentFilter="",searchString="",addressId=_addressId });
             }
             catch
             {

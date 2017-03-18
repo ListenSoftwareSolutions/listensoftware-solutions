@@ -16,7 +16,7 @@ namespace lssCore.Services
             bool retVal = false;
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var serviceInformationDelete = db.ServiceInformations.Single(e => e.ServiceId == paramId);
 
@@ -36,7 +36,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     db.ServiceInformations.Add(serviceInformation);
                     db.SaveChanges();
@@ -51,7 +51,7 @@ namespace lssCore.Services
         {
             try
             {
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var serviceInformationOriginal = db.ServiceInformations.Find(serviceInformationUpdate.ServiceId);
 
@@ -75,7 +75,7 @@ namespace lssCore.Services
             try
             {
                 //resultList = new List<ServiceInformation>();
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
           
                     item = db.ServiceInformations.Include(s1 => s1.ScheduleEvents).Single(e => e.ServiceId == paramServiceId);
@@ -102,7 +102,7 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<AddressBook>();
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query = from b in db.AddressBooks
                                 where(b.Type==type)
@@ -129,10 +129,9 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query = (from b in db.ServiceInformations
-                                    //where (b.Status == null && b.AddressId==addressId)
                                 where ( b.AddressId == addressId)
                                 select b).Include(s1 => s1.ScheduleEvents);
                     if (Microsoft.VisualBasic.Information.IsDate(searchString))
@@ -164,7 +163,7 @@ namespace lssCore.Services
             try
             {
                 resultList = new List<ServiceInformation>();
-                using (var db = new DatabaseContext())
+                using (var db = new EntitiesContext())
                 {
                     var query =from b in db.ServiceInformations
                         where (b.Status == null)

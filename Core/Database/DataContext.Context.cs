@@ -13,10 +13,10 @@ namespace lssCore.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseContext : DbContext
+    public partial class EntitiesContext : DbContext
     {
-        public DatabaseContext()
-            : base("name=databaseContext")
+        public EntitiesContext()
+            : base("name=EntitiesContext")
         {
         }
     

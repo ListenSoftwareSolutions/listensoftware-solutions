@@ -62,7 +62,10 @@ namespace lssSecureWeb.Controllers
  
             return View(person);
         }
+        void LoadPersonType()
+        {
 
+        }
         // GET: People/Create
         public ActionResult Create()
         {
@@ -70,8 +73,8 @@ namespace lssSecureWeb.Controllers
             List<UDC> udc_list = udcRepository.GetUdcList("AB_Type").ToList<UDC>();
             ViewBag.Type = udc_list.ToList().Select(c => new SelectListItem
             {
-                Text = c.KeyCode,
-                Value = c.Value
+                Text = c.Value,
+                Value = c.XRefId.ToString()
             }).ToList();
             ;
             return View();
