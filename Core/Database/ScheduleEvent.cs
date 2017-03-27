@@ -11,11 +11,13 @@ namespace lssCore.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ScheduleEvent
     {
         public long Id { get; set; }
         public Nullable<long> EmployeeAddressId { get; set; }
+        [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> EventDateTime { get; set; }
         public Nullable<long> ServiceId { get; set; }
         public Nullable<long> DurationMinutes { get; set; }

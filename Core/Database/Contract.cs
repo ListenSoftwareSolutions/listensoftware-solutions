@@ -23,10 +23,11 @@ namespace lssCore.Database
         public long ContractId { get; set; }
         public Nullable<long> AddressId { get; set; }
         public Nullable<long> ServiceTypeXRefId { get; set; }
-        [DataType(DataType.DateTime)]
-
+        [DisplayFormat(DataFormatString ="{0: MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> StartDate { get; set; }
-        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0: MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<decimal> Cost { get; set; }
         public Nullable<decimal> RemainingBalance { get; set; }

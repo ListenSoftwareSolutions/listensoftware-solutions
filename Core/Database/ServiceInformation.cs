@@ -27,7 +27,7 @@ namespace lssCore.Database
         public string AddOns { get; set; }
         public Nullable<long> ServiceTypeXRefId { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
 
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> AddressId { get; set; }

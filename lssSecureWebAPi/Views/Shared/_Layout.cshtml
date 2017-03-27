@@ -58,13 +58,26 @@
 
         $(document).ready(function () {
 
-            $('input[type=datetime]').datepicker(
+            $('input[type=date]').datepicker(
                 {
                     dateFormat: "mm/dd/yy",
                     changeMonth: true,
                     changeYear: true,
                     yearRange: "-60:+0"
                 });
+
+            $('input[type=datetime]').datetimepicker(
+                {
+                    dateFormat: "mm/dd/yy",
+                    timeFormat: "hh:mm",
+                    timeInput: true,
+                    stepHour: 1,
+                    stepMinute: 30,
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+
         });
 
     </script>

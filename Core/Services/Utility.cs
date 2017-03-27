@@ -39,7 +39,7 @@ namespace lssCore.Services
             Contract contract = contractRepository.GetContractsById(id);
             if (contract != null)
             {
-                retVal = contract.StartDate + " " + contract.EndDate;
+                retVal = String.Format( "{0: MM/dd/yyyy}", contract.StartDate) + " " + String.Format("{0: MM/dd/yyyy}", contract.EndDate);
             }
             return retVal;
         }
